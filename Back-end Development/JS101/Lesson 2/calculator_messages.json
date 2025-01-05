@@ -1,88 +1,32 @@
-
 {
-  "welcome": "Welcome to Calculator!",
-  "first": "What's the first number?",
-  "second": "What's the second number?",
-  "invalid": "Hmm... that doesn't look like a valid number.",
-  "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
-  "choices": "Must choose 1, 2, 3, or 4",
-  "result": "The result is: ",
-  "another": "Would you like to perform another calculation? (y/n)"
+  "english": {
+    "welcome": "Welcome to Calculator!",
+    "first": "What's the first number?",
+    "second": "What's the second number?",
+    "invalid": "Hmm... that doesn't look like a valid number.",
+    "operation": "What operation would you like to perform?\n1) Add 2) Subtract 3) Multiply 4) Divide",
+    "choices": "Must choose 1, 2, 3, or 4",
+    "result": "The result is: ",
+    "another": "Would you like to perform another calculation? (y/n)"
+  },
+  "spanish": {
+    "welcome": "¡Bienvenido a Calculadora!",
+    "first": "¿Cuál es el primer número?",
+    "second": "¿Cuál es el segundo número?",
+    "invalid": "Hmm... eso no parece un número válido.",
+    "operation": "¿Qué operación te gustaría realizar?\n1) Sumar 2) Restar 3) Multiplicar 4) Dividir",
+    "choices": "Debes elegir 1, 2, 3 o 4",
+    "result": "El resultado es: ",
+    "another": "¿Te gustaría realizar otro cálculo? (s/n)"
+  },
+  "german": {
+    "welcome": "Willkommen beim Rechner!",
+    "first": "Was ist die erste Zahl?",
+    "second": "Was ist die zweite Zahl?",
+    "invalid": "Hmm... das sieht nicht wie eine gültige Zahl aus.",
+    "operation": "Welche Operation möchten Sie durchführen?\n1) Addieren 2) Subtrahieren 3) Multiplizieren 4) Dividieren",
+    "choices": "Sie müssen 1, 2, 3 oder 4 wählen",
+    "result": "Das Ergebnis ist: ",
+    "another": "Möchten Sie eine weitere Berechnung durchführen? (j/n)"
+  }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
