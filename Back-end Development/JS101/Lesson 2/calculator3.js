@@ -12,7 +12,7 @@ function invalidNumber(number) {
   return number.trimStart() === '' || Number.isNaN(Number(number));
 }
 
-function messages(message, lang='english') {
+function messages(message, lang) {
   return MESSAGES[lang][message];
 }
 
