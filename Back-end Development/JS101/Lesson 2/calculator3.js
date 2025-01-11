@@ -2,7 +2,6 @@ const LANGUAGE = 'english'; // change to your language here
 const readline = require('readline-sync');
 const MESSAGES = require('./calculator_messages.json');
 
-
 function prompt(key) {
   let message = messages(key, LANGUAGE);
   console.log(`=> ${message}`);
@@ -16,10 +15,7 @@ function messages(message, lang) {
   return MESSAGES[lang][message];
 }
 
-
 prompt('welcome');
-
-
 
 let answer;
 
@@ -32,7 +28,6 @@ do {
     number1 = readline.question();
   }
 
-
   prompt('second');
   let number2 = readline.question();
 
@@ -41,7 +36,6 @@ do {
     number2 = readline.question();
   }
 
-
   prompt('operation');
   let operation = readline.question();
 
@@ -49,7 +43,6 @@ do {
     prompt('choices');
     operation = readline.question();
   }
-
 
   let output;
   switch (operation) {
@@ -69,8 +62,10 @@ do {
 
   console.log(`${MESSAGES[LANGUAGE]['result']}${output}`);
 
- 
   prompt('another');
+
   answer = readline.question();
+
 }
+
 while (['y', 's', 'j'].includes(answer[0].toLowerCase()));

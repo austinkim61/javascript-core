@@ -1,0 +1,29 @@
+{
+  "english": {
+    "welcome": "Welcome to Mortgage Calculator!",
+    "loan": "What is the loan amount in dollars?",
+    "apr": "What is the Annual Percentage Rate in % (e.g. 5.5%)?",
+    "duration": "What is the loan duration in months?",
+    "invalid": "Hmm... that doesn't look like a valid number.",
+    "result": "The result is: ",
+    "another": "Would you like to perform another calculation? (y/n)"    
+  },
+  "spanish": {
+    "welcome": "¡Bienvenido al Calculador de Hipotecas!",
+    "loan": "¿Cuál es el monto del préstamo en dólares?",
+    "apr": "¿Cuál es la Tasa de Porcentaje Anual en % (por ejemplo, 5.5%)?",
+    "duration": "¿Cuál es la duración del préstamo en meses?",
+    "invalid": "Hmm... eso no parece un número válido.",
+    "result": "El resultado es: ",
+    "another": "¿Te gustaría realizar otro cálculo? (s/n)"
+  },
+  "german": {
+    "welcome": "Willkommen beim Hypothekenrechner!",
+    "loan": "Wie hoch ist der Darlehensbetrag in Dollar?",
+    "apr": "Wie hoch ist der jährliche Prozentsatz (z. B. 5,5%)?",
+    "duration": "Wie lange ist die Darlehenslaufzeit in Monaten?",
+    "invalid": "Hmm... das scheint keine gültige Zahl zu sein.",
+    "result": "Das Ergebnis ist: ",
+    "another": "Möchten Sie eine weitere Berechnung durchführen? (j/n)"
+  }
+}
