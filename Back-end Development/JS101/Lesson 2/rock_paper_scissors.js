@@ -5,18 +5,7 @@ function prompt(message) {
   console.log(`=> ${message}`);
 }
 
-while (true) {
-  prompt(`Choose one: ${VALID_CHOICES.join(', ')}`);
-  let choice = readline.question();
-
-  while (!VALID_CHOICES.includes(choice)) {
-    prompt("THat's not a valid choice");
-    choice = readline.question();
-  }
-
-  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
-  let computerChoice = VALID_CHOICES[randomIndex];
-
+function displayWinner(choice, computerChoice) {
   prompt(`You chose ${choice}, computer chose ${computerChoice}`);
 
   if ((choice === 'rock' && computerChoice === 'scissors') ||
@@ -30,6 +19,21 @@ while (true) {
   } else {
     prompt("It's a tie");
   }
+}
+
+while (true) {
+  prompt(`Choose one: ${VALID_CHOICES.join(', ')}`);
+  let choice = readline.question();
+
+  while (!VALID_CHOICES.includes(choice)) {
+    prompt("THat's not a valid choice");
+    choice = readline.question();
+  }
+
+  let randomIndex = Math.floor(Math.random() * VALID_CHOICES.length);
+  let computerChoice = VALID_CHOICES[randomIndex];
+
+  displayWinner(choice, computerChoice);
 
   prompt('do you want to play again (y/n)?');
   let answer = readline.question().toLowerCase();
