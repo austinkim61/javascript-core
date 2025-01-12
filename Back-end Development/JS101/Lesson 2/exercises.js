@@ -12,12 +12,69 @@ For each of the remaining words in the sentence:
     Reassign the saved word as the new current word.
 Return the saved word.
 
+*/
+
+
+/*
+randomNumber will always be between 0 and 9
+
+for randomNumber = 4
+this will always be hoisted up
+
+foo1
+8
+
+foo2
+8
 
 
 
+foo3
 
 
+function foo3(a) {
+2 * a
+}
 
 
 
 */
+
+
+
+
+
+function volume(height, width, depth) {
+  let result = height * width * depth;
+  console.log(result);
+  return result;
+}
+
+
+let readline = require("readline-sync");
+function askYesOrNo(prompt) {
+  let answer = readline.question(prompt);
+  return answer;
+}
+
+
+function multiply(a, b) {
+  a * b;
+}
+
+
+let boo = "gar";
+function setBoo() {
+  boo = "xyz";
+}
+
+
+
+
+
+
+
+
+
+
+
