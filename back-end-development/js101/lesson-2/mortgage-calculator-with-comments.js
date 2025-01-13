@@ -1,6 +1,6 @@
 const LANGUAGE = 'german'; // change to your language here
 const readline = require('readline-sync');
-const MESSAGES = require('./mortgage_calculator_messages.json');
+const MESSAGES = require('./mortgage-calculator-messages.json');
 
 function messages(message, lang) {
   return MESSAGES[lang][message];

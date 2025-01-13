@@ -1,6 +1,6 @@
 const LANGUAGE = 'english'; // change to your language here
 const readline = require('readline-sync');
-const MESSAGES = require('./calculator_messages.json');
+const MESSAGES = require('./calculator-messages.json');
 
 function prompt(key) {
   let message = messages(key, LANGUAGE);

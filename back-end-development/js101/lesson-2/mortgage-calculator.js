@@ -1,6 +1,6 @@
 const LANGUAGE = 'english';
 const readline = require('readline-sync');
-const MESSAGES = require('./mortgage_calculator_messages.json');
+const MESSAGES = require('./mortgage-calculator-messages.json');
 
 let monthlyInterestRate;
 let monthlyPayment;
