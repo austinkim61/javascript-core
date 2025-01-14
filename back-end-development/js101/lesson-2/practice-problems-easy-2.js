@@ -8,34 +8,21 @@
 
 // let numbers = [1, 2, 3, 4, 5];
 
-
-
 // let numbersReversed = numbers.slice();
-
 // numbersReversed.reverse();
 
-
-
 // let numbersReversed = [...numbers].sort((num1, num2) => num2 - num1);
-
-
 
 // function compareNumbers(a, b) {
 //   console.log(a);
 //   console.log(b);
 //   return b - a; 
 // }
-
 // let numbersReversed = [...numbers];
-
 // numbersReversed.sort(compareNumbers);
 
-
-
 // let numbersReversed = [];
-
 // numbers.forEach((num) => numbersReversed.unshift(num));
-
 
 // console.log(numbers);
 // console.log(numbersReversed);
@@ -56,7 +43,141 @@
 
 
 
-let famousWords = "seven years ago...";
+// let famousWords = "seven years ago...";
+// let prefix = "Four score and ";
+
+// console.log(prefix.concat(famousWords));
+// console.log(prefix + famousWords);
+
+
+
+
+
+// let array = [1, 2, 3, 4, 5];
+// array.splice(2, 1);
+// console.log(array);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
