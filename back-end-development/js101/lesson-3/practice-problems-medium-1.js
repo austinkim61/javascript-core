@@ -52,6 +52,8 @@ console.log(split);
 
 // split = [ 'The', 'Munsters', 'are', 'creepy', 'and', 'spooky.' ]
 
+// console.log(word[i]);
+
 
 split.forEach((word, index) => {
   for (let i = 0; i < word.length; i++) {
@@ -61,8 +63,7 @@ split.forEach((word, index) => {
       split[index][i] = word[i].toUpperCase();
     }
   }
-}
-)
+})
 
 
 console.log(split);
