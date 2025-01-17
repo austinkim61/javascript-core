@@ -209,15 +209,15 @@ function addToRollingBuffer2(buffer, maxBufferSize, newElement) {     // buffer 
 */
 
 
-function foo(param = "no") {
-  return "yes";
-}
+// function foo(param = "no") {
+//   return "yes";
+// }
 
-function bar(param = "no") {
-  return param === "no" ? "yes" : "no";
-}
+// function bar(param = "no") {
+//   return param === "no" ? "yes" : "no";
+// }
 
-console.log(bar(foo()));
+// console.log(bar(foo()));
 
 
 // function bar is called and foo is passed to it as the argument
