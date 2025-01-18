@@ -115,10 +115,13 @@ function isDotSeparatedIpAddress(inputString) { // receives a string argument ex
   if (dotSeparatedWords.length !== 4) {
     return false;
   } else {
-    while (dotSeparatedWords.length > 0) { // minimum length of the array has to be 1
+    while (dotSeparatedWords.length > 0) {
+      // minimum length of the array has to be 1
       let word = dotSeparatedWords.pop(); // the last element of the array is removed and returned as an assignment to word
-      // console.log(word);
-      if (isAnIpNumber(word)) { // runs a function where if the word provided as the argument is not a valid IP number, breaks // breaks if isAnIpNumber is false
+      if ((word.startsWith("0")) && (word.length > 1)) {
+        return false;
+      }
+      if (!isAnIpNumber(word)) { // runs a function where if the word provided as the argument is not a valid IP number, breaks // breaks if isAnIpNumber is false
         return false;
       } // keeps running the code
     }    
@@ -126,74 +129,19 @@ function isDotSeparatedIpAddress(inputString) { // receives a string argument ex
   }
 }
 
-
-
-
-
-
-function isAnIpNumber(number) {
-  if (Number.isNaN(number)) {
-    return false;
-  } else if ((number.startsWith("0")) && (number.length > 1)) {
-    return false;
-  } else if (!Number.isInteger(number)) {
-    return false;
-  } else if (!(number >= 0 && number <= 255)) {
-    return false;
-  } else {
-    return true;
+function isAnIpNumber(str) {
+  if (/^\d+$/.test(str)) {
+    number = Number(str);
+    return number >= 0 && number <= 255;
   }
-};
+  return false;
+}
 
 console.log(isDotSeparatedIpAddress('123.123.0.255'));
 console.log(isDotSeparatedIpAddress('0.0.0.0'));
 console.log(isDotSeparatedIpAddress('0.0.0.0.0'));
+console.log(isDotSeparatedIpAddress('0.0.0.-3'));
 console.log(isDotSeparatedIpAddress('0.0.0.01'));
 console.log(isDotSeparatedIpAddress('0.0.0.001'));
 console.log(isDotSeparatedIpAddress('0.0.0.0001'));
 console.log(isDotSeparatedIpAddress('sdfdf'));
-
-
-// console.log(isAnIpNumber(3));
-// console.log(isAnIpNumber(-3));
-// console.log(isAnIpNumber(3.0));
-// console.log(isAnIpNumber('sdf'));
-// console.log(isAnIpNumber('sgdf'));
-// console.log(isAnIpNumber(256));
-
-// let inputString = '0.0.0.0001';
-
-// let dotSeparatedWords = inputString.split(".");
-// let number = dotSeparatedWords.pop();
-// console.log(number);
-
-// console.log((number.startsWith("0")) && (number.length > 1));
-
-
-
-
-
-// function isDotSeparatedIpAddress(inputString) { // receives a string argument expected to be an IP address
-//   let dotSeparatedWords = inputString.split("."); // returns an array splitting numbers between the dots
-//   while (dotSeparatedWords.length > 0) { // minimum length of the array has to be 1
-//     let word = dotSeparatedWords.pop(); // the last element of the array is removed and returned as an assignment to word
-//     if (!isAnIpNumber(word)) { // runs a function where if the word provided as the argument is not a valid IP number, breaks // breaks if isAnIpNumber is false
-//       break;
-//     } // keeps running the code
-//   }
-//   return true;
-// }
-
-
-// function isAnIpNumber(number) {
-//   if (Number.isNaN(number)) {
-//     return false;
-//   } else if (!Number.isInteger(number)) {
-//     return false;
-//   } else if (!(number >= 0 && number <= 255)) {
-//     return false;
-//   } else {
-//     return true;
-//   }
-// };
-
