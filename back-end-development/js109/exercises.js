@@ -101,15 +101,46 @@
 
 // console.log(matrix.toString());
 
-let arr = [4, 5, 6];
-let arr2 = arr;
-console.log(arr);
-console.log(arr2);
+// let arr = [4, 5, 6];
+// let arr2 = arr;
+// console.log(arr);
+// console.log(arr2);
 
 
-arr.unshift(1, 2, 3);
-console.log(arr);
-console.log(arr2);
+// arr.unshift(1, 2, 3);
+// console.log(arr);
+// console.log(arr2);
+
+
+
+
+
+
+// function greeter(greeting) {
+//   return function(name) {
+//     return console.log(`${greeting} ${name}`);
+//   }
+// }
+
+// let hello = greeter('Hello');
+// let hi = greeter('Hi');
+
+// hello('Trevor');
+// hello('Ginni');
+// hi('Spencer');
+// hi('Grace');
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
