@@ -19,16 +19,16 @@
 // Question 2
 
 
-// let munstersDescription = "The Munsters are creepy and spooky.";
-// let split = munstersDescription.split('');
-// split.forEach((element, index) => {
-//   if (element === element.toUpperCase()) {
-//     split[index] = element.toLowerCase();
-//   } else {
-//     split[index] = element.toUpperCase();
-//   }
-// });
-// console.log(split.join(''));
+let munstersDescription = "The Munsters are creepy and spooky.";
+let split = munstersDescription.split('');
+split.forEach((element, index) => {
+  if (element === element.toUpperCase()) {
+    split[index] = element.toLowerCase();
+  } else {
+    split[index] = element.toUpperCase();
+  }
+});
+console.log(split.join(''));
 
 // console.log(munstersDescription
 //   .split("")
