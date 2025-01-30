@@ -53,3 +53,26 @@
 
 
 
+// const array1 = [1, 2, 'a', '1a'];
+
+// console.log(array1.toString(', '));
+
+
+
+
+// const str = 'The quick brown fox jumps over the lazy dog.';
+// console.log(str.split(''));
+// console.log(str.split(' '));
+
+let greet = 'knock';
+
+
+function btw(str) {
+  return str + str + str;
+}
+
+console.log(greet);
+console.log(btw(greet));
+
+
+
