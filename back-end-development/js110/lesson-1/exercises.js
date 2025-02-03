@@ -44,13 +44,37 @@
 
 
 
-let obj = { apple: 'Produce', carrot: 'Produce', pear: 'Produce', broccoli: 'Produce' };
-obj['apple'] = 'Fruit';
-obj.carrot = 'Vegetable';
-obj.pear = 'Fruit';
+// let obj = { apple: 'Produce', carrot: 'Produce', pear: 'Produce', broccoli: 'Produce' };
+// obj['apple'] = 'Fruit';
+// obj.carrot = 'Vegetable';
+// obj.pear = 'Fruit';
 
-let key = 'broccoli';
-obj[key] = 'Vegetable';
+// let key = 'broccoli';
+// obj[key] = 'Vegetable';
 
-console.log(obj);
+// console.log(obj);
+
+
+let str1 = 'Hello ';
+let str2 = 'world!';
+
+console.log(str1.concat(str2));
+
+console.log(str1);
+console.log(str2);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
