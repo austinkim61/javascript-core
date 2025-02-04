@@ -55,21 +55,144 @@
 // console.log(obj);
 
 
-let str1 = 'Hello ';
-let str2 = 'world!';
+// let str1 = 'Hello ';
+// let str2 = 'world!';
 
-console.log(str1.concat(str2));
+// console.log(str1.concat(str2));
 
-console.log(str1);
-console.log(str2);
-
-
+// console.log(str1);
+// console.log(str2);
 
 
 
+// while (true) {
+//   let number = Math.floor(10 * Math.random());
+//   console.log(number);
+
+//   if (number === 5) {
+//     console.log('Exiting...');
+//     break;
+//   }
+// }
+
+// let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+// let counter = 0;
+
+// while (counter <alphabet.length) {
+//   console.log(alphabet[counter]);
+//   counter += 1;
+// }
 
 
 
+// let alphabet = 'abcdefghijklmnopqrstuvwxyz';
+
+// for (let counter = 0; counter < alphabet.length; counter++) {
+//   console.log(alphabet[counter]);
+// }
+
+
+
+// let colors = ['green', 'blue', 'purple', 'orange'];
+
+// for (let counter = 0; counter < colors.length; counter += 1) {
+//   console.log(`I'm the color ${colors[counter]}!`);
+// }
+
+
+
+
+
+// let mixed = ['hello' , 10, undefined];
+
+// for (let counter = 0; counter < mixed.length; counter += 1) {
+//   console.log(typeof mixed[counter]);
+// }
+
+
+// let numberOfPets = {
+//   dogs: 2,
+//   cats: 4,
+//   fish: 1
+// };
+
+// let pets = Object.keys(numberOfPets);
+// console.log(pets);
+// let counter = 0;
+
+// while (counter < pets.length) {
+//   let currentPet = pets[counter];
+//   console.log(currentPet);
+//   let currentPetNumber = numberOfPets[currentPet];
+//   console.log(`I have ${currentPetNumber} ${currentPet}!`);
+//   counter += 1;
+// }
+
+// let numberOfPets = {
+//   dogs: 2,
+//   cats: 4,
+//   fish: 1
+// };
+
+// for (let currentPet in numberOfPets) {
+//   let currentPetNumber = numberOfPets[currentPet];
+//   console.log(`I have ${currentPetNumber} ${currentPet}!`);
+// }
+
+
+
+
+
+
+
+// let numberOfPets = {
+//   dogs: 2,
+//   cats: 4,
+//   fish: 1
+// };
+
+// let numberOfAnimals = {
+//   dogs: 2,
+//   cats: 4,
+//   fish: 1
+// };
+
+
+// Object.prototype.birds = 3;
+
+
+
+// for (let currentPet in numberOfPets) {
+//   let currentPetNumber = numberOfPets[currentPet];
+//   console.log(`I have ${currentPetNumber} ${currentPet}!`);
+// }
+
+
+
+// for (let currentPet in numberOfAnimals) {
+//   let currentPetNumber = numberOfAnimals[currentPet];
+//   console.log(`I have ${currentPetNumber} ${currentPet}!`);
+// }
+
+
+
+
+
+// let str = '';
+
+// while (str.length < 10) {
+//   str += '*';
+//   console.log(str);
+// }
+
+let numbers = [ 1, 4, 3, 7, 6, 5, 2, 1 ];
+
+for (let index = 0; index < numbers.length; index += 1) {
+  if (numbers[index] % 2 !== 1) {
+    let square = numbers[index] * numbers[index];
+    console.log(square);
+  }
+}
 
 
 
