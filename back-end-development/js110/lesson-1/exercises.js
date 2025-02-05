@@ -185,18 +185,48 @@
 //   console.log(str);
 // }
 
-let numbers = [ 1, 4, 3, 7, 6, 5, 2, 1 ];
+// let numbers = [ 1, 4, 3, 7, 6, 5, 2, 1 ];
 
-for (let index = 0; index < numbers.length; index += 1) {
-  if (numbers[index] % 2 !== 1) {
-    let square = numbers[index] * numbers[index];
-    console.log(square);
-  }
-}
-
-
+// for (let index = 0; index < numbers.length; index += 1) {
+//   if (numbers[index] % 2 !== 1) {
+//     let square = numbers[index] * numbers[index];
+//     console.log(square);
+//   }
+// }
 
 
+
+// let string = 'hello';
+
+// function greeting(str) {
+//   return str + str + str;
+// }
+
+// let newString = (str) => str + str + str + str;
+
+
+
+// console.log(greeting(string));
+// console.log(newString(string));
+
+
+
+// let numbers = [1, 2, 3, 4, 5, 6];
+
+// console.log(...numbers);
+
+
+// function myFunction(...arguments) {
+//   console.log(arguments);
+//   for (let i = 0; i < arguments.length; i++) {
+//     for (let j = 0; j < arguments[i].length; j++) {
+//       console.log(arguments[i][j]);
+//     }    
+//   }
+//   // arguments.forEach((element) => console.log(element));
+// }
+
+// myFunction('hello', 'goodbye');
 
 
 
