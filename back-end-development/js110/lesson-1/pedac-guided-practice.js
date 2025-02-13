@@ -132,13 +132,14 @@ function calculateLeftoverBlocks(n) {
     remainingCubes -= requiredCubes;
     currentLayer += 1;
     requiredCubes = (currentLayer + 1)**2;
+    // console.log(
+    //   {remainingCubes},
+    //   {currentLayer},
+    //   {requiredCubes}
+    // );
   }
   return remainingCubes;
 }
-
-
-
-
 
 
 
@@ -150,7 +151,4 @@ console.log(calculateLeftoverBlocks(4) === 3);
 console.log(calculateLeftoverBlocks(5) === 0);
 console.log(calculateLeftoverBlocks(6) === 1);
 console.log(calculateLeftoverBlocks(14) === 0);
-
-
-
 
