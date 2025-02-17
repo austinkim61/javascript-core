@@ -1,6 +1,5 @@
 // Exercise
 /*
-
 ## Leftover Blocks
 You have a number of building blocks that acn be used to build a valid structure. 
 There are certain rules about what determines the validity of a structure:
@@ -151,4 +150,3 @@ console.log(calculateLeftoverBlocks(4) === 3);
 console.log(calculateLeftoverBlocks(5) === 0);
 console.log(calculateLeftoverBlocks(6) === 1);
 console.log(calculateLeftoverBlocks(14) === 0);
-
