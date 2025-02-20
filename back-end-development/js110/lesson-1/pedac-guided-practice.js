@@ -1,7 +1,8 @@
-// Exercise
 /*
+// Exercise
+
 ## Leftover Blocks
-You have a number of building blocks that acn be used to build a valid structure. 
+You have a number of building blocks that can be used to build a valid structure. 
 There are certain rules about what determines the validity of a structure:
   - The building blocks are cubes
   - The structure is built in layers
@@ -10,10 +11,6 @@ There are certain rules about what determines the validity of a structure:
   - A block in a lower layer can support more than one block in an upper layer
   - You cannot leave gaps between blocks
 Write a program that, given the number for a specific amount of cubes, calculates the number of blocks left over after building the tallest possible valid structure.
-
-
-
-
 
 
 
