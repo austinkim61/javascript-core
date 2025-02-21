@@ -137,9 +137,6 @@ function calculateLeftoverBlocks(n) {
   return remainingCubes;
 }
 
-
-
-
 console.log(calculateLeftoverBlocks(0) === 0);
 console.log(calculateLeftoverBlocks(1) === 0);
 console.log(calculateLeftoverBlocks(2) === 1);
