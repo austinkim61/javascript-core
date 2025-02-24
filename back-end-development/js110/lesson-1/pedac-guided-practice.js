@@ -117,7 +117,6 @@ For loop starting from index 1 until the last index position
 //   }
 // }
 
-
 function calculateLeftoverBlocks(n) {
   let currentLayer = 0;
   let remainingCubes = n;

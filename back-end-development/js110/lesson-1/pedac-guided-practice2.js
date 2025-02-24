@@ -10,8 +10,6 @@ The letters 'y' and 'w' should be treated as consonants.
 
 
 
-
-
 # Step 1
 ## P: Understand the Problem
 
@@ -205,14 +203,7 @@ console.log(sortStringsByConsonants(list4));
 
 
 
-
-
-
-
 // Launchschool solution
-
-
-
 
 function sortStringsByConsonants(strings) {
   let stringsCopy = strings.slice();
@@ -263,11 +254,3 @@ console.log(sortStringsByConsonants(list3));
 let list4 = ['day', 'week', 'month', 'year'];
 console.log(sortStringsByConsonants(list4));
 // ['month', 'day', 'week', 'year']
-
-
-
-
-
-
-
-
