@@ -231,3 +231,98 @@
 
 
 
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// function selectFruit(obj) {
+//   let keys = Object.keys(obj); // ['apple', 'carrot', 'pear', 'broccoli']
+//   let fruits = {};
+
+//   for (let i = 0; i < keys.length; i++) {
+//     let currentElement = keys[i]; // ['apple', 'carrot', 'pear', 'broccoli']
+
+//     if (obj[currentElement] === 'Fruit') {
+//       fruits[currentElement] = 'Fruit';
+//     }
+//   }
+//   console.log(fruits);
+// }
+
+// selectFruit(produce); // => { apple: 'Fruit', pear: 'Fruit' }
+
+
+
+
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function doubleNumbers(numbers) {
+//   let doubledNums = [];
+//   let counter = 0;
+
+//   while (counter < numbers.length) {
+//     let currentNum = numbers[counter];
+//     doubledNums.push(currentNum * 2);
+
+//     counter += 1;
+//   }
+
+//   return doubledNums;
+// }
+
+// console.log(doubleNumbers(myNumbers));
+// console.log(myNumbers);
+
+
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function doubleNumbers(numbers) {
+//   let counter = 0;
+
+//   while (counter < numbers.length) {
+//     // numbers[counter] = numbers[counter] * 2;
+//     numbers[counter] *= 2;
+//     counter += 1;
+//   }
+
+//   return numbers;
+// }
+
+// console.log(doubleNumbers(myNumbers));
+// console.log(myNumbers);
+
+
+
+
+
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function doubleOddNumbers(numbers) {
+//   let doubledNums = [];
+
+//   for (let counter = 0; counter < numbers.length; counter += 1) {
+//     let currentNumber = numbers[counter];
+
+//     if (currentNumber % 2 === 1) {
+//       doubledNums.push(currentNumber * 2);
+//     } else {
+//       doubledNums.push(currentNumber);
+//     }
+//   }
+
+//   return doubledNums;
+// }
+
+// console.log(doubleOddNumbers(myNumbers));
+// console.log(myNumbers);
+
+
+
+
+
