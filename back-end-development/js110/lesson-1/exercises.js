@@ -262,17 +262,17 @@
 // let myNumbers = [1, 4, 3, 7, 2, 6];
 
 // function doubleNumbers(numbers) {
-//   let doubledNums = [];
+//   let multiplied = [];
 //   let counter = 0;
 
 //   while (counter < numbers.length) {
 //     let currentNum = numbers[counter];
-//     doubledNums.push(currentNum * 2);
+//     multiplied.push(currentNum * 2);
 
 //     counter += 1;
 //   }
 
-//   return doubledNums;
+//   return multiplied;
 // }
 
 // console.log(doubleNumbers(myNumbers));
@@ -304,19 +304,19 @@
 // let myNumbers = [1, 4, 3, 7, 2, 6];
 
 // function doubleOddNumbers(numbers) {
-//   let doubledNums = [];
+//   let multiplied = [];
 
 //   for (let counter = 0; counter < numbers.length; counter += 1) {
 //     let currentNumber = numbers[counter];
 
 //     if (currentNumber % 2 === 1) {
-//       doubledNums.push(currentNumber * 2);
+//       multiplied.push(currentNumber * 2);
 //     } else {
-//       doubledNums.push(currentNumber);
+//       multiplied.push(currentNumber);
 //     }
 //   }
 
-//   return doubledNums;
+//   return multiplied;
 // }
 
 // console.log(doubleOddNumbers(myNumbers));
@@ -326,3 +326,74 @@
 
 
 
+// let myNumbers = [1, 4, 3, 7, 2, 6];
+
+// function doubleOddNumbers(numbers) {
+//   let multiplied = [];
+
+//   for (let counter = 0; counter < numbers.length; counter += 1) {
+//     let currentNumber = numbers[counter];
+
+//     if (counter % 2 === 1) {
+//       multiplied.push(currentNumber * 2);
+//     } else {
+//       multiplied.push(currentNumber);
+//     }
+//   }
+
+//   return multiplied;
+// }
+
+// console.log(doubleOddNumbers(myNumbers));
+// console.log(myNumbers);
+
+
+
+
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// function selectType(produceList, selectionCriterion) {
+//   let produceKeys = Object.keys(produceList);
+//   let selectedItems = {};
+
+//   for (let counter = 0; counter < produceKeys.length; counter++) {
+//     let currentKey = produceKeys[counter];
+//     let currentValue = produceList[currentKey];
+
+//     if (currentValue === selectionCriterion) {
+//       selectedItems[currentKey] = currentValue;
+//     }
+//   }
+
+//   return selectedItems;
+// }
+
+// console.log(selectType(produce, 'Fruit'));
+// console.log(selectType(produce, 'Vegetable'));
+// console.log(selectType(produce, 'Meat'));
+
+
+
+
+
+let myNumbers = [1, 4, 3, 7, 2, 6];
+
+function multiply(numbers, multiplier) {
+  let multiplied = [];
+
+  for (let counter = 0; counter < numbers.length; counter += 1) {
+    let currentNum = numbers[counter];
+    multiplied.push(currentNum * multiplier);    
+  }
+
+  return multiplied;
+}
+
+console.log(multiply(myNumbers, 3));
+console.log(myNumbers);
