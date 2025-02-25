@@ -382,18 +382,157 @@
 
 
 
-let myNumbers = [1, 4, 3, 7, 2, 6];
+// let myNumbers = [1, 4, 3, 7, 2, 6];
 
-function multiply(numbers, multiplier) {
-  let multiplied = [];
+// function multiply(numbers, multiplier) {
+//   let multiplied = [];
 
-  for (let counter = 0; counter < numbers.length; counter += 1) {
-    let currentNum = numbers[counter];
-    multiplied.push(currentNum * multiplier);    
-  }
+//   for (let counter = 0; counter < numbers.length; counter += 1) {
+//     let currentNum = numbers[counter];
+//     multiplied.push(currentNum * multiplier);    
+//   }
 
-  return multiplied;
-}
+//   return multiplied;
+// }
 
-console.log(multiply(myNumbers, 3));
-console.log(myNumbers);
+// console.log(multiply(myNumbers, 3));
+// console.log(myNumbers);
+
+
+
+
+
+// [1, 2, 3].forEach((number, index) => {
+//   console.log(`${index}: ${number}`);
+// });
+
+
+
+
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// let produceValues = Object.values(produce);
+
+// produceValues.forEach(value => {
+//   console.log(value);
+// });
+
+// let produceKeys = Object.keys(produce);
+
+// produceKeys.forEach(key => {
+//   console.log(key);
+// });
+
+// let produceKeyValues = Object.entries(produce);
+
+// produceKeyValues.forEach(keyValue => {
+//   // let [ key, value ] = keyValue;  
+//   let key = keyValue[0];
+//   let value = keyValue[1];
+
+//   console.log(`${key} is a ${value}`);
+// });
+
+
+
+
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// let produceKeyValues = Object.entries(produce);
+// let onlyVegetablesArr = produceKeyValues.filter(keyValue => {
+//   let [ key, value ] = keyValue;
+//   return value === 'Vegetable';
+// });
+
+// let onlyVegetables = {};
+
+// onlyVegetablesArr.forEach(keyValue => {
+//   let [ key, value ] = keyValue;
+//   onlyVegetables[key] = value;
+// });
+
+// console.log(onlyVegetables);
+
+
+
+// let produce = {
+//   apple: 'Fruit',
+//   carrot: 'Vegetable',
+//   pear: 'Fruit',
+//   broccoli: 'Vegetable'
+// };
+
+// let produceKeyValues = Object.entries(produce);
+// let onlyVegetables = {};
+
+// produceKeyValues.forEach(keyValue => {
+//   let [ key, value ] = keyValue;
+//   if (value === 'Vegetable') {
+//     onlyVegetables[key] = value;    
+//   }
+// });
+
+// console.log(onlyVegetables);
+
+
+
+
+
+// console.log([1, 2, 3].map(num => num % 2 === 1));
+
+
+
+
+
+// let str = "What's up, Doc?";
+// console.log(
+//   str.split('')
+//      .filter(char => 'aeiou'.includes(char.toLowerCase()))
+//     .join(''));
+
+// let str2 = "What's up, Doc?";
+// console.log(
+//   str2.split('')
+//      .map(char => char + char)
+//      .join(''));
+
+
+
+
+
+
+
+
+
+
+
+
+// let array = [1, 2, 3].forEach(num => {
+//   let num2 = num * 3;
+//   // console.log(num2);
+// });
+// console.log(array);
+
+// console.log([1, 2, 3].forEach(num => {
+//   num = 3;
+// }));
+
+// console.log([1, 2, 3].filter(num => {
+//   num + 1;
+// }));
+
+// console.log([1, 2, 3].map(num => {
+//   num * 2;
+// }));
