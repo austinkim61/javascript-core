@@ -536,3 +536,86 @@
 // console.log([1, 2, 3].map(num => {
 //   num * 2;
 // }));
+
+
+
+
+
+// let animals = { a: 'ant', b: 'bear', c: 'cat' };
+// console.log(Object.values(animals).some(animalName => animalName.length > 4));
+// console.log(Object.values(animals).some(animalName => animalName.length > 3));
+
+
+
+
+
+// let animals = { a: 'ant', b: 'bear', c: 'cat' };
+// console.log(Object.values(animals).every(animalName => animalName.length > 2));
+
+
+
+
+
+// let arr = ['a', 'b', {c: 'foo'}, [1]];
+// console.log(arr.includes([1]));
+// console.log(arr.includes('a'));
+
+
+// let obj = {c: 'foo'};
+// let arr = ['a', 'b', obj];
+// console.log(arr.includes(obj));
+
+
+
+
+
+// let arr = [];
+// console.log(arr);
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+
+// let arr = [2, 4, 6];
+// console.log(arr);
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+
+// let arr = [2, 4, 6];
+// arr[-3] = 5;
+// arr["foo"] = "a";
+// console.log(arr);
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+// console.log(arr.map(x => x + 1));
+
+// let arr = [2, 4, 6];
+// arr[3] = 8;
+// arr[4] = 10;
+// console.log(arr);
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+// console.log(arr.map(x => x + 1));
+
+// let arr = [];
+// arr[-3] = 5;
+// arr["foo"] = "a";
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+
+
+
+
+
+// let arr = [2, 4, 6];
+// arr.length = 5;
+// arr[4] = undefined;
+// console.log(arr);
+// console.log(arr.length);
+// console.log(Object.keys(arr));
+// console.log(arr[3]);
+
+let arr = [];
+arr.length = 3;
+
+console.log(arr.length);
+console.log(Object.keys(arr));
+
