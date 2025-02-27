@@ -268,38 +268,52 @@
 //   return (((year <= 1752 && year % 4 === 0) || year % 400 === 0) || (year % 4 === 0 && year % 100 !== 0));
 // }
 
-console.log(isLeapYear(2016));      // true
-console.log(isLeapYear(2015));      // false
-console.log(isLeapYear(2100));      // false
-console.log(isLeapYear(2400));      // true
-console.log(isLeapYear(240000));    // true
-console.log(isLeapYear(240001));    // false
-console.log(isLeapYear(2000));      // true
-console.log(isLeapYear(1900));      // false
-console.log(isLeapYear(1752));      // true
-console.log(isLeapYear(1700));      // true
-console.log(isLeapYear(1));         // false
-console.log(isLeapYear(100));       // true
-console.log(isLeapYear(400));       // true
+// console.log(isLeapYear(2016));      // true
+// console.log(isLeapYear(2015));      // false
+// console.log(isLeapYear(2100));      // false
+// console.log(isLeapYear(2400));      // true
+// console.log(isLeapYear(240000));    // true
+// console.log(isLeapYear(240001));    // false
+// console.log(isLeapYear(2000));      // true
+// console.log(isLeapYear(1900));      // false
+// console.log(isLeapYear(1752));      // true
+// console.log(isLeapYear(1700));      // true
+// console.log(isLeapYear(1));         // false
+// console.log(isLeapYear(100));       // true
+// console.log(isLeapYear(400));       // true
 
 
 
 
 
 // 10 - Multiples of 3 and 5
+// function multisum(number) {
+//   let array = [];
+//   for (i = 1; i <= number; i++) {
+//     array.push(i);
+//   }
+//   return array.filter(num => num % 3 === 0 || num % 5 === 0).reduce((acc, num) => acc + num, 0);
+// }
 
-
-
+// console.log(multisum(3));       // 3
+// console.log(multisum(5));       // 8
+// console.log(multisum(10));      // 33
+// console.log(multisum(1000));    // 234168
 
 
 
 
 
 // 11 - UTF-16 String Value
+// function utf16Value(string) {
+//   return string.split('').reduce((acc, letter) => acc + letter.charCodeAt(0), 0);
+// }
 
+// console.log(utf16Value('Four score'));         // 984
+// console.log(utf16Value('Launch School'));      // 1251
+// console.log(utf16Value('a'));                  // 97
+// console.log(utf16Value(''));                   // 0
 
-
-
-
-
-
+// const OMEGA = "\u03A9";             // UTF-16 character 'Ω' (omega)
+// console.log(utf16Value(OMEGA));                  // 937
+// console.log(utf16Value(OMEGA + OMEGA + OMEGA));  // 2811
