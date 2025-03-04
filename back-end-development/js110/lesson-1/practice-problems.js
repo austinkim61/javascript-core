@@ -33,7 +33,7 @@
 
 
 
-// Launchschool Solution
+// Launch School Solution
 // let ages = {
 //   Herman: 32,
 //   Lily: 30,
@@ -77,7 +77,7 @@
 
 
 
-// Launchschool solution
+// Launch School Solution
 // let ages = {
 //   Herman: 32,
 //   Lily: 30,
@@ -129,7 +129,7 @@
 
 
 
-// Launchschool solution
+// Launch School Solution
 // let statement = "The Flintstones Rock";
 // let charsInStatement = statement.split('').filter(char => char !== ' ');
 // let result = {};
