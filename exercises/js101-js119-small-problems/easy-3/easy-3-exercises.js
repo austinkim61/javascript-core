@@ -189,13 +189,39 @@
 
 // 4 - Fibonacci Number Location By Length [OBSOLETE]
 
+// function for fibonacci to keep running, returning a number to append to an array
+// once BigInt(number.length) === numberOfDigits, return the index 
+
+function findFibonacciIndexByLength(numberOfDigits) {
+  let number1 = 1n;
+  let number2 = 1n;
+  let array = [0n, 1n, 1n];
+  let newNumber1;
+  let newNumber2;
+
+  while (true) {
+    newNumber1 = number2;
+    newNumber2 = number1 + number2;
+
+    array.push(BigInt(newNumber2));
+
+    if (numberOfDigits === BigInt(String(newNumber2).length)) {
+      // return array[array.length - 1];
+      return BigInt(array.length - 1);
+    }
+    number1 = newNumber1;
+    number2 = newNumber2;
+  }
+}
 
 
-
-
-
-
-
+console.log(findFibonacciIndexByLength(2n)) // 7n;
+console.log(findFibonacciIndexByLength(3n)) // 12n;
+console.log(findFibonacciIndexByLength(10n)) // 45n;
+console.log(findFibonacciIndexByLength(16n)) // 74n;
+console.log(findFibonacciIndexByLength(100n)) // 476n;
+console.log(findFibonacciIndexByLength(1000n)) // 4782n;
+console.log(findFibonacciIndexByLength(10000n)) // 47847n;
 
 
 
