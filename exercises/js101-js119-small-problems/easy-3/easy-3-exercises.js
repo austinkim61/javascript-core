@@ -149,16 +149,39 @@
 
 
 
-
 // 3 - Stringy Strings
+// function stringy(positiveInteger) {
+//   let string = '';
+//   for (i = 0; i < positiveInteger; i++) {
+//     if (i % 2 === 0) {
+//       string += '1';
+//     } else {
+//       string += '0';
+//     }
+//   }
+//   return string;
+// }
+
+// console.log(stringy(6));    // "101010"
+// console.log(stringy(9));    // "101010101"
+// console.log(stringy(4));    // "1010"
+// console.log(stringy(7));    // "1010101"
 
 
 
+// Launch School Solution
+// function stringy(positiveInteger) {
+//   let string = '';
+//   for (let i = 0; i < positiveInteger; i++) {
+//     i % 2 === 0 ? string += '1' : string += '0';
+//   }  
+//   return string;
+// }
 
-
-
-
-
+// console.log(stringy(6));    // "101010"
+// console.log(stringy(9));    // "101010101"
+// console.log(stringy(4));    // "1010"
+// console.log(stringy(7));    // "1010101"
 
 
 
