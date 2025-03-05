@@ -238,53 +238,114 @@
 
 
 // 9 - How Old is Teddy?
-function randomAge(min, max) {
-  let age = Math.floor(((Math.random() * (max - min + 1)) + min));
-  console.log(`Teddy is ${age} years old!`);
-}
-console.log(randomAge(20, 80));
-console.log(randomAge(20, 120));
+// function randomAge(min, max) {
+//   let age = Math.floor(((Math.random() * (max - min + 1)) + min));
+//   console.log(`Teddy is ${age} years old!`);
+// }
+// console.log(randomAge(20, 80));
+// console.log(randomAge(20, 120));
+
+// function randomAge(num1, num2) {
+//   let max;
+//   let min;
+//   if (num1 >= num2) {
+//     max = num1;
+//     min = num2;    
+//   } else {
+//     max = num2;
+//     min = num1;
+//   }
+//   let age = Math.floor(((Math.random() * (max - min + 1)) + min));
+
+//   console.log(`Teddy is ${age} years old!`);
+// }
+// console.log(randomAge(20, 80));
+// console.log(randomAge(5, 5));
+// console.log(randomAge(20, 120));
 
 
 
 
 
 // 10 - When Will I Retire?
+// let rlSync = require('readline-sync');
+// let currentAge = parseInt(rlSync.question('What is your age? '));
+// let retireAge = parseInt(rlSync.question('At what age would you like to retire? '));
+// let yearsLeft = retireAge - currentAge;
+// let currentYear = new Date().getFullYear();
 
-
-
-
-
-
-
+// console.log(`It's ${currentYear}. You will retire in ${currentYear + yearsLeft}.\nYou have only ${yearsLeft} years of work to go!`);
 
 
 
 
 
 // 11 - Get Middle Character
+// function centerOf(string) {
+//   if (typeof string !== 'string') {
+//     return "Not a string";
+//   }
+//   let array = string.split('');
+//   if (string ==='') {
+//     return "Empty string";
+//   } else if (array.length % 2 === 1) {// "Hello" >> l (at index 2)
+//     return array.at((array.length / 2) - 0.5);
+//   } else if (array.length % 2 === 0) {// "poke"
+//     return array.at((array.length / 2) - 1) + array.at(array.length / 2);
+//   }
+// }
+
+// console.log(centerOf('I Love JavaScript')); // "a"
+// console.log(centerOf('Launch School'));     // " "
+// console.log(centerOf('Launch'));            // "un"
+// console.log(centerOf('Launchschool'));      // "hs"
+// console.log(centerOf('x'));                 // "x"
 
 
 
+// function centerOf(string) {
+//   if (string.length % 2 === 1) { // pinky
+//     return string[(string.length - 1) / 2];
+//   } else if (string.length % 2 === 0) { // poke
+//     return string[(string.length / 2) - 1] + string [string.length / 2];
+//   }
+// }
 
-
-
-
+// console.log(centerOf('I Love JavaScript')); // "a"
+// console.log(centerOf('Launch School'));     // " "
+// console.log(centerOf('Launch'));            // "un"
+// console.log(centerOf('Launchschool'));      // "hs"
+// console.log(centerOf('x'));                 // "x"
 
 
 
 
 
 // 12 - Always Return Negative
+// function negative(num) {
+//   if (isNaN(Infinity + (1 / num))) { // this is the case where num = -0
+//     return num;
+//   } else if (num >= 0) {
+//     return num * -1;
+//   } else {
+//     return num;
+//   }
+// }
+
+// console.log(negative(5));     // -5
+// console.log(negative(-3));    // -3
+// console.log(negative(0));     // -0
+// console.log(negative(-0));     // -0
 
 
+function negative(num) {
+  return isNaN(Infinity + (1 / num)) ? num : Math.abs(num) * -1;
+}
 
-
-
-
-
-
-
+console.log(negative(5));     // -5
+console.log(negative(-3));    // -3
+console.log(negative(0));     // -0
+console.log(negative(-0));     // -0
 
 
 
