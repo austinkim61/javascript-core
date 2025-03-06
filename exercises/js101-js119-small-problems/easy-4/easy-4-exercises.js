@@ -1,15 +1,4 @@
-// 1 - 
-// 2 - 
-// 3 - 
-// 4 - 
-// 5 - 
-// 6 - 
-// 7 - 
-// 8 - 
-// 9 - 
-// 10 - 
-// 11 - 
-// 12 - 
+// 1 - Searching 101
 
 
 
@@ -18,6 +7,218 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+// 2 - Palindromic Strings (Part 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 3 - Palindromic Strings (Part 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 4 - Palindromic Numbers
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 5 - Running Totals
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 6 - Letter Counter (Part 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 7 - Letter Counter (Part 2)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 8 - Letter Swap
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 9 - Convert a String to a Number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 10 - Convert a String to a Signed Number
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 11 - Convert a Number to a String
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 12 - Convert a Signed Number to a String
 
 
 
