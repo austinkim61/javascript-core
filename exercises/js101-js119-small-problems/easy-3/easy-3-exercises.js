@@ -372,9 +372,9 @@
 
 
 // 9 - Clean up the words
-function cleanUp(string) {
-  return string.replace(/[^a-zA-Z]+/g, " ");
-}
+// function cleanUp(string) {
+//   return string.replace(/[^a-zA-Z]+/g, " ");
+// }
 
 // function cleanUp(string) {
 //   let alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -390,44 +390,41 @@ function cleanUp(string) {
 //   return newString;
 // }
 
-console.log(cleanUp("---what's my +*& liNe?"));    // " what s my line "
+// console.log(cleanUp("---what's my +*& liNe?"));    // " what s my line "
 
 
 
 
 
 // 10 -	What Century is That?
+// function century(year) {
+//   let century = Math.ceil(year / 100);
+//   let string = String(century);
+//   let last = string.length - 1;
 
+//   if (string.endsWith('11')) {
+//     return string + 'th';
+//   } else if (string.endsWith('12')) {
+//     return string + 'th';
+//   } else if (string.endsWith('13')) {
+//     return string + 'th';
+//   } else if (string[last] === '1') {
+//     return string + 'st';
+//   } else if (string[last] === '2') {
+//     return string + 'nd';
+//   } else if (string[last] === '3') {
+//     return string + 'rd';
+//   } else {
+//     return string + 'th';
+//   }
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log(century(2000));        // "20th"
+// console.log(century(2001));        // "21st"
+// console.log(century(1965));        // "20th"
+// console.log(century(256));         // "3rd"
+// console.log(century(5));           // "1st"
+// console.log(century(10103));       // "102nd"
+// console.log(century(1052));        // "11th"
+// console.log(century(1127));        // "12th"
+// console.log(century(11201));       // "113th"
