@@ -182,57 +182,174 @@
 
 
 // 7 - Letter Counter (Part 2)
+// function wordSizes(string) {
+
+//   let array = string.replaceAll(/[^a-zA-Z\s]/g, '').split(' ').filter(word => word !== '');
+//   let length = [];
+//   let obj = {};
+
+//   array.forEach(word => length.push(word.length));
+
+//   for (let i = 0; i < array.length; i++) {
+//     obj[length[i]] = length.filter(num => num === length[i]).length;
+//   }
+//   return obj;
+// }
+
+// console.log(wordSizes('Four score and seven.'));                       // { "3": 1, "4": 1, "5": 2 }
+// console.log(wordSizes('Hey diddle diddle, the cat and the fiddle!'));  // { "3": 5, "6": 3 }
+// console.log(wordSizes("What's up doc?"));                              // { "2": 1, "3": 1, "5": 1 }
+// console.log(wordSizes(''));                                            // {}
 
 
 
+// Launch School Solution
+// function wordSizes(words) {
+//   let wordsArray = words.split(' ');
+//   let count = {};
 
+//   for (let idx = 0; idx < wordsArray.length; idx += 1) {
+//     let cleanWordSize = removeNonLetters(wordsArray[idx].toLowerCase()).length;
+//     if (cleanWordSize === 0) {
+//       continue;
+//     }
 
+//     count[cleanWordSize] = count[cleanWordSize] || 0;
+//     count[cleanWordSize] += 1;
+//   }
 
+//   return count;
+// }
 
+// function removeNonLetters(string) {
+//   let result = '';
 
+//   for (let idx = 0; idx < string.length; idx += 1) {
+//     if (isLetter(string[idx])) {
+//       result += string[idx];
+//     }
+//   }
 
+//   return result;
+// }
 
+// function isLetter(char) {
+//   return char >= 'a' && char <= 'z';
+// }
 
+// console.log(wordSizes('Four score and seven.'));                       // { "3": 1, "4": 1, "5": 2 }
+// console.log(wordSizes('Hey diddle diddle, the cat and the fiddle!'));  // { "3": 5, "6": 3 }
+// console.log(wordSizes("What's up doc?"));                              // { "2": 1, "3": 1, "5": 1 }
+// console.log(wordSizes(''));                                            // {}
 
 
 
 
 
 // 8 - Letter Swap
+// THIS IS TO SWAP EVERYTHING, NOT JUST THE FIRST AND LAST CHARACTER
+// function swap(string) {
+//   return string.split(' ')
+//                .map((x) => x.split('').reverse().join(''))
+//                .join(' ');
+// }
 
+// console.log(swap('Oh what a wonderful day it is'));  // "hO thaw a londerfuw yad ti si"
+// console.log(swap('Abcde'));                          // "ebcdA"
+// console.log(swap('a'));                              // "a"
 
+// function swap(string) {  
+//   return string.split(' ')
+//                .map((x) => {
+//                 if (x.length === 1) {
+//                   return x;
+//                 } else {
+//                   return x.slice(-1) + x.slice(1, -1) + x.slice(0, 1);
+//                 }
+//                 })
+//                .join(' ');  
+// }
 
-
-
-
-
-
-
-
-
-
-
-
+// console.log(swap('Oh what a wonderful day it is'));  // "hO thaw a londerfuw yad ti si"
+// console.log(swap('Abcde'));                          // "ebcdA"
+// console.log(swap('a'));                              // "a"
 
 
 
 
 
 // 9 - Convert a String to a Number
+// function stringToInteger(string) {
+//   // let number = string * 1;
+//   // console.log(Number.isInteger(number));
+//   return string * 1;
+// }
+
+// console.log(stringToInteger("4321") === 4321); // logs true
+// console.log(stringToInteger("570") === 570); // logs true
 
 
 
+// Launch School Solution
+// function stringToInteger(string) {
+//   const DIGITS = {
+//     0: 0,
+//     1: 1,
+//     2: 2,
+//     3: 3,
+//     4: 4,
+//     5: 5,
+//     6: 6,
+//     7: 7,
+//     8: 8,
+//     9: 9
+//   };
+  // let arrayOfDigits = string.split("").map(char => DIGITS[char]);
+  // let value = 0;
+  // arrayOfDigits.forEach(digit => (value = (10 * value) + digit));
+  // return value;
+// }
+
+// console.log(stringToInteger("4321") === 4321); // logs true
+// console.log(stringToInteger("570") === 570); // logs true
 
 
 
+// Further Exploration
+// function hexadecimalToInteger(string) {
+//   const DIGITS = {
+//     0: 0,
+//     1: 1,
+//     2: 2,
+//     3: 3,
+//     4: 4,
+//     5: 5,
+//     6: 6,
+//     7: 7,
+//     8: 8,
+//     9: 9,
+//     a: 10,
+//     b: 11,
+//     c: 12,
+//     d: 13,
+//     e: 14,
+//     f: 15,
+//     A: 10,
+//     B: 11,
+//     C: 12,
+//     D: 13,
+//     E: 14,
+//     F: 15
+//   };
+//   let arrayOfDigits = string.split("").map(char => DIGITS[char]);
+//   let value = 0;
+//   for (let i = 0; i < arrayOfDigits.length; i++) { // [ 4, 3, 2, 1]
+//     value += arrayOfDigits[i] * Math.pow(16, arrayOfDigits.length - (i + 1));
+//   }
+//   return value;
+// }
 
-
-
-
-
-
-
-
+// console.log(hexadecimalToInteger('4D9f') === 19871);
 
 
 
@@ -279,6 +396,8 @@
 
 
 // 12 - Convert a Signed Number to a String
+
+
 
 
 
