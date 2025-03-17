@@ -356,101 +356,149 @@
 
 
 // 10 - Convert a String to a Signed Number
-function stringToSignedInteger(string) {  
-  let sign = signed(string);
-  let value = stringToInteger(string);
+// function stringToSignedInteger(string) {  
+//   let sign = signed(string);
+//   let value = stringToInteger(string);
+//   let multiplier = sign + 1;
+//   value = multiplier * value;
+//   return value;
+// }
 
-  let multiplier = sign + 1;
-  value = multiplier * value;
-  console.log(value);
-  return value;
+// function stringToInteger(string) {
+//   const DIGITS = {
+//     0: 0,
+//     1: 1,
+//     2: 2,
+//     3: 3,
+//     4: 4,
+//     5: 5,
+//     6: 6,
+//     7: 7,
+//     8: 8,
+//     9: 9
+//   };
+//   let value = 0;
+//   let arrayOfDigits = string.replace(/[+-]/, '').split("").map(char => DIGITS[char]);  
+//   arrayOfDigits.forEach(digit => (value = (10 * value) + digit));
+//   return value;
+// }
 
-}
+// function signed(string) {
+//   if (string[0] === ('-' || '+')) {
+//     let symbol = string[0];
+//     return symbol;
+//   }
+//   return '';
+// }
 
+// console.log(stringToSignedInteger("4321") === 4321); // logs true
+// console.log(stringToSignedInteger("-570") === -570); // logs true
+// console.log(stringToSignedInteger("+100") === 100); // logs true
 
-
-
-
-function stringToInteger(string) {
-  const DIGITS = {
-    0: 0,
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5,
-    6: 6,
-    7: 7,
-    8: 8,
-    9: 9
-  };
-  let value = 0;
-  let arrayOfDigits = string.replace(/[+-]/, '').split("").map(char => DIGITS[char]);  
-  arrayOfDigits.forEach(digit => (value = (10 * value) + digit));
-  return value;
-}
-
-function signed(string) {
-  if (string[0] === ('-' || '+')) {
-    let symbol = string[0];
-    return symbol;
-  }
-  return '';
-}
-
-
-
-
-
-console.log(stringToSignedInteger("4321") === 4321); // logs true
-console.log(stringToSignedInteger("-570") === -570); // logs true
-console.log(stringToSignedInteger("+100") === 100); // logs true
 
 
 
 
 // 11 - Convert a Number to a String
+// function integerToString(integer) {
+//   const STRINGS = {
+//     0: '0',
+//     1: '1',
+//     2: '2',
+//     3: '3',
+//     4: '4',
+//     5: '5',
+//     6: '6',
+//     7: '7',
+//     8: '8',
+//     9: '9'
+//   };
+
+//   let array = [];
+
+//   if (integer === 0) {
+//     return STRINGS[0];
+//   }
+
+//   let i = 10;
+//   let previousNumber = 0;
+
+//   while (i <= integer * 10) {
+//     array.push((integer % i - previousNumber) / (i / 10));
+//     previousNumber = integer % i;
+//     i *= 10;
+//   }
+//   let result = '';
+//   array.reverse().forEach((x) => result += STRINGS[x]);
+//   return result;
+
+// }
+
+// console.log(integerToString(4321));        // "4321"
+// console.log(integerToString(0));           // "0"
+// console.log(integerToString(5000));        // "5000"
+// console.log(integerToString(1234567890));  // "1234567890"
 
 
 
+// Launch School Solution
+// const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+
+// function integerToString(number) {
+//   let result = '';
+
+//   do {
+//     let remainder = number % 10;
+//     number = Math.floor(number / 10);
+
+//     result = DIGITS[remainder] + result;
+//   } while (number > 0);
+
+//   return result;
+// }
 
 
-
-
-
-
-
-
-
-
-
-
-
+// console.log(integerToString(4321));        // "4321"
+// console.log(integerToString(0));           // "0"
+// console.log(integerToString(5000));        // "5000"
+// console.log(integerToString(1234567890));  // "1234567890"
 
 
 
 // 12 - Convert a Signed Number to a String
+// const DIGITS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
 
+// function integerToString(number) {
+//   let result = '';
+//   do {
+//     let remainder = number % 10;
+//     number = Math.floor(number / 10);
 
+//     result = DIGITS[remainder] + result;
+//   } while (number > 0);
 
+//   return result;
+// }
 
+// function signedIntegerToString(signedInteger) {
+//   switch (1 / Math.sign(signedInteger)) {
+//     case 1:
+//       return `+${integerToString(Math.abs(signedInteger))}`;
+//     case -1:
+//       return `-${integerToString(Math.abs(signedInteger))}`;
+//     case Infinity:
+//       return `${integerToString(signedInteger)}`;
+//     case -Infinity:
+//       return `-${integerToString(signedInteger)}`;
+//   }
+// }
 
+// console.log(signedIntegerToString(4321) === "+4321");
+// console.log(signedIntegerToString(-123) === "-123");
+// console.log(signedIntegerToString(0) === "0");
+// console.log(signedIntegerToString(-0) === "-0")
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log(signedIntegerToString(4321));
+// console.log(signedIntegerToString(-123));
+// console.log(signedIntegerToString(0));
+// console.log(signedIntegerToString(-0));
