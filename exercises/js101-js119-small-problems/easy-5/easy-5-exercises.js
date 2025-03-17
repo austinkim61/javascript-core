@@ -1,15 +1,4 @@
-// 1 - 
-// 2 - 
-// 3 - 
-// 4 - 
-// 5 - 
-// 6 - 
-// 7 - 
-// 8 - 
-// 9 - 
-// 10 - 
-// 11 - 
-// 12 - 
+// 1 - Cute Angles	Not completed
 
 
 
@@ -17,6 +6,230 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 2 - Combining Arrays	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 3 - Halvsies	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 4 - Find the Duplicate	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 5 - Combine Two Lists	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 6 - Multiplicative Average	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 7 - Multiply Lists	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 8 - List of Digits	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 9 - How Many?	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 10 - Array Average	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 11 - After Midnight (Part 1)	Not completed
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// 12 - After Midnight (Part 2)	Not completed
 
 
 
