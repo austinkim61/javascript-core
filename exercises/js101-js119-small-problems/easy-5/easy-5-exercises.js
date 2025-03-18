@@ -263,73 +263,167 @@
 
 
 // 9 - How Many?
-function countOccurrences() {
-  
-}
+// let vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+//   'motorcycle', 'suv', 'motorcycle', 'car', 'truck'];
 
+// function countOccurrences(array) {
+//   let obj = {};
 
+//   array.forEach(x => (obj[x] += 1) || (obj[x] = 1));
 
+//   let keys = Object.keys(obj);
+//   let values = Object.values(obj);
 
+//   for (let i = 0; i < keys.length; i++) {
+//     console.log(`${keys[i]} => ${values[i]}`);
+//   }
+// }
 
+// countOccurrences(vehicles);
 
+// Further Exploration
+// let vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
+//   'motorcycle', 'suv', 'motorcycle', 'car', 'truck'];
 
-let vehicles = ['car', 'car', 'truck', 'car', 'SUV', 'truck',
-  'motorcycle', 'suv', 'motorcycle', 'car', 'truck'];
+// function countOccurrences(array) {
+//   let obj = {};
 
-countOccurrences(vehicles);
+//   array.map(x => x.toLowerCase()).forEach(x => (obj[x] += 1) || (obj[x] = 1));
 
-// console output -- your output sequence may be different
-// car => 4
-// truck => 3
-// SUV => 1
-// motorcycle => 2
-// suv => 1
+//   let keys = Object.keys(obj);
+//   let values = Object.values(obj);
 
+//   for (let i = 0; i < keys.length; i++) {
+//     console.log(`${keys[i]} => ${values[i]}`);
+//   }
+// }
 
-
-
-
-
+// countOccurrences(vehicles);
 
 
 
 
 
 // 10 - Array Average
+// function average(array) {
+//   return Math.floor(array.reduce((acc, currentValue) => acc + currentValue, 0) / array.length);
+// }
 
+// console.log(average([1, 5, 87, 45, 8, 8]));       // 25
+// console.log(average([9, 47, 23, 95, 16, 52]));    // 40
 
+// Further Exploration
+// function average(array) {
+//   let sum = 0;
+//   array.forEach(x => sum += x);
+//   return Math.floor(sum / array.length);
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
+// console.log(average([1, 5, 87, 45, 8, 8]));       // 25
+// console.log(average([9, 47, 23, 95, 16, 52]));    // 40
 
 
 
 
 
 // 11 - After Midnight (Part 1)
+// const HOURS_PER_DAY = 24;
+// const MINUTES_PER_HOUR = 60;
+// const SECONDS_PER_MINUTE = 60;
+
+// function timeOfDay(num) {
+//   let hoursFloat = (num >= 0) ? parseFloat((num / MINUTES_PER_HOUR) % HOURS_PER_DAY) : parseFloat(HOURS_PER_DAY - (Math.abs(num / MINUTES_PER_HOUR) % HOURS_PER_DAY));
+//   let hoursInt = Math.floor(hoursFloat);
+//   let minutes = Math.round((hoursFloat - hoursInt) * MINUTES_PER_HOUR);
+
+//   return `${hoursInt.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+// }
+
+// console.log(timeOfDay(0) === "00:00");
+// console.log(timeOfDay(-3) === "23:57");
+// console.log(timeOfDay(35) === "00:35");
+// console.log(timeOfDay(-1437) === "00:03");
+// console.log(timeOfDay(3000) === "02:00");
+// console.log(timeOfDay(800) === "13:20");
+// console.log(timeOfDay(-4231) === "01:29");
+
+// console.log(timeOfDay(0));
+// console.log(timeOfDay(-3));
+// console.log(timeOfDay(35));
+// console.log(timeOfDay(-1437));
+// console.log(timeOfDay(3000));
+// console.log(timeOfDay(800));
+// console.log(timeOfDay(-4231));
 
 
 
+// Launch School Solution
+// const MINUTES_PER_HOUR = 60;
+// const HOURS_PER_DAY = 24;
+// const MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
 
+// function leadingZero(number) {
+//   return number < 10 ? `0${number}` : String(number);
+// }
 
+// function formatTime(hours, minutes) {
+//   return `${leadingZero(hours)}:${leadingZero(minutes)}`;
+// }
 
+// function timeOfDay(deltaMinutes) {
+//   if (deltaMinutes < 0) {
+//     deltaMinutes = (deltaMinutes % MINUTES_PER_DAY) + MINUTES_PER_DAY;
+//   } else {
+//     deltaMinutes = deltaMinutes % MINUTES_PER_DAY;
+//   }
 
+//   let hours = Math.floor(deltaMinutes / MINUTES_PER_HOUR);
+//   let minutes = deltaMinutes % MINUTES_PER_HOUR;
 
+//   return formatTime(hours, minutes);
+// }
 
+// console.log(timeOfDay(0) === "00:00");
+// console.log(timeOfDay(-3) === "23:57");
+// console.log(timeOfDay(35) === "00:35");
+// console.log(timeOfDay(-1437) === "00:03");
+// console.log(timeOfDay(3000) === "02:00");
+// console.log(timeOfDay(800) === "13:20");
+// console.log(timeOfDay(-4231) === "01:29");
 
+// console.log(timeOfDay(0));
+// console.log(timeOfDay(-3));
+// console.log(timeOfDay(35));
+// console.log(timeOfDay(-1437));
+// console.log(timeOfDay(3000));
+// console.log(timeOfDay(800));
+// console.log(timeOfDay(-4231));
 
+// Further Exploration
+const MINUTES_PER_HOUR = 60;
+const HOURS_PER_DAY = 24;
+const MINUTES_PER_DAY = HOURS_PER_DAY * MINUTES_PER_HOUR;
 
+function leadingZero(number) {
+  return number < 10 ? `0${number}` : String(number);
+}
 
+function formatTime(hours, minutes) {
+  return `${leadingZero(hours)}:${leadingZero(minutes)}`;
+}
+
+function timeOfDay(deltaMinutes) {
+  if (deltaMinutes < 0) {
+    deltaMinutes = (deltaMinutes % MINUTES_PER_DAY) + MINUTES_PER_DAY;
+  } else {
+    deltaMinutes = deltaMinutes % MINUTES_PER_DAY;
+  }
+
+  let hours = Math.floor(deltaMinutes / MINUTES_PER_HOUR);
+  let minutes = deltaMinutes % MINUTES_PER_HOUR;
+
+  return formatTime(hours, minutes);
+}
 
 
 
