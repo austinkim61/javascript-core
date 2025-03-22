@@ -350,13 +350,7 @@
 // console.log(isBalanced("What ((is))) up("));
 
 
-// (()()()()()))(
-
-
-
-
-
-
+// Further Exploration
 
 // let string = "()[]{}''";
 let string = '""()][{}';
@@ -431,6 +425,3 @@ console.log(squareBrackets2);
 console.log(curlyBrackets2);
 console.log(singleQuotes2);
 console.log(doubleQuotes2);
-
-// console.log(all("(()()()()()))("));
-
