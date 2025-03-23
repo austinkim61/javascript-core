@@ -129,25 +129,37 @@
 // console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
 
 // Further Exploration
-function leadingSubstrings(string) {
-  // return string.split('').reduce((acc, elem, index) => [...acc, string.substring(0, index + 1)], []);
-  return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
+// function leadingSubstrings(string) {
+//   return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
+// }
+
+// console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+// console.log(leadingSubstrings('a'));        // ["a"]
+// console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
 
 
+// function leadingSubstrings(string) {
+//   return string.split('').map((elem, index) => string.slice(0, index + 1));
+
+// }
+
+// console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+// console.log(leadingSubstrings('a'));        // ["a"]
+// console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
 
 
+function leadingSubstrings(string) { // ['a', 'b', 'c']
+  let array = [];
+  string.split('').filter((_, index) => {
+    array.push(string.slice(0, index + 1));
+  });
 
+  return array;
 }
-
-
 
 console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
 console.log(leadingSubstrings('a'));        // ["a"]
 console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
-
-
-
-
 
 
 
