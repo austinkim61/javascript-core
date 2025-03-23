@@ -353,60 +353,60 @@
 // Further Exploration
 
 // let string = "()[]{}''";
-let string = '""()][{}';
+// let string = '""()][{}';
 
-function parenthesis(string) {
-  let parens = 0;
-  for (let idx = 0; idx < string.length; idx++) {
-    if (string[idx] === "(") {
-      parens += 1;
-    } else if (string[idx] === ")") {
-      parens -= 1;
-    }
-    if (parens < 0) return false;
-  }
-  return parens === 0;
-};
+// function parenthesis(string) {
+//   let parens = 0;
+//   for (let idx = 0; idx < string.length; idx++) {
+//     if (string[idx] === "(") {
+//       parens += 1;
+//     } else if (string[idx] === ")") {
+//       parens -= 1;
+//     }
+//     if (parens < 0) return false;
+//   }
+//   return parens === 0;
+// };
 
-function squareBrackets(string) {
-  let squareBrackets = 0;
-  for (let idx = 0; idx < string.length; idx++) {
-    if (string[idx] === "[") {
-      squareBrackets += 1;
-    } else if (string[idx] === "]") {
-      squareBrackets -= 1;
-    }
-    if (squareBrackets < 0) return false;
-  }
-  return squareBrackets === 0;
-};
+// function squareBrackets(string) {
+//   let squareBrackets = 0;
+//   for (let idx = 0; idx < string.length; idx++) {
+//     if (string[idx] === "[") {
+//       squareBrackets += 1;
+//     } else if (string[idx] === "]") {
+//       squareBrackets -= 1;
+//     }
+//     if (squareBrackets < 0) return false;
+//   }
+//   return squareBrackets === 0;
+// };
 
-function curlyBrackets(string) {
-  let curlyBrackets = 0;
-  for (let idx = 0; idx < string.length; idx++) {
-    if (string[idx] === "{") {
-      curlyBrackets += 1;
-    } else if (string[idx] === "}") {
-      curlyBrackets -= 1;
-    }
-    if (curlyBrackets < 0) return false;
-  }
-  return curlyBrackets === 0;
-};
+// function curlyBrackets(string) {
+//   let curlyBrackets = 0;
+//   for (let idx = 0; idx < string.length; idx++) {
+//     if (string[idx] === "{") {
+//       curlyBrackets += 1;
+//     } else if (string[idx] === "}") {
+//       curlyBrackets -= 1;
+//     }
+//     if (curlyBrackets < 0) return false;
+//   }
+//   return curlyBrackets === 0;
+// };
 
-function singleQuotes(string) {
-  let regex = /[^']/gi;
-  let newString = string.replaceAll(regex, '');
+// function singleQuotes(string) {
+//   let regex = /[^']/gi;
+//   let newString = string.replaceAll(regex, '');
 
-  return newString.length % 2 === 0;
-};
+//   return newString.length % 2 === 0;
+// };
 
-function doubleQuotes(string) {
-  let regex = /[^"]/gi;
-  let newString = string.replaceAll(regex, '');
+// function doubleQuotes(string) {
+//   let regex = /[^"]/gi;
+//   let newString = string.replaceAll(regex, '');
   
-  return newString.length % 2 === 0;
-};
+//   return newString.length % 2 === 0;
+// };
 
 
 
@@ -414,14 +414,14 @@ function doubleQuotes(string) {
 
 
 
-let parenthesis2 = parenthesis(string);
-let squareBrackets2 = squareBrackets(string);
-let curlyBrackets2 = curlyBrackets(string);
-let singleQuotes2 = singleQuotes(string);
-let doubleQuotes2 = doubleQuotes(string);
+// let parenthesis2 = parenthesis(string);
+// let squareBrackets2 = squareBrackets(string);
+// let curlyBrackets2 = curlyBrackets(string);
+// let singleQuotes2 = singleQuotes(string);
+// let doubleQuotes2 = doubleQuotes(string);
 
-console.log(parenthesis2);
-console.log(squareBrackets2);
-console.log(curlyBrackets2);
-console.log(singleQuotes2);
-console.log(doubleQuotes2);
+// console.log(parenthesis2);
+// console.log(squareBrackets2);
+// console.log(curlyBrackets2);
+// console.log(singleQuotes2);
+// console.log(doubleQuotes2);

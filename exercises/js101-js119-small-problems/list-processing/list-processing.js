@@ -117,12 +117,38 @@
 
 // 4 - Leading Substrings
 // function leadingSubstrings(string) {
-  
+//   let substrings = [];
+//   for (let i = 1; i <= string.length; i++) {
+//     substrings.push(string.substring(0, i));
+//   }
+//   return substrings;
 // }
 
 // console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
 // console.log(leadingSubstrings('a'));        // ["a"]
 // console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+
+// Further Exploration
+function leadingSubstrings(string) {
+  // return string.split('').reduce((acc, elem, index) => [...acc, string.substring(0, index + 1)], []);
+  return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
+
+
+
+
+
+}
+
+
+
+console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+console.log(leadingSubstrings('a'));        // ["a"]
+console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
+
+
+
+
+
 
 
 
