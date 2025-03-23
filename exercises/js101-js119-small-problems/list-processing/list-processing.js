@@ -1,19 +1,44 @@
 // 1 - Sum Of Digits
-function sum(integer) {
+// function sum(integer) {
+//   return integer.toString().split('').reduce((acc, currentValue) => acc + Number(currentValue), 0);
+// }
 
-}
-
-console.log(sum(23));           // 5
-console.log(sum(496));          // 19
-console.log(sum(123456789));    // 45
+// console.log(sum(23));           // 5
+// console.log(sum(496));          // 19
+// console.log(sum(123456789));    // 45
 
 
 
 
 
 // 2 - Alphabetical Numbers
-// function () {
-  
+// const numbers = {
+//   0: 'zero',
+//   1: 'one',
+//   2: 'two',
+//   3: 'three',
+//   4: 'four',
+//   5: 'five',
+//   6: 'six',
+//   7: 'seven',
+//   8: 'eight',
+//   9: 'nine',
+//   10: 'ten',
+//   11: 'eleven',
+//   12: 'twelve',
+//   13: 'thirteen',
+//   14: 'fourteen',
+//   15: 'fifteen',
+//   16: 'sixteen',
+//   17: 'seventeen',
+//   18: 'eighteen',
+//   19: 'nineteen'
+// };
+
+// function alphabeticNumberSort(array) {
+
+//   return array.map(x => numbers[x]).sort().map(x => Number(Object.entries(numbers).find(([key, value]) => value === x )[0]));
+
 // }
 
 // console.log(alphabeticNumberSort(
@@ -22,10 +47,65 @@ console.log(sum(123456789));    // 45
 
 
 
+// Launch School Solution
+// const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five',
+//   'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
+//   'twelve', 'thirteen', 'fourteen', 'fifteen',
+//   'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+// function wordSort(num1, num2) {
+//   if (NUMBER_WORDS[num1] > NUMBER_WORDS[num2]) {
+//     return 1;
+//   } else if (NUMBER_WORDS[num1] < NUMBER_WORDS[num2]) {
+//     return -1;
+//   } else {
+//     return 0;
+//   }
+// }
+
+// function alphabeticNumberSort(array) {
+//   return [...array].sort(wordSort);
+// }
+
+// console.log(alphabeticNumberSort(
+//   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])); 
+// [8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17, 6, 16, 10, 13, 3, 12, 2, 0]
+
+// Further Exploration
+
+// const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five',
+//   'six', 'seven', 'eight', 'nine', 'ten', 'eleven',
+//   'twelve', 'thirteen', 'fourteen', 'fifteen',
+//   'sixteen', 'seventeen', 'eighteen', 'nineteen'];
+
+// function alphabeticNumberSort(array) {
+//   return [...array].sort(function(a, b) {
+//     if (NUMBER_WORDS[a] > NUMBER_WORDS[b]) {
+//       return 1;
+//     } else if (NUMBER_WORDS[a] < NUMBER_WORDS[b]) {
+//       return -1;
+//     } else {
+//       return 0;
+//     }
+//   });
+// }
+
+// console.log(alphabeticNumberSort(
+//   [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19])); 
+// [8, 18, 11, 15, 5, 4, 14, 9, 19, 1, 7, 17, 6, 16, 10, 13, 3, 12, 2, 0]
+
+
+
+
 
 
 // 3 - Multiply All Pairs
 // function multiplyAllPairs(arr1, arr2) {
+//   let newArray = [];
+
+//   arr1.forEach(num1 => arr2.forEach(num2 => newArray.push(num1 * num2)));
+
+//   return newArray.sort((a, b) => a - b);
   
 // }
 
