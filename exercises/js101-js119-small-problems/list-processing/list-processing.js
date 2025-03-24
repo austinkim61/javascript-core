@@ -98,7 +98,6 @@
 
 
 
-
 // 3 - Multiply All Pairs
 // function multiplyAllPairs(arr1, arr2) {
 //   let newArray = [];
@@ -148,27 +147,33 @@
 // console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
 
 
-function leadingSubstrings(string) { // ['a', 'b', 'c']
-  let array = [];
-  string.split('').filter((_, index) => {
-    array.push(string.slice(0, index + 1));
-  });
+// function leadingSubstrings(string) { // ['a', 'b', 'c']
+//   let array = [];
+//   string.split('').filter((_, index) => {
+//     array.push(string.slice(0, index + 1));
+//   });
 
-  return array;
-}
+//   return array;
+// }
 
-console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
-console.log(leadingSubstrings('a'));        // ["a"]
-console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
-
+// console.log(leadingSubstrings('abc'));      // ["a", "ab", "abc"]
+// console.log(leadingSubstrings('a'));        // ["a"]
+// console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy"]
 
 
 
 
 
 // 5 - All Substrings
-// function substrings(string) {
-  
+// function substrings(string) { // 'abcde'
+//   let substrings = [];
+//   for (let index = 0; index < string.length; index++) {
+//     for (let j = index + 1; j <= string.length; j++) {
+//       substrings.push(string.slice(index, j));
+//     }
+//   }
+
+//   return substrings;  
 // }
 
 // console.log(substrings('abcde'));
@@ -183,11 +188,122 @@ console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy
 
 
 
+// Launch School Solution
+// function substrings(string) {
+//   let substrings = [];
+//   for (let startIndex = 0; startIndex < string.length; startIndex += 1) {
+//     let substring = string.substring(startIndex);
+//     substrings = substrings.concat(leadingSubstrings(substring));
+//   }
+
+//   return substrings;
+// }
+
+// function leadingSubstrings(string) {
+//   let substrings = [];
+//   for (let length = 1; length <= string.length; length += 1) {
+//     substrings.push(string.slice(0, length));
+//   }
+
+//   return substrings;
+// }
+
+// console.log(substrings('abcde'));
+
+// returns
+/* [ "a", "ab", "abc", "abcd", "abcde",
+  "b", "bc", "bcd", "bcde",
+  "c", "cd", "cde",
+  "d", "de",
+  "e" ]
+*/
+
+// Further Exploration
+// function substrings(string) {
+//   let substrings = [];
+//   for (let startIndex = 0; startIndex < string.length; startIndex += 1) {
+//     let substring = string.substring(startIndex);
+//     substrings = substrings.concat(leadingSubstrings(substring));
+//   }
+//   return substrings;
+// }
+
+// function leadingSubstrings(string) {
+//   return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
+// }
+
+// console.log(substrings('abcde'));
+
+
+// function substrings(string) {
+//   let substrings = [];
+//   for (let startIndex = 0; startIndex < string.length; startIndex += 1) {
+//     let substring = string.substring(startIndex);
+//     substrings = substrings.concat(leadingSubstrings(substring));
+//   }
+//   return substrings;
+// }
+
+// function leadingSubstrings(string) {
+//   return string.split('').map((elem, index) => string.slice(0, index + 1));
+// }
+
+// console.log(substrings('abcde'));
+
+
+// function substrings(string) {
+//   let substrings = [];
+//   for (let startIndex = 0; startIndex < string.length; startIndex += 1) {
+//     let substring = string.substring(startIndex);
+//     substrings = substrings.concat(leadingSubstrings(substring));
+//   }
+//   return substrings;
+// }
+
+// function leadingSubstrings(string) {
+//   let array = [];
+//   string.split('').filter((_, index) => {
+//     array.push(string.slice(0, index + 1));
+//   });
+//   return array;
+// }
+
+// console.log(substrings('abcde'));
+
+
+
 
 
 // 6 - Palindromic Substrings
-// function palindoromes(string) {
-  
+// function palindromes(string) {
+//   return substrings(string).filter(isPalindrome);
+// }
+
+// function substrings(string) {
+//   let substrings = [];
+//   for (let startIndex = 0; startIndex < string.length; startIndex += 1) {
+//     let substring = string.substring(startIndex);
+//     substrings = substrings.concat(leadingSubstrings(substring));
+//   }
+//   return substrings;
+// }
+
+// function leadingSubstrings(string) {
+//   let substrings = [];
+//   for (let length = 1; length <= string.length; length += 1) {
+//     substrings.push(string.slice(0, length));
+//   }
+//   return substrings;
+// }
+
+// function isPalindrome(string) {
+//   if (string.length === 1) {
+//     return false;
+//   } else if (string === string.split('').reverse().join('')) {
+//     return true;
+//   } else {
+//     return false;
+//   }
 // }
 
 // console.log(palindromes('abcd'));       // []
@@ -197,6 +313,7 @@ console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy
 // [ "ll", "-madam-", "-madam-did-madam-", "madam", "madam-did-madam", "ada",
 //   "adam-did-mada", "dam-did-mad", "am-did-ma", "m-did-m", "-did-", "did",
 //   "-madam-", "madam", "ada", "oo" ]
+
 // console.log(palindromes('knitting cassettes'));
 // returns
 // [ "nittin", "itti", "tt", "ss", "settes", "ette", "tt" ]
@@ -206,17 +323,19 @@ console.log(leadingSubstrings('xyzzy'));    // ["x", "xy", "xyz", "xyzz", "xyzzy
 
 
 // 7 - Sum of Sums
-// function sumOfSums(array) {
+function sumOfSums(array) { // [3, 5, 2]
+  // return array.reduce((acc, elem, index) => [...acc, Number(acc) + Number(array[index])], []);
+  return array.reduce((acc, _, index) => Number(acc) + Number(array.slice(0, index + 1).reduce((acc, elem) => Number(acc) + Number(elem), 0)), []);
   
-// }
+}
 
-// console.log(sumOfSums([3, 5, 2]));        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
-// console.log(sumOfSums([1, 5, 7, 3]));     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
-// console.log(sumOfSums([4]));              // 4
-// console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
+console.log(sumOfSums([3, 5, 2]));        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+console.log(sumOfSums([1, 5, 7, 3]));     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+console.log(sumOfSums([4]));              // 4
+console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
 
 
-
+  // return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
 
 
 // 8 - Grocery List
