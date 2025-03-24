@@ -323,29 +323,67 @@
 
 
 // 7 - Sum of Sums
-function sumOfSums(array) { // [3, 5, 2]
-  // return array.reduce((acc, elem, index) => [...acc, Number(acc) + Number(array[index])], []);
-  return array.reduce((acc, _, index) => Number(acc) + Number(array.slice(0, index + 1).reduce((acc, elem) => Number(acc) + Number(elem), 0)), []);
-  
-}
+// function sumOfSums(array) {
+//   return array.reduce((acc, _, index) => Number(acc) + Number(array.slice(0, index + 1).reduce((acc, elem) => Number(acc) + Number(elem), 0)), []);  
+// }
 
-console.log(sumOfSums([3, 5, 2]));        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
-console.log(sumOfSums([1, 5, 7, 3]));     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
-console.log(sumOfSums([4]));              // 4
-console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
+// console.log(sumOfSums([3, 5, 2]));        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+// console.log(sumOfSums([1, 5, 7, 3]));     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+// console.log(sumOfSums([4]));              // 4
+// console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
 
 
-  // return string.split('').reduce((acc, elem, index) => [...acc, string.slice(0, index + 1)], []);
+
+// Launch School Solution
+// function sumOfSums(numbers) {
+//   return numbers
+//     .map((_, idx) =>
+//       numbers.slice(0, idx + 1).reduce((sum, value) => sum + value)
+//     )
+//     .reduce((sum, value) => sum + value);
+// }
+
+// console.log(sumOfSums([3, 5, 2]));        // (3) + (3 + 5) + (3 + 5 + 2) --> 21
+// console.log(sumOfSums([1, 5, 7, 3]));     // (1) + (1 + 5) + (1 + 5 + 7) + (1 + 5 + 7 + 3) --> 36
+// console.log(sumOfSums([4]));              // 4
+// console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
+
+
+
 
 
 // 8 - Grocery List
-// function buyFruit(...arrays) {
-  
+// function buyFruit(array) {
+//   return array.map(([fruit, num]) => [...Array(num)].fill(fruit)).flat();  
+// }
+
+// console.log(buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]));
+// // returns ["apple", "apple", "apple", "orange", "banana", "banana"]
+
+
+
+// Launch School Solution
+// function buyFruit(fruitsList) {
+//   return fruitsList
+//     .map(fruit => repeat(fruit))
+//     .reduce((groceryList, fruit) => groceryList.concat(fruit));
+// }
+
+// function repeat(fruitAndQuantity) {
+//   let result = [];
+//   let fruit = fruitAndQuantity[0];
+//   let quantity = fruitAndQuantity[1];
+
+//   for (let num = 0; num < quantity; num += 1) {
+//     result.push(fruit);
+//   }
+//   // console.log(result);
+
+//   return result;
 // }
 
 // console.log(buyFruit([['apple', 3], ['orange', 1], ['banana', 2]]));
 // returns ["apple", "apple", "apple", "orange", "banana", "banana"]
-
 
 
 
@@ -362,8 +400,8 @@ console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
 //   { id: 102, movement: 'in',  quantity: 22 },
 //   { id: 103, movement: 'out', quantity: 15 }, ];
 
-// function transactionsFor(itemID, listOfTransactions) {
-  
+// function transactionsFor(itemID, transactions) {
+//   return transactions.filter(item => item['id'] === itemID);
 // }
 
 // console.log(transactionsFor(101, transactions));
@@ -388,8 +426,50 @@ console.log(sumOfSums([1, 2, 3, 4, 5]));  // 35
 //   { id: 102, movement: 'in',  quantity: 22 },
 //   { id: 103, movement: 'out', quantity: 15 }, ];
 
-// function isItemAvailable(itemID, listOfTransactions) {
-  
+// function isItemAvailable(itemID, transactions) {
+//   let array = transactionsFor(itemID, transactions);
+//   let total = 0;
+
+//   array.forEach(item => item.movement === 'in' ? total += item.quantity : total -= item.quantity);
+
+//   return total > 0;
+// }
+
+// function transactionsFor(itemID, transactions) {
+//   return transactions.filter(item => item.id === itemID);
+// }
+
+// console.log(isItemAvailable(101, transactions));     // false
+// console.log(isItemAvailable(103, transactions));     // false
+// console.log(isItemAvailable(105, transactions));     // true
+
+
+
+// Launch School Solution
+// let transactions = [ { id: 101, movement: 'in',  quantity:  5 },
+//   { id: 105, movement: 'in',  quantity: 10 },
+//   { id: 102, movement: 'out', quantity: 17 },
+//   { id: 101, movement: 'in',  quantity: 12 },
+//   { id: 103, movement: 'out', quantity: 20 },
+//   { id: 102, movement: 'out', quantity: 15 },
+//   { id: 105, movement: 'in',  quantity: 25 },
+//   { id: 101, movement: 'out', quantity: 18 },
+//   { id: 102, movement: 'in',  quantity: 22 },
+//   { id: 103, movement: 'out', quantity: 15 }, ];
+
+// function isItemAvailable(item, transactions) {
+//   let quantity = transactionsFor(item, transactions).reduce((sum, transaction) => {
+//     if (transaction.movement === "in") {
+//       return sum + transaction.quantity;
+//     } else {
+//       return sum - transaction.quantity;
+//     }
+//   }, 0);
+//   return quantity > 0;
+// }
+
+// function transactionsFor(inventoryItem, transactions) {
+//   return transactions.filter(inventory => inventory.id === inventoryItem);
 // }
 
 // console.log(isItemAvailable(101, transactions));     // false
