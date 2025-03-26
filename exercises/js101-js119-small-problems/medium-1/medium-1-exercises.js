@@ -127,74 +127,309 @@
 
 
 // 4 - Stack Machine Interpretation
-function minilang(string) {
-  
-}
+// function minilang(string) {
+//   let array = string.split(' ');
+//   let register = 0;
+//   let stack = [];
 
-console.log(minilang('PRINT'));
-// 0
+//   array.forEach(elem => {
+//     if (Number.isInteger(Number(elem))) {
+//       register = Number(elem);
+//       // console.log(register);
+//     } else if (elem === 'PUSH') {
+//       stack.push(register);
+//     } else if (elem === 'ADD') {
+//       register += stack.pop();
+//     } else if (elem === 'SUB') {
+//       register -= stack.pop();
+//     } else if (elem === 'MULT') {
+//       register *= stack.pop();
+//     } else if (elem === 'DIV') {
+//       register = Math.floor(register / stack.pop());
+//     } else if (elem === 'REMAINDER') {
+//       register = Math.floor(register % stack.pop());
+//     } else if (elem === 'POP') {
+//       register = stack.pop();
+//     } else if (elem === 'PRINT') {
+//       console.log(register);
+//     }
+//   });  
+// }
 
-console.log(minilang('5 PUSH 3 MULT PRINT'));
-// 15
+// minilang('PRINT');
+// // 0
 
-console.log(minilang('5 PRINT PUSH 3 PRINT ADD PRINT'));
-// 5
-// 3
-// 8
+// minilang('5 PUSH 3 MULT PRINT');
+// // 15
 
-console.log(minilang('5 PUSH POP PRINT'));
-// 5
+// minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// // 5
+// // 3
+// // 8
 
-console.log(minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT'));
-// 5
-// 10
-// 4
-// 7
+// minilang('5 PUSH POP PRINT');
+// // 5
 
-console.log(minilang('3 PUSH PUSH 7 DIV MULT PRINT'));
-// 6
+// minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// // 5
+// // 10
+// // 4
+// // 7
 
-console.log(minilang('4 PUSH PUSH 7 REMAINDER MULT PRINT'));
-// 12
+// minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// // 6
 
-console.log(minilang('-3 PUSH 5 SUB PRINT'));
-// 8
+// minilang('4 PUSH PUSH 7 REMAINDER MULT PRINT');
+// // 12
 
-console.log(minilang('6 PUSH'));
-// (nothing is printed because the `program` argument has no `PRINT` commands)
+// minilang('-3 PUSH 5 SUB PRINT');
+// // 8
 
-
-
-
-/*
-n : Place a value, n, in the register. Do not modify the stack.
-PUSH : Push the register value onto the stack. Leave the value in the register.
-ADD : Pop a value from the stack and add it to the register value, storing the result in the register.
-SUB : Pop a value from the stack and subtract it from the register value, storing the result in the register.
-MULT : Pop a value from the stack and multiply it by the register value, storing the result in the register.
-DIV : Pop a value from the stack and divide the register value by the popped stack value, storing the integer result back in the register.
-REMAINDER : Pop a value from the stack and divide the register value by the popped stack value, storing the integer remainder of the division back in the register.
-POP : Remove the topmost item from the stack and place it in the register.
-PRINT : Print the register value.
-
-      '3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT'
-                              5         10        4         7
-register (current value):  3 4 5 10 4 7
-[stack]:                   
+// minilang('6 PUSH');
+// // (nothing is printed because the `program` argument has no `PRINT` commands)
 
 
 
-*/
+// Launch School Solution
+// function minilang(string) {
+//   let array = string.split(' ');
+//   let register = 0;
+//   let stack = [];
+
+//   array.forEach(elem => {
+//     switch (elem) {
+//       case 'PUSH':
+//         stack.push(register);
+//         break;
+//       case 'ADD':
+//         register += stack.pop();
+//         break;
+//       case 'SUB':
+//         register -= stack.pop();
+//         break;
+//       case 'MULT':
+//         register *= stack.pop();
+//         break;
+//       case 'DIV':
+//         register = Math.floor(register / stack.pop());
+//         break;
+//       case 'REMAINDER':
+//         register = Math.floor(register % stack.pop());
+//         break;
+//       case 'POP':
+//         register = stack.pop();
+//         break;
+//       case 'PRINT':
+//         console.log(register);
+//         break;
+//       default:
+//         register = Number(elem);
+//     }
+//   });
+// }
+
+// minilang('PRINT');
+// // 0
+
+// minilang('5 PUSH 3 MULT PRINT');
+// // 15
+
+// minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// // 5
+// // 3
+// // 8
+
+// minilang('5 PUSH POP PRINT');
+// // 5
+
+// minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// // 5
+// // 10
+// // 4
+// // 7
+
+// minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// // 6
+
+// minilang('4 PUSH PUSH 7 REMAINDER MULT PRINT');
+// // 12
+
+// minilang('-3 PUSH 5 SUB PRINT');
+// // 8
+
+// minilang('6 PUSH');
+// // (nothing is printed because the `program` argument has no `PRINT` commands)
+
+
+
+// Further Exploration
+// function minilang(string) {
+//   let array = string.split(' ');
+//   let register = 0;
+//   let stack = [];
+
+//   for (let elem of array) {
+//     switch (elem) {
+//       case 'PUSH':
+//         stack.push(register);
+//         break;
+//       case 'ADD':
+//         if (stack.length === 0) {
+//           console.log('Error: stack is empty.');
+//           return;
+//         }
+//         register += stack.pop();
+//         break;
+//       case 'SUB':
+//         if (stack.length === 0) {
+//           console.log('Error: stack is empty.');
+//           return;
+//         }
+//         register -= stack.pop();
+//         break;
+//       case 'MULT':
+//         if (stack.length === 0) {
+//           console.log('Error: stack is empty.');
+//           return;
+//         }
+//         register *= stack.pop();
+//         break;
+//       case 'DIV':
+//         register = Math.floor(register / stack.pop());
+//         break;
+//       case 'REMAINDER':
+//         if (stack.length === 0) {
+//           console.log('Error: stack is empty.');
+//           return;
+//         }
+//         register = Math.floor(register % stack.pop());
+//         break;
+//       case 'POP':
+//         if (stack.length === 0) {
+//           console.log('Error: stack is empty.');
+//           return;
+//         }
+//         register = stack.pop();
+//         break;
+//       case 'PRINT':
+//         console.log(register);
+//         break;
+//       default:
+//         register = Number(elem);
+//     }
+//   }
+// }
+
+// minilang('5 PUSH POP POP PRINT');
+// Error: stack is empty.
+
+// minilang('PRINT');
+// // 0
+
+// minilang('5 PUSH 3 MULT PRINT');
+// // 15
+
+// minilang('5 PRINT PUSH 3 PRINT ADD PRINT');
+// // 5
+// // 3
+// // 8
+
+// minilang('5 PUSH POP PRINT');
+// // 5
+
+// minilang('3 PUSH 4 PUSH 5 PUSH PRINT ADD PRINT POP PRINT ADD PRINT');
+// // 5
+// // 10
+// // 4
+// // 7
+
+// minilang('3 PUSH PUSH 7 DIV MULT PRINT');
+// // 6
+
+// minilang('4 PUSH PUSH 7 REMAINDER MULT PRINT');
+// // 12
+
+// minilang('-3 PUSH 5 SUB PRINT');
+// // 8
+
+// minilang('6 PUSH');
+// // (nothing is printed because the `program` argument has no `PRINT` commands)
+
+
 
 
 
 // 5 - Word to Digit
-// function wordToDigit(string) {
-  
-// }
+function wordToDigit(string) {
+  const NUMBERS = {
+    'zero': 0,
+    'one': 1,
+    'two': 2,
+    'three': 3,
+    'four': 4,
+    'five': 5,
+    'six': 6,
+    'seven': 7,
+    'eight': 8,
+    'nine': 9,
+  }
+  return string.split(' ').map(elem => NUMBERS[elem.replace(/[^a-z]/gi, '')] || elem).join(' ');  
+}
 
-// console.log(wordToDigit('Please call me at five five five one two three four. Thanks.'));
-// // "Please call me at 5 5 5 1 2 3 4. Thanks."
+console.log(wordToDigit('Please call me at five five five one two three four. Thanks.'));
+// "Please call me at 5 5 5 1 2 3 4. Thanks."
+
+
+
+
+
+function wordToDigit(string) {
+  let regex = /(one)/;
+
+}
+
+
+const result = str.replace(/(zero)(one)(two)(three)(four)(five)(six)(seven)(eight)(nine))/gi, match => {
+  switch (match) {
+    case 'zero':
+      return 0;
+    case 'one':
+      return 1;
+    case 'two':
+      return 2;
+    case 'three':
+      return 3;
+    case 'four':
+      return 4;
+    case 'five':
+      return 5;
+    case 'six':
+      return 6;
+    case 'seven':
+      return 7;
+    case 'eight':
+      return 8;
+    case 'nine':
+      return 9;
+  }
+});
+
+
+
+
+console.log(wordToDigit('Please call me at five five five one two three four. Thanks.'));
+// "Please call me at 5 5 5 1 2 3 4. Thanks."
+
+
+
+
+
+
+
+
+
+
+
 
 
 
