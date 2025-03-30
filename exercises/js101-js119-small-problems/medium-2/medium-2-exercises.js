@@ -269,20 +269,88 @@
 
 
 // 5 - Next Featured Number Higher than a Given Value
-function featured(number) {
+// function featured(startingNum) {
+//   if (startingNum >= 9876543201) {
+//     return 'There is no possible number that fulfills those requirements.';
+//   }
 
-}
+//   for (let i = startingNum + 1; i <= 9876543201; i++) {
+//     if (i % 7 === 0 && i % 2 === 1) {
+//       if (uniqueDigits(i)) {
+//         return i;
+//       }
+//     }
+//   }
+// }
 
-console.log(featured(12));           // 21
-console.log(featured(20));           // 21
-console.log(featured(21));           // 35
-console.log(featured(997));          // 1029
-console.log(featured(1029));         // 1043
-console.log(featured(999999));       // 1023547
-console.log(featured(999999987));    // 1023456987
-console.log(featured(9876543186));   // 9876543201
-console.log(featured(9876543200));   // 9876543201
-console.log(featured(9876543201));   // "There is no possible number that fulfills those requirements."
+// function uniqueDigits(num) {
+//   let string = num.toString();
+//   let array = string.split('');
+//   return array.every(char => string.indexOf(char) === string.lastIndexOf(char));
+// }
+
+// console.log(featured(12));           // 21
+// console.log(featured(20));           // 21
+// console.log(featured(21));           // 35
+// console.log(featured(997));          // 1029
+// console.log(featured(1029));         // 1043
+// console.log(featured(999999));       // 1023547
+// console.log(featured(999999987));    // 1023456987
+// console.log(featured(9876543186));   // 9876543201
+// console.log(featured(9876543200));   // 9876543201
+// console.log(featured(9876543201));   // "There is no possible number that fulfills those requirements."
+
+
+
+// Launch School Solution
+// function featured(number) {
+//   const MAX_FEATURED = 9876543201;
+//   let featuredNum = toOddMultipleOf7(number);
+
+//   do {
+//     if (allUnique(featuredNum)) {
+//       return featuredNum;
+//     }
+
+//     featuredNum += 14;
+//   } while (featuredNum <= MAX_FEATURED);
+
+//   return 'There is no possible number that fulfills those requirements.';
+// }
+
+// function toOddMultipleOf7(number) {
+//   do {
+//     number += 1;
+//   } while (number % 2 === 0 || number % 7 !== 0);
+
+//   return number;
+// }
+
+// function allUnique(number) {
+//   let digits = String(number).split('');
+//   let seen = {};
+
+//   for (let idx = 0; idx < digits.length; idx += 1) {
+//     if (seen[digits[idx]]) {
+//       return false;
+//     }
+
+//     seen[digits[idx]] = true;
+//   }
+
+//   return true;
+// }
+
+// console.log(featured(12));           // 21
+// console.log(featured(20));           // 21
+// console.log(featured(21));           // 35
+// console.log(featured(997));          // 1029
+// console.log(featured(1029));         // 1043
+// console.log(featured(999999));       // 1023547
+// console.log(featured(999999987));    // 1023456987
+// console.log(featured(9876543186));   // 9876543201
+// console.log(featured(9876543200));   // 9876543201
+// console.log(featured(9876543201));   // "There is no possible number that fulfills those requirements."
 
 
 
@@ -290,7 +358,29 @@ console.log(featured(9876543201));   // "There is no possible number that fulfil
 
 // 6 - Sum Square - Square Sum
 // function sumSquareDifference(number) {
+//   let numbersArray = [...Array(number)].map((_, index) => index + 1);
+//   let squaredSum = numbersArray.reduce((acc, currentValue) => acc + currentValue, 0) ** 2;
+//   let sumOfSquares = numbersArray.reduce((acc, currentValue) => acc + (currentValue ** 2), 0);
 
+//   return squaredSum - sumOfSquares;
+// }
+
+// console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
+// console.log(sumSquareDifference(10));     // 2640
+// console.log(sumSquareDifference(1));      // 0
+// console.log(sumSquareDifference(100));    // 25164150
+
+
+
+// Launch School Solution
+// function sumSquareDifference(count) {
+//   let sum = 0;
+//   let sumOfSquares = 0;
+//   for (let number = 1; number <= count; number++) {
+//     sum += number;
+//     sumOfSquares += Math.pow(number, 2);
+//   }
+//   return Math.pow(sum, 2) - sumOfSquares;
 // }
 
 // console.log(sumSquareDifference(3));      // 22 --> (1 + 2 + 3)**2 - (1**2 + 2**2 + 3**2)
@@ -303,21 +393,40 @@ console.log(featured(9876543201));   // "There is no possible number that fulfil
 
 
 // 7 - Bubble Sort
-// function bubbleSort(array) {
+function bubbleSort(array) {
+  let count = 0;
+  do {
+    numberSwap(array);
+    count++;  
+  } while (count < array.length);
+}
 
-// }
+function numberSwap(array) {  
+  for (let i = 0; i < array.length - 1; i++) {
+    if (array[i] > array[i + 1]) {
+      [array[i], array[i + 1]] = [array[i + 1], array[i]];      
+    }
+  }
+}
 
-// let array1 = [5, 3];
-// bubbleSort(array1);
-// console.log(array1);    // [3, 5]
+let array1 = [5, 3];
+bubbleSort(array1);
+console.log(array1);    // [3, 5]
 
-// let array2 = [6, 2, 7, 1, 4];
-// bubbleSort(array2);
-// console.log(array2);    // [1, 2, 4, 6, 7]
+let array2 = [6, 2, 7, 1, 4];
+bubbleSort(array2);
+console.log(array2);    // [1, 2, 4, 6, 7]
 
-// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
-// bubbleSort(array3);
-// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+bubbleSort(array3);
+console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+
+
+
+
+
+
 
 
 
