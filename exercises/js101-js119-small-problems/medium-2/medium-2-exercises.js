@@ -424,42 +424,50 @@
 
 
 // Launch School Solution
-function bubbleSort(array) {
-  while (true) {
-    let swapped = false;
-    for (let idx = 1; idx < array.length; idx++) {
-      if (array[idx - 1] <= array[idx]) continue;
-      [array[idx - 1], array[idx]] = [array[idx], array[idx - 1]];
-      swapped = true;
-    }
-    if (!swapped) break;
-  }
-}
+// function bubbleSort(array) {
+//   while (true) {
+//     let swapped = false;
+//     for (let idx = 1; idx < array.length; idx++) {
+//       if (array[idx - 1] <= array[idx]) continue;
+//       [array[idx - 1], array[idx]] = [array[idx], array[idx - 1]];
+//       swapped = true;
+//     }
+//     if (!swapped) break;
+//   }
+// }
 
-let array1 = [5, 3];
-bubbleSort(array1);
-console.log(array1);    // [3, 5]
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
 
-let array2 = [6, 2, 7, 1, 4];
-bubbleSort(array2);
-console.log(array2);    // [1, 2, 4, 6, 7]
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
 
-let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
-bubbleSort(array3);
-console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
-
-
-
-
-
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
 
 
 
 
 
 // 8 - Is It Prime?
-// function isPrime(number) {
+// function isPrime(num) {
+//   let count = 0;
 
+//   if (num === 1) {
+//     return false;
+//   } else {
+//     for (let i = 1; i <= num; i++) {
+//       num % i === 0 ? count++ : count = count;
+//       if (count > 2) {
+//         return false;
+//       }
+//     }
+
+//     return true;
+//   }
 // }
 
 // console.log(isPrime(1) === false)            // true
@@ -481,28 +489,36 @@ console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "
 
 
 
+// Launch School Solution
+function isPrime(number) {
+  if (number === 1) return false;
 
+  maxDivisor = Math.sqrt(number);
+  for (let divisor = 2; divisor <= maxDivisor; ++divisor) {
+    if (number % divisor === 0) {
+      return false;
+    }
+  }
 
+  return true;
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(isPrime(1) === false)            // true
+console.log(isPrime(2) === true)             // true
+console.log(isPrime(3) === true)             // true
+console.log(isPrime(4) === false)            // true
+console.log(isPrime(5) === true)             // true
+console.log(isPrime(6) === false)            // true
+console.log(isPrime(7) === true)             // true
+console.log(isPrime(8) === false)            // true
+console.log(isPrime(9) === false)            // true
+console.log(isPrime(10) === false)           // true
+console.log(isPrime(23) === true)            // true
+console.log(isPrime(24) === false)           // true
+console.log(isPrime(997) === true)           // true
+console.log(isPrime(998) === false)          // true
+console.log(isPrime(3_297_061) === true)     // true
+console.log(isPrime(23_297_061) === false)   // true
 
 
 
