@@ -393,19 +393,46 @@
 
 
 // 7 - Bubble Sort
-function bubbleSort(array) {
-  let count = 0;
-  do {
-    numberSwap(array);
-    count++;  
-  } while (count < array.length);
-}
+// function bubbleSort(array) {
+//   let count = 0;
+//   do {
+//     numberSwap(array);
+//     count++;  
+//   } while (count < array.length);
+// }
 
-function numberSwap(array) {  
-  for (let i = 0; i < array.length - 1; i++) {
-    if (array[i] > array[i + 1]) {
-      [array[i], array[i + 1]] = [array[i + 1], array[i]];      
+// function numberSwap(array) {  
+//   for (let i = 0; i < array.length - 1; i++) {
+//     if (array[i] > array[i + 1]) {
+//       [array[i], array[i + 1]] = [array[i + 1], array[i]];      
+//     }
+//   }
+// }
+
+// let array1 = [5, 3];
+// bubbleSort(array1);
+// console.log(array1);    // [3, 5]
+
+// let array2 = [6, 2, 7, 1, 4];
+// bubbleSort(array2);
+// console.log(array2);    // [1, 2, 4, 6, 7]
+
+// let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
+// bubbleSort(array3);
+// console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
+
+
+
+// Launch School Solution
+function bubbleSort(array) {
+  while (true) {
+    let swapped = false;
+    for (let idx = 1; idx < array.length; idx++) {
+      if (array[idx - 1] <= array[idx]) continue;
+      [array[idx - 1], array[idx]] = [array[idx], array[idx - 1]];
+      swapped = true;
     }
+    if (!swapped) break;
   }
 }
 
@@ -420,8 +447,6 @@ console.log(array2);    // [1, 2, 4, 6, 7]
 let array3 = ['Sue', 'Pete', 'Alice', 'Tyler', 'Rachel', 'Kim', 'Bonnie'];
 bubbleSort(array3);
 console.log(array3);    // ["Alice", "Bonnie", "Kim", "Pete", "Rachel", "Sue", "Tyler"]
-
-
 
 
 
