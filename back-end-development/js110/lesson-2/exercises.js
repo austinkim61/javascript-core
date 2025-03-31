@@ -34,15 +34,27 @@
 
 
 
+// let a = [1, 3];
+// let b = [2];
+// let arr = [a, b];
+
+// console.log(arr); // => [ [ 1, 3 ], [ 2 ] ]
+
+// a[1] = 5;
+// a.push(3);
+// console.log(arr); // => [ [ 1, 5 ], [ 2 ] ]
 
 
 
 
 
+// let obj = { a: { b: 'foo' }, c: ['bar'] };
+// let copyOfObj = Object.assign({}, obj);
+// copyOfObj.e = 'hello';
 
-
-
-
+// obj['a']['d'] = 'baz';
+// console.log(copyOfObj); // => { a: { b: 'foo', d: 'baz' }, c: [ 'bar' ] }
+// console.log(obj);       // => { a: { b: 'foo', d: 'baz' }, c: [ 'bar' ] }
 
 
 
