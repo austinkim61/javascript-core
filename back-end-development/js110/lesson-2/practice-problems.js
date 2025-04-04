@@ -29,6 +29,7 @@ let books = [
   { title: 'The Book of Kells', author: 'Multiple Authors', published: '800' },
 ];
 
+console.log(books.sort((a, b) => Number(a.published) - Number(b.published)));
 
 
 
