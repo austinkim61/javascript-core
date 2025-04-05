@@ -277,20 +277,140 @@
 
 
 // Question 12
+// const arr = [
+//   ['b', 'c', 'a'],
+//   ['blue', 'black', 'green'],
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
 
+// let serializedArr = JSON.stringify(arr);
+// let deepCopiedArr = JSON.parse(serializedArr);
+
+// deepCopiedArr[0].push('d');
+// deepCopiedArr[1].push('red');
+// deepCopiedArr[2]['b'].push(8);
+// deepCopiedArr[2]['c'].push(9);
+// deepCopiedArr[2]['d'].push(5);
+// deepCopiedArr[3]['e'].push(9);
+// deepCopiedArr[3]['f'].push(14);
+
+// console.log(arr);
+// console.log(deepCopiedArr);
+
+
+
+// Launch School Solution
+// const deepCopy = JSON.parse(JSON.stringify(arr));
 
 
 
 
 
 // Question 13
+// const truthiness = {
+//   falsy: [ null, undefined, '', false, NaN, 0 ],
+//   truthy: ['everything else...']
+// };
 
+// function deepClone(object) {
+//   if (object === null || typeof object !== 'object') {
+//     return object;
+//   } else if (Array.isArray(object) === true) {
+//     return object.map(deepClone);
+//   } else if (typeof object === 'object') {
+//     let obj = {};
+//     for (let key in object) {
+//       obj[key] = deepClone(object[key]);
+//     }
+//     return obj;
+//   }
+// }
+
+// let cloned = deepClone(truthiness);
+
+// cloned['falsy'].push(-0);
+// cloned['truthy'].push('hello');
+
+// console.log(truthiness);
+// console.log(cloned);
+
+
+
+// Launch School Solution
+// const deepCopy = {};
+
+// for (let prop in truthiness) {
+//   deepCopy[prop] = [...truthiness[prop]];
+// }
+
+// deepCopy['falsy'].push(-0);
+// deepCopy['truthy'].push('hello');
+
+// console.log(truthiness);
+// console.log(deepCopy);
 
 
 
 
 
 // Question 14
+// let arr = [[2], [3, 5, 7], [9], [11, 15, 18]];
+
+// console.log(arr.map(elem => elem.filter(num => num % 3 === 0)));
+// console.log(arr);
+
+
+
+let arr = [[2], [3, 5, 7], [9], [11, 15, 18, [3, 4, 5, 6, 9]]];
+let newArr = [];
+
+
+for (let i = 0; i < array.length, i++) {
+
+}
+
+function recursion(array) {
+
+  arr.map(elem => {
+    if (elem.every(num => !Array.isArray(num))) {
+      return elem.filter(num => num % 3 === 0);
+    } else {
+      return elem.map(recursion);
+    }
+  });
+
+
+  
+
+  // return arr.map(elem => elem.filter(num => num % 3 === 0));
+
+
+  // return array.map(elem => elem.filter(num => {
+    // if (Array.isArray(num)) {
+    //   return recursion(num);
+    // } else {
+    //   return num % 3 === 0;
+    // }
+  // }));
+
+
+  // return array.map(elem => {
+  //   if (Array.isArray(elem)) {
+  //     return recursion(elem);
+  //   } else {
+  //     return elem.filter(num => num % 3 === 0);
+  //   }
+  // });
+
+}
+
+console.log(recursion(arr));
+console.log(arr);
+
+
+
+
 
 
 
