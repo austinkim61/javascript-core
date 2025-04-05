@@ -361,92 +361,201 @@
 // console.log(arr);
 
 
+// Recursion
+// let arr = [[2], [3, 5, 7], [9], [11, 15, 18, [3, 4, 5, 6, 9]]];
 
-let arr = [[2], [3, 5, 7], [9], [11, 15, 18, [3, 4, 5, 6, 9]]];
-let newArr = [];
+// function recursion(array) {
+//   return array.map(elem => {
+//       if (Array.isArray(elem)) {
+//         return recursion(elem);
+//       } else {
+//         return elem;
+//       }
+//     }).filter(num => {
+//       if (Array.isArray(num)) {
+//         return true;
+//       } else {
+//         return num % 3 === 0;
+//       }
+//     });
+// }
 
-
-for (let i = 0; i < array.length, i++) {
-
-}
-
-function recursion(array) {
-
-  arr.map(elem => {
-    if (elem.every(num => !Array.isArray(num))) {
-      return elem.filter(num => num % 3 === 0);
-    } else {
-      return elem.map(recursion);
-    }
-  });
-
-
-  
-
-  // return arr.map(elem => elem.filter(num => num % 3 === 0));
-
-
-  // return array.map(elem => elem.filter(num => {
-    // if (Array.isArray(num)) {
-    //   return recursion(num);
-    // } else {
-    //   return num % 3 === 0;
-    // }
-  // }));
-
-
-  // return array.map(elem => {
-  //   if (Array.isArray(elem)) {
-  //     return recursion(elem);
-  //   } else {
-  //     return elem.filter(num => num % 3 === 0);
-  //   }
-  // });
-
-}
-
-console.log(recursion(arr));
-console.log(arr);
-
-
-
-
-
+// console.log(recursion(arr));
+// console.log(arr);
 
 
 
 
 
 // Question 15
+// let arr = [[1, 6, 7], [1, 5, 3], [1, 8, 3]];
 
+// console.log(arr.sort((a, b) => {
+//   let sumOfOddA = a.filter(num => num % 2 === 1)
+//                    .reduce((acc, elem) => acc + elem);
+//   let sumOfOddB = b.filter(num => num % 2 === 1)
+//                    .reduce((acc, elem) => acc + elem);
+                   
+//   if (sumOfOddA < sumOfOddB) {
+//     return -1;
+//   } else if (sumOfOddA > sumOfOddB) {
+//     return 1;
+//   } else {
+//     return 0;
+//   }
+  
+//   // Alternatively:
+//   //   return sumOfOddA - sumOfOddB;
+
+// }));
 
 
 
 
 
 // Question 16
+// let obj = {
+//   grape: { type: 'fruit', colors: ['red', 'green'], size: 'small' },
+//   carrot: { type: 'vegetable', colors: ['orange'], size: 'medium' },
+//   apple: { type: 'fruit', colors: ['red', 'green'], size: 'medium' },
+//   apricot: { type: 'fruit', colors: ['orange'], size: 'medium' },
+//   marrow: { type: 'vegetable', colors: ['green'], size: 'large' },
+// };
 
+// let arr = [];
+
+// for (let item in obj) {
+//   if (obj[item]['type'] === 'fruit') {
+//     arr.push(obj[item]['colors'].map(string => string[0].toUpperCase() + string.slice(1)));
+//   } else if (obj[item]['type'] === 'vegetable') {
+//     arr.push(obj[item]['size'].toUpperCase());
+//   }    
+// }
+
+// console.log(arr);
+
+
+
+// Launch School Solution
+// let capitalize = word => word[0].toUpperCase() + word.slice(1);
+
+// console.log(Object.values(obj).map(attributes => {
+//   if (attributes['type'] === 'fruit') {
+//     return attributes['colors'].map(char => capitalize(char));
+//   } else {
+//     return attributes['size'].toUpperCase();
+//   }
+// }));
 
 
 
 
 
 // Question 17
+// let arr = [
+//   { a: [1, 2, 3] },
+//   { b: [2, 4, 6], c: [3, 6], d: [4] },
+//   { e: [8], f: [6, 10] },
+// ];
 
+// let newArr = []
+
+// arr.forEach(obj => {
+//   let tempArr = [];
+
+//   for (let letter in obj) {
+//     obj[letter].forEach(num => tempArr.push(num));
+//   }
+//   if (tempArr.every(num => num % 2 === 0)) {
+//     newArr.push(obj);
+//   }
+
+// });
+
+// console.log(newArr);
+
+
+
+// Launch School Solution
+// console.log(arr.filter(obj => {
+//   return Object.values(obj).every(subArr => {
+//     return subArr.every(num => num % 2 === 0);
+//   });
+// }));
 
 
 
 
 
 // Question 18
+// let arr = [['a', 1], ['b', 'two'], ['sea', { 'c': 3 }], ['D', ['a', 'b', 'c']]];
 
+// console.log(Object.fromEntries(arr));
+
+// Alternatively:
+// let keys = arr.map(elem => elem[0]);
+// let values = arr.map(elem => elem[1]);
+// let obj = {};
+
+// for (let i = 0; i < keys.length; i++) {
+//   obj[keys[i]] = values[i];
+// }
+
+// console.log(obj);
+
+
+
+// Launch School Solution
+// let obj = {};
+// arr.forEach(subarray => {
+//   let key = subarray[0];
+//   let value = subarray[1];
+
+//   obj[key] = value;
+// });
+
+// console.log(obj); // { a: 1, b: 'two', sea: { c: 3 }, D: [ 'a', 'b', 'c' ] }
 
 
 
 
 
 // Question 19
+// let munsters = {
+//   herman: { age: 32, gender: 'male' },
+//   lily: { age: 30, gender: 'female' },
+//   grandpa: { age: 402, gender: 'male' },
+//   eddie: { age: 10, gender: 'male' },
+//   marilyn: { age: 23, gender: 'female'}
+// };
 
+// const deepCopy = JSON.parse(JSON.stringify(munsters));
+// deepCopy['herman']['age'] = 999999;
+
+// console.log(munsters);
+// console.log(deepCopy);
+
+// Alternatively
+// function deepClone(object) {
+//   if (object === null || typeof object !== 'object') {
+//     return object;
+//   } else if (Array.isArray(object) === true) {
+//     return object.map(deepClone);
+//   } else if (typeof object === 'object') {
+//     let obj = {};
+//     for (let key in object) {
+//       obj[key] = deepClone(object[key]);
+//     }
+//     return obj;
+//   }
+// }
+
+// console.log(deepClone(munsters));
+
+
+// Launch School Solution
+// const munstersIndestructible = JSON.parse(JSON.stringify(munsters), (munster, info) => Object.freeze(info));
+// console.log(munstersIndestructible);
 
 
 
