@@ -562,95 +562,87 @@
 
 
 // Question 20
+// const UUID_LENGTH = 32;
+// const UUID_CHARACTERS = {
+//   0: 0,
+//   1: 1,
+//   2: 2,
+//   3: 3,
+//   4: 4,
+//   5: 5,
+//   6: 6,
+//   7: 7,
+//   8: 8,
+//   9: 9,
+//   10: 'a',
+//   11: 'b',
+//   12: 'c',
+//   13: 'd',
+//   14: 'e',
+//   15: 'f',
+// };
 
+// function UUID() {
+//   let result = '';
+//   for (let i = 0; i < UUID_LENGTH; i++) {
+//     result += UUID_CHARACTERS[Math.floor(Math.random() * 16)];
+//   }
+//   return result.slice(0, 8) + '-' + result.slice(8, 12) + '-' + result.slice(12, 16) + '-' + result.slice(16, 20) + '-' + result.slice(20);
+// }
+
+// console.log(UUID());
+
+
+
+// Launch School Solution
+// function generateUUID() {
+//   let characters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'a', 'b', 'c', 'd', 'e', 'f'];
+//   let sections = [8, 4, 4, 4, 12];
+
+//   let uuid = '';
+//   sections.forEach((section, sectionIndex) => {
+//     for (let index = 1; index <= section; index++) {
+//       let randomIndex = Math.floor(Math.random() * characters.length);
+//       uuid += characters[randomIndex];
+//     }
+
+//     if (sectionIndex < sections.length - 1) {
+//       uuid += '-';
+//     }
+//   });
+
+//   return uuid;
+// }
+
+// console.log(generateUUID()); // => '02e51c2f-dacd-c319-53b5-e40e6e8c1f78'
+// console.log(generateUUID()); // => '39038ab9-3b95-43d8-6959-5d785ccb9b69'
+// console.log(generateUUID()); // => 'f7d56480-c5b2-8d4d-465f-01a4ea605729'
 
 
 
 
 
 // Question 21
+// function scream(message, helper) {
+//   const shout = () => message.toUpperCase();
 
+//   return helper(shout());
+// }
 
+// const exclamate = str => str + "!!!";
 
+// const foo = ["heLp", "Boo", "arGH", "Oh no"];
+// const FOO = foo.map(word => scream(word, exclamate));
 
 
+// console.log(FOO);
 
+/* 
+Higher-order Functions
+map
+scream
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Callbacks
+exclamate
+word => scream(word, exclamate)
+*/
