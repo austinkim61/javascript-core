@@ -41,31 +41,27 @@
 
 
 
-const NUMBER_OF_GAMES_TO_WIN = 5;
-
-
-
-function prompt(string) {
-  console.log(`=> ${string}`);
-}
-
-function detectOverallWinner(player, computer) {
-  if (player === NUMBER_OF_GAMES_TO_WIN) {
-    return prompt(`Player is the overall winner!`);    
-  } else if (computer === NUMBER_OF_GAMES_TO_WIN) {
-    return prompt(`Computer is the overall winner!`);
-  }
-  return false;
-}
 
 
 
 
 
 
+// const NUMBER_OF_GAMES_TO_WIN = 5;
+// function prompt(string) {
+//   console.log(`=> ${string}`);
+// }
 
+// function detectOverallWinner(player, computer) {
+//   if (player === NUMBER_OF_GAMES_TO_WIN) {
+//     return prompt(`Player is the overall winner!`);    
+//   } else if (computer === NUMBER_OF_GAMES_TO_WIN) {
+//     return prompt(`Computer is the overall winner!`);
+//   }
+//   return false;
+// }
 
-console.log(!detectOverallWinner(0, 4))
+// console.log(!detectOverallWinner(0, 4))
 
 
 
@@ -78,31 +74,36 @@ console.log(!detectOverallWinner(0, 4))
 
 
 
+// function priorityLine(array) {
+
+//   let board = array;
+
+//   for (let i = 0; i < board.length; i++) {
+//     if (true) {
+//       return 'hello' + i;
+//     }
+
+//   }
+//   return 'goodbye';
+
+
+
+// }
+
+// let arr = [1, 2, 3];
+
+// console.log(priorityLine(arr));
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+let obj = {
+  a: 1,
+  b: 2,
+  c: 3
+};
 
 
 

@@ -4,6 +4,14 @@ const HUMAN_MARKER = 'X';
 const COMPUTER_MARKER = 'O';
 const NUMBER_OF_GAMES_TO_WIN = 5;
 
+
+const WINNING_LINES = [
+  [1, 2, 3], [4, 5, 6], [7, 8, 9],
+  [1, 4, 7], [2, 5, 8], [3, 6, 9],
+  [1, 5, 9], [3, 5, 7]
+];
+
+
 function prompt(string) {
   console.log(`=> ${string}`);
 }
@@ -69,6 +77,42 @@ function playerChoosesSquare(board) {
 }
 
 function computerChoosesSquare(board) {
+  if (!!priorityLine(board)) {
+    computerDefense(priorityLine(board), board);
+  } else {
+    computerRandom(board);
+  }
+}
+
+function priorityLine(board) {
+  for (let line = 0; line < WINNING_LINES.length; line++) {
+    let [sq1, sq2, sq3] = WINNING_LINES[line];
+    let currentLine = [board[sq1], board[sq2], board[sq3]];
+    
+    if (twoOpponentMarkers(currentLine) && oneInitialMarker(currentLine)) {
+      return WINNING_LINES[line];
+    }
+  }
+  return false;
+}
+
+function twoOpponentMarkers(array) {
+  return array.filter(marker => marker === HUMAN_MARKER).length === 2;
+}
+
+function oneInitialMarker(array) {
+  return array.filter(marker => marker === INITIAL_MARKER).length === 1;
+}
+
+function computerDefense(array, board) {
+  board[priorityMarker(array, board)] = COMPUTER_MARKER;
+}
+
+function priorityMarker(array, board) {
+  return array.find(square => board[square] === INITIAL_MARKER);
+}
+
+function computerRandom(board) {
   let randomIndex = Math.floor(Math.random() * emptySquares(board).length);
 
   let square = emptySquares(board)[randomIndex];
@@ -84,14 +128,8 @@ function someoneWon(board) {
 }
 
 function detectWinner(board) {
-  let winningLines = [
-    [1, 2, 3], [4, 5, 6], [7, 8, 9], // rows
-    [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
-    [1, 5, 9], [3, 5, 7]             // diagonals
-  ];
-
-  for (let line = 0; line < winningLines.length; line++) {
-    let [sq1, sq2, sq3] = winningLines[line];
+  for (let line = 0; line < WINNING_LINES.length; line++) {
+    let [sq1, sq2, sq3] = WINNING_LINES[line];
     if (
       board[sq1] === HUMAN_MARKER &&
       board[sq2] === HUMAN_MARKER &&
