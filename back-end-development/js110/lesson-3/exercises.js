@@ -18,37 +18,54 @@
 
 
 
-function joinOr(string) {
-  switch (string) {
-    case 'hello1':
-      return 'hello1';
-    case 'hello2':
-      return `hello2`;
-    case 'hello3':
-      return `hello3`;
-    default:
-      return `hello4`;
-  }
 
+
+
+
+// function joinOr(string) {
+//   switch (string) {
+//     case 'hello1':
+//       return 'hello1';
+//     case 'hello2':
+//       return `hello2`;
+//     case 'hello3':
+//       return `hello3`;
+//     default:
+//       return `hello4`;
+//   }
+
+// }
+
+
+// console.log(joinOr('dsf'));
+
+
+
+const NUMBER_OF_GAMES_TO_WIN = 5;
+
+
+
+function prompt(string) {
+  console.log(`=> ${string}`);
+}
+
+function detectOverallWinner(player, computer) {
+  if (player === NUMBER_OF_GAMES_TO_WIN) {
+    return prompt(`Player is the overall winner!`);    
+  } else if (computer === NUMBER_OF_GAMES_TO_WIN) {
+    return prompt(`Computer is the overall winner!`);
+  }
+  return false;
 }
 
 
-console.log(joinOr('dsf'));
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
+console.log(!detectOverallWinner(0, 4))
 
 
 

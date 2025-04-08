@@ -1,10 +1,8 @@
 const readline = require('readline-sync');
-
 const INITIAL_MARKER = ' ';
 const HUMAN_MARKER = 'X';
 const COMPUTER_MARKER = 'O';
-
-const NUMBER_OF_GAMES_TO_WIN = 5;
+const NUMBER_OF_GAMES_TO_WIN = 2;
 
 function prompt(string) {
   console.log(`=> ${string}`);
@@ -85,16 +83,12 @@ function someoneWon(board) {
   return !!detectWinner(board);
 }
 
-
-
-
 function detectWinner(board) {
   let winningLines = [
     [1, 2, 3], [4, 5, 6], [7, 8, 9], // rows
     [1, 4, 7], [2, 5, 8], [3, 6, 9], // columns
     [1, 5, 9], [3, 5, 7]             // diagonals
   ];
- 
 
   for (let line = 0; line < winningLines.length; line++) {
     let [sq1, sq2, sq3] = winningLines[line];
@@ -117,59 +111,57 @@ function detectWinner(board) {
 
 }
 
+function keepScore(player, computer, tie) {
+  return prompt(`The score is:\nPlayer: ${player}\nComputer: ${computer}\nTies: ${tie}`);
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+function detectOverallWinner(player, computer) {
+  if (player === NUMBER_OF_GAMES_TO_WIN) {
+    return prompt(`Player is the overall winner!`);    
+  } else if (computer === NUMBER_OF_GAMES_TO_WIN) {
+    return prompt(`Computer is the overall winner!`);
+  }
+  return false;
+}
 
 while (true) {
-  let board = initializeBoard();
-
   let playerWins = 0;
   let computerWins = 0;
   let ties = 0;
 
-  while (true) {
-    displayBoard(board);
+  let board = initializeBoard();
 
-    playerChoosesSquare(board);
-    if (someoneWon(board) || boardFull(board)) break;
-
-    computerChoosesSquare(board);
-    if (someoneWon(board) || boardFull(board)) break;
-  }
-
-  displayBoard(board);
-
-  if (someoneWon(board)) {
-    detectWinner(board) === 'Player' ? playerWins++ : computerWins++;
-    prompt(`${detectWinner(board)} won!`);
-  } else {
-    ties++;
-    prompt("It's a tie!");
-  }
+  while (!detectOverallWinner(playerWins, computerWins)) {
+    board = initializeBoard();
   
-  prompt(`The score is:\nPlayer: ${playerWins}\nComputer: ${computerWins}\nTies: ${ties}`);
-
-
-
-  detectOverallWinner(playerWins, computerWins);
-
-
-
-
+    while (true) {
+      displayBoard(board);
   
+      playerChoosesSquare(board);
+      if (someoneWon(board) || boardFull(board)) break;
+  
+      computerChoosesSquare(board);
+      if (someoneWon(board) || boardFull(board)) break;
+    }
+  
+    displayBoard(board);    
+  
+    if (someoneWon(board)) {
+      detectWinner(board) === 'Player' ? playerWins++ : computerWins++;
+      prompt(`${detectWinner(board)} won!`);
+    } else {
+      prompt("It's a tie!");  
+    }
 
+    keepScore(playerWins, computerWins, ties);    
+    detectOverallWinner(playerWins, computerWins);
+
+    if (playerWins === NUMBER_OF_GAMES_TO_WIN || computerWins === NUMBER_OF_GAMES_TO_WIN) break;
+    
+    prompt(`Keep playing until ${NUMBER_OF_GAMES_TO_WIN} wins? (y or n)`);
+    let answer = readline.question().toLocaleLowerCase()[0];
+    if (answer !== 'y') break;
+  }
 
   prompt('Play again? (y or n)');
   let answer = readline.question().toLocaleLowerCase()[0];
@@ -177,119 +169,6 @@ while (true) {
 }
 
 prompt('Thanks for playing Tic Tac Toe!');
-
-
-
-function detectOverallWinner(player, computer) {
-
-  if (player === 5) {
-    playerWins = 0;
-    computerWins = 0;
-    ties = 0;
-    return prompt(`Player is the overall winner!`);
-    
-  } else if (computer === 5) {
-    playerWins = 0;
-    computerWins = 0;
-    ties = 0;
-    return prompt(`Computer is the overall winner!`);
-  }
-
-  return null;
-}
-
-
-
-
-
-
-
-
-
-// let board = initializeBoard();
-// displayBoard(board);
-
-// while (true) {
-//   displayBoard(board);
-
-//   playerChoosesSquare(board);
-//   if (someoneWon(board) || boardFull(board)) break;
-
-//   computerChoosesSquare(board);
-//   if (someoneWon(board) || boardFull(board)) break;
-// }
-
-// displayBoard(board);
-
-// if (someoneWon(board)) {
-//   prompt(`${detectWinner(board)} won!`);
-// } else {
-//   prompt("It's a tie!");
-// }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
