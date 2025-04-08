@@ -1,30 +1,39 @@
+// function joinOr(arr, delimiter = ', ', word = 'or') {
+//   if (arr.length <= 1) {
+//     return arr.join('');
+//   }
+
+//   let allButLast = arr.join(delimiter).slice(0, -1);
+//   let last = arr.slice(-1);
+
+//   return arr.length === 2 ? `${arr[0]} ${word} ${last}` : `${allButLast}${word} ${last}`; 
+// }
+
+// console.log(joinOr([1, 2, 3]));               // => "1, 2, or 3"
+// console.log(joinOr([1, 2, 3], '; '));         // => "1; 2; or 3"
+// console.log(joinOr([1, 2, 3], ', ', 'and'));  // => "1, 2, and 3"
+// console.log(joinOr([]));                      // => ""
+// console.log(joinOr([5]));                     // => "5"
+// console.log(joinOr([1, 2]));                  // => "1 or 2"
 
 
 
+function joinOr(string) {
+  switch (string) {
+    case 'hello1':
+      return 'hello1';
+    case 'hello2':
+      return `hello2`;
+    case 'hello3':
+      return `hello3`;
+    default:
+      return `hello4`;
+  }
+
+}
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(joinOr('dsf'));
 
 
 
