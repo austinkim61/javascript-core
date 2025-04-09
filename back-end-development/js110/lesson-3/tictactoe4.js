@@ -200,7 +200,17 @@ function detectOverallWinner(player, computer) {
   return false;
 }
 
+function playAgain(string) {
+  prompt(string);
+  let answer = readline.question();
 
+  while (answer.match(/[^yn]/gi)) {
+    prompt("Not a valid input. Select 'Y' or 'y' for 'yes'. Select 'N' or 'n' for 'no'.");
+    answer = readline.question();
+  }
+
+  return answer.toLowerCase() === 'y' ? true : false;
+}
 
 while (true) {
   let playerWins = 0;
@@ -236,15 +246,11 @@ while (true) {
     detectOverallWinner(playerWins, computerWins);
 
     if (playerWins === NUMBER_OF_GAMES_TO_WIN || computerWins === NUMBER_OF_GAMES_TO_WIN) break;
-    
-    prompt(`Keep playing until ${NUMBER_OF_GAMES_TO_WIN} wins? (y or n)`);
-    let answer = readline.question().toLowerCase()[0];
-    if (answer !== 'y') break;
+
+    if (!playAgain(`Keep playing until ${NUMBER_OF_GAMES_TO_WIN} wins? (y or n)`)) break;
   }
 
-  prompt('Play again? (y or n)');
-  let answer = readline.question().toLowerCase()[0];
-  if (answer !== 'y') break;
+  if (!playAgain(`Play until ${NUMBER_OF_GAMES_TO_WIN} wins again? (y or n)`)) break;
 }
 
 prompt('Thanks for playing Tic Tac Toe!');

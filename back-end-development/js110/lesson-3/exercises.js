@@ -99,26 +99,40 @@
 
 
 
-let obj = {
-  a: 1,
-  b: 2,
-  c: 3
-};
+// let obj = {
+//   a: 1,
+//   b: 2,
+//   c: 3
+// };
 
 
 
 
 
+// function trueOrFalse(string) {
+//   // return string === 'y' ? true : false;
+
+//   let arr = [1, 2, 3];
+
+//   return arr.map(x => {
+//     return x * 2;
+//   });
 
 
+// }
+
+// console.log(trueOrFalse('y'));
 
 
+let arr = 1;
 
 
+function thisTest(string) {
+  return string;
+}
 
 
-
-
+console.log(thisTest(`Keep playing until ${arr} wins? (y or n)`))
 
 
 
