@@ -16,6 +16,8 @@
 */
 const SUITE = ['C', 'D', 'H', 'S'];
 const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+const ACE_VALUE_ONE = 1;
+const ACE_VALUE_11 = 11;
 let playerDeck = [];
 let dealerDeck = [];
 let playerTotal = 0;
@@ -57,6 +59,63 @@ function prompt(string) {
 
 
 
+function onlyValues(deck) { // => ['10', '5', 'A', 'A', 'A', '4', '5'] // convertNonAces
+  return deck.map(value => value[1])
+    .join(' ')
+    .replace(/[^0-9A\s]/g, '10')
+    .split(' ');
+
+}
+
+function nonAceDeck(deck) {
+  return deck.filter(card => card !== 'A'); // array of only non-Aces
+}
+function aceDeck(deck) {
+  return deck.filter(card => card === 'A'); // array of only Aces
+}
+// function returnArray(deck, string = null) { // replace nonAceDeck and aceDeck functions above later
+//   return deck.filter(card => string ? card === string : card !== 'A');
+// }
+
+
+function sumNonAces(array) {
+  return array.reduce((acc, elem) => Number(acc) + Number(elem));
+}
+
+function sumAces(array) {
+  let firstSum = array.length * ACE_VALUE_ONE;      // 0  1  2  3  4
+  let secondSum = array.length - 1 + ACE_VALUE_11;  // 10 11 12 13 14
+  
+  return [firstSum, secondSum];
+}
+
+
+
+
+
+// sum
+function sumBoth(deck) {
+  let values = onlyValues(deck); // ['10', '5', 'A', 'A', 'A', '4', '5']
+  let nonAcesArray = nonAceDeck(values);
+  let acesArray = aceDeck(values);  
+
+  let nonAcesSum = sumNonAces(nonAcesArray);
+  let [firstAcesSum, secondAcesSum] = sumAces(acesArray);
+
+  // if firstacessum and secondacessum is not equal to [0, 10], continue
+
+
+
+}
+
+
+
+
+
+
+
+
+
 function sum(deck) { // if at least one ace, use sumWithAce, if not, use SumWithoutAce
   return checkForAce(convertNonAces(deck)) ? sumWithAce(convertNonAces(deck)) : sumWithoutAce(convertNonAces(deck));
 }
@@ -65,13 +124,34 @@ function checkForAce(deck) { // checks for at least 1 ace
   return deck.some(card => card === 'A');
 }
 
-function sumWithoutAce(deck) { // returns the sum of an array that does not have any aces
-  // return deck.reduce((acc, elem) => Number(acc) + Number(elem));
+// function sumWithoutAce(deck) { // returns the sum of an array that does not have any aces
+//   return [deck.reduce((acc, elem) => Number(acc) + Number(elem))];
+//   // return winOrBust(total);  
+// }
 
-  let total = deck.reduce((acc, elem) => Number(acc) + Number(elem));
-  return winOrBust(total); // 
+function sumAceOrNoAce(num1, num2) {
+  return [deck.reduce((acc, elem) => Number(acc) + Number(elem))];
+
+}
+
+function sumWithAce(deck) { // input format is ['A', 'A', '2', '2', '3', 'A', 'A']
+  let nonAceDeck = deck.filter(card => card !== 'A'); // array of only non-Aces
+  let numberOfAces = deck.filter(card => card === 'A').length; // number of aces
+
+  // let nonAceDeckSum = nonAceDeck.reduce((acc, elem) => Number(acc) + Number(elem)); // sum of non-Aces
+  let nonAceDeckSum = sumWithoutAce(nonAceDeck)[0];
+
+  firstSum = nonAceDeckSum + (numberOfAces * 1);
+  secondSum = nonAceDeckSum + numberOfAces - 1 + 11;
+
+  return [firstSum, secondSum]
+
+
+  
+  // return winOrBust(firstSum, secondSum);
   
 }
+
 
 function winOrBust(num1, num2) {
   playerTotal = num1;
@@ -86,29 +166,11 @@ function winOrBust(num1, num2) {
 }
 
 
-function sumWithAce(deck) { // input format is ['A', 'A', '2', '2', '3', 'A', 'A']
-  // let numberOfAces = deck.filter(card => card[1] === 'A').length;
-
-  let nonAceDeck = deck.filter(card => card !== 'A'); // array of only non-Aces
-  let numberOfAces = deck.filter(card => card === 'A').length; // number of aces
-  // let nonAceDeckSum = sumWithoutAce(nonAceDeck); // sum of non-Aces
-  let nonAceDeckSum = nonAceDeck.reduce((acc, elem) => Number(acc) + Number(elem)); // sum of non-Aces
-
-  firstSum = nonAceDeckSum + (numberOfAces * 1);
-  secondSum = nonAceDeckSum + numberOfAces - 1 + 11;
-  
-  return winOrBust(firstSum, secondSum);
-  
-}
 
 
-function convertNonAces(deck) { // => ['10', '5', 'A', 'A', 'A', '4', '5']
-  return deck.map(value => value[1])
-    .join(' ')
-    .replace(/[^0-9A\s]/g, '10')
-    .split(' ');
 
-}
+
+
 
 
 
@@ -133,7 +195,7 @@ while (mainDeck.length !== 48) {
 // PLAYER LOOP
 while (true) {
   
-  console.log(playerDeck);
+  // console.log(playerDeck);
 
   if (sum(playerDeck) === 21) {
     prompt('You have 21');
