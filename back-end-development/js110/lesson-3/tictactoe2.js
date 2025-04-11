@@ -159,12 +159,12 @@ while (true) {
     if (playerWins === NUMBER_OF_GAMES_TO_WIN || computerWins === NUMBER_OF_GAMES_TO_WIN) break;
     
     prompt(`Keep playing until ${NUMBER_OF_GAMES_TO_WIN} wins? (y or n)`);
-    let answer = readline.question().toLocaleLowerCase()[0];
+    let answer = readline.question().toLowerCase()[0];
     if (answer !== 'y') break;
   }
 
   prompt('Play again? (y or n)');
-  let answer = readline.question().toLocaleLowerCase()[0];
+  let answer = readline.question().toLowerCase()[0];
   if (answer !== 'y') break;
 }
 

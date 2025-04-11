@@ -135,8 +135,8 @@
 // console.log(thisTest(`Keep playing until ${arr} wins? (y or n)`))
 
 
-const SUITE = ['C', 'D', 'H', 'S'];
-const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
+// const SUITE = ['C', 'D', 'H', 'S'];
+// const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 
 // let mainDeck = SUITE.map(suit => {
 //   return VALUES.map(num => {
@@ -154,32 +154,67 @@ const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'
 
 // shuffle(mainDeck);
 
-let mainDeck = [['S', '5'], ['H', '2'], ['C', 'A'], ['H', 'A'], ['S', '8'], ['C', '10'], ['C', '10'], ['H', '10'], ['S', '2']];
-let valuesOnly = ['5', '2', 'A', 'A', '8', '10', '10', '10', '2']; // gotten by converNonAces(mainDeck)
+// let mainDeck = [['S', '5'], ['H', '2'], ['C', 'A'], ['H', 'A'], ['S', '8'], ['C', '10'], ['C', '10'], ['H', '10'], ['S', '2']];
+// let valuesOnly = ['5', '2', 'A', 'A', '8', '10', '10', '10', '2']; // gotten by converNonAces(mainDeck)
 
 
-function convertNonAces(deck) {
-  return deck.map(value => value[1])
-    .join(' ')
-    .replace(/[^0-9A\s]/g, '10')
-    .split(' ');
-}
+// function convertNonAces(deck) {
+//   return deck.map(value => value[1])
+//     .join(' ')
+//     .replace(/[^0-9A\s]/g, '10')
+//     .split(' ');
+// }
 
 
-let nonAceDeck = convertNonAces(mainDeck).filter(card => card !== 'A');
+// let nonAceDeck = convertNonAces(mainDeck).filter(card => card !== 'A');
 
 
 
 // console.log(mainDeck);
 // console.log(valuesOnly);
-console.log(nonAceDeck);
+// console.log(nonAceDeck);
 // console.log(convertNonAces(mainDeck));
 // console.log();
 
 
 
+// const readline = require('readline-sync');
+
+// function prompt(string) {
+//   console.log(`=> ${string}`);
+// }
+
+// function hitAgain() {
+//   prompt(`Hit again? (y or n)`);
+//   let answer = readline.question().toLowerCase().trim()[0];
+
+//   while (answer.match(/[^yn]/gi)) {
+//     prompt("Not a valid input. Select 'Y' or 'y' for 'yes'. Select 'N' or 'n' for 'no'.");
+//     answer = readline.question().toLowerCase().trim()[0];
+//   }
+
+//   return answer === 'y' ? true : false;
+
+// }
+
+// if (hitAgain()) {
+//   console.log('hello');
+// }
+
+// let playerDeck = [['D', 'K'], ['H', '4']];
+// console.log(`Your cards are: ${playerDeck}`)
 
 
+// let values = [22, 6];
+
+
+// console.log(values.sort((a, b) => a - b));
+// console.log(values.sort((a, b) => a - b).filter(num => num < 22).pop()) || values.sort((a, b) => a - b).pop();;
+
+// console.log(values);
+
+
+// console.log(hitAgain() === true);
 
 
 

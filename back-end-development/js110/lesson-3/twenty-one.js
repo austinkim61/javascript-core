@@ -1,36 +1,18 @@
-/*
-1. Initialize deck
-2. Deal cards to player and dealer
-3. Player turn: hit or stay
-   - repeat until bust or stay
-4. If player bust, dealer wins.
-5. Dealer turn: hit or stay
-   - repeat until total >= 17
-6. If dealer busts, player wins.
-7. Compare cards and declare winner.
-
-
-// to see in hands: [['H', '2'], ['S', 'J'], ['D', 'A']]
-
-
-*/
+const readline = require('readline-sync');
 const SUITE = ['C', 'D', 'H', 'S'];
 const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const ACE_VALUE_ONE = 1;
 const ACE_VALUE_11 = 11;
 let playerDeck = [];
 let dealerDeck = [];
-let playerTotal = 0;
-let dealerTotal = 0;
+let playerSum = 0;
+let dealerSum = 0;
 
 let mainDeck = SUITE.map(suit => {
   return VALUES.map(num => {
     return [suit, num];
   });
 }).flat();
-
-// FUNCTIONS
-// to see in hands: [['H', '2'], ['S', 'J'], ['D', 'A']]
 
 function shuffle(array) {
   for (let index = array.length - 1; index > 0; index--) {
@@ -39,152 +21,89 @@ function shuffle(array) {
   }
 }
 
-// function deal(array, person) {
-//   person.push(array.shift());
-// }
-
 function prompt(string) {
   console.log(`=> ${string}`);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-function onlyValues(deck) { // => ['10', '5', 'A', 'A', 'A', '4', '5'] // convertNonAces
+function onlyValues(deck) {
   return deck.map(value => value[1])
     .join(' ')
     .replace(/[^0-9A\s]/g, '10')
     .split(' ');
-
 }
 
-function nonAceDeck(deck) {
-  return deck.filter(card => card !== 'A'); // array of only non-Aces
+function deckValues(deck, string = null) {
+  return deck.filter(card => string ? card === string : card !== 'A');
 }
-function aceDeck(deck) {
-  return deck.filter(card => card === 'A'); // array of only Aces
-}
-// function returnArray(deck, string = null) { // replace nonAceDeck and aceDeck functions above later
-//   return deck.filter(card => string ? card === string : card !== 'A');
-// }
-
 
 function sumNonAces(array) {
-  return array.reduce((acc, elem) => Number(acc) + Number(elem));
+  return array.reduce((acc, elem) => Number(acc) + Number(elem), 0);
 }
 
 function sumAces(array) {
-  let firstSum = array.length * ACE_VALUE_ONE;      // 0  1  2  3  4
-  let secondSum = array.length - 1 + ACE_VALUE_11;  // 10 11 12 13 14
+  let firstSum = array.length * ACE_VALUE_ONE;
+  let secondSum = array.length - 1 + ACE_VALUE_11;
   
   return [firstSum, secondSum];
 }
 
-
-
-
-
-// sum
-function sumBoth(deck) {
+function sum(deck) {
   let values = onlyValues(deck); // ['10', '5', 'A', 'A', 'A', '4', '5']
-  let nonAcesArray = nonAceDeck(values);
-  let acesArray = aceDeck(values);  
+  let nonAcesArray = deckValues(values);
+  let acesArray = deckValues(values, 'A');  
 
   let nonAcesSum = sumNonAces(nonAcesArray);
   let [firstAcesSum, secondAcesSum] = sumAces(acesArray);
 
-  // if firstacessum and secondacessum is not equal to [0, 10], continue
-
-
-
-}
-
-
-
-
-
-
-
-
-
-function sum(deck) { // if at least one ace, use sumWithAce, if not, use SumWithoutAce
-  return checkForAce(convertNonAces(deck)) ? sumWithAce(convertNonAces(deck)) : sumWithoutAce(convertNonAces(deck));
-}
-
-function checkForAce(deck) { // checks for at least 1 ace
-  return deck.some(card => card === 'A');
-}
-
-// function sumWithoutAce(deck) { // returns the sum of an array that does not have any aces
-//   return [deck.reduce((acc, elem) => Number(acc) + Number(elem))];
-//   // return winOrBust(total);  
-// }
-
-function sumAceOrNoAce(num1, num2) {
-  return [deck.reduce((acc, elem) => Number(acc) + Number(elem))];
-
-}
-
-function sumWithAce(deck) { // input format is ['A', 'A', '2', '2', '3', 'A', 'A']
-  let nonAceDeck = deck.filter(card => card !== 'A'); // array of only non-Aces
-  let numberOfAces = deck.filter(card => card === 'A').length; // number of aces
-
-  // let nonAceDeckSum = nonAceDeck.reduce((acc, elem) => Number(acc) + Number(elem)); // sum of non-Aces
-  let nonAceDeckSum = sumWithoutAce(nonAceDeck)[0];
-
-  firstSum = nonAceDeckSum + (numberOfAces * 1);
-  secondSum = nonAceDeckSum + numberOfAces - 1 + 11;
-
-  return [firstSum, secondSum]
-
-
-  
-  // return winOrBust(firstSum, secondSum);
-  
-}
-
-
-function winOrBust(num1, num2) {
-  playerTotal = num1;
-
-  if (num1 === 21 || num2 === 21) {
-    return 21;
-  } else if (num1 > 22 && num2 > 22) {
-    return 'bust';
+  if (firstAcesSum === 0) {
+    return [nonAcesSum];
   } else {
-    return num2 !== undefined ? prompt(`Your total is ${num1} or ${num2}.`) : prompt(`Your total is ${num1}.`);
+    return [nonAcesSum + firstAcesSum, nonAcesSum + secondAcesSum];
   }
 }
 
+function twentyOneOrBust(sum, individual) {
+  if (sum.every(sum => sum > 21)) {    
+    prompt(`${individual} busted with ${sum[0]}.`);
+    return true;
+  } else if (sum.includes(21)) {
+    prompt(`${individual} has 21.`);
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function hitAgain() {
+  prompt(`Hit again? (y or n)`);
+  let answer = readline.question().toLowerCase().trim()[0];
+  while (answer.match(/[^yn]/gi)) {
+    prompt("Not a valid input. Select 'Y' or 'y' for 'yes'. Select 'N' or 'n' for 'no'.");
+    answer = readline.question().toLowerCase().trim()[0];
+  }
+  return answer === 'y' ? playerDeck.push(mainDeck.shift()) : false;
+}
+
+function getFinalValue(values) {
+  return values.map(value => value).sort((a, b) => a - b).filter(num => num < 22).pop() || values.map(value => value).sort((a, b) => a - b).pop();
+}
+
+function determineWinner(player, dealer) {
+
+  if ((player > 21) || (dealer > player)) {
+    prompt(`Dealer wins.`);
+  } else if ((dealer > 21) || (player > dealer)) {
+    prompt(`Player wins.`);    
+  } else if (player === dealer) {
+    prompt(`It's a tie.`);
+  }
+  prompt(`Player's cards: ${JSON.stringify(playerDeck)}\nPlayer's score: ${player < 22 ? player : `${player} (busted)`}.`);
+  prompt(`Dealer's cards: ${JSON.stringify(dealerDeck)}\nDealer's score: ${dealer < 22 ? dealer : `${dealer} (busted)`}.`);  
+}
 
 
 
 
-
-
-
-
-
-// ['10', '5', '2', '2', '3', '4', '5']
-
-
-
-
-
-
-
-
-
-// main actions
 shuffle(mainDeck);
 
 while (mainDeck.length !== 48) {
@@ -192,439 +111,28 @@ while (mainDeck.length !== 48) {
   dealerDeck.push(mainDeck.shift());
 }
 
-// PLAYER LOOP
+prompt(`Dealer's card: ${JSON.stringify(dealerDeck[0])} and unknown.`);
+
 while (true) {
+  playerSum = sum(playerDeck);
+  prompt(`Your cards are: ${JSON.stringify(playerDeck)}\nYour possible scores are: ${JSON.stringify(playerSum)}`);
+
+  if (twentyOneOrBust(playerSum, 'Player')) break; 
+
+  if (!hitAgain()) break;
+}
+
+while (true) {
+  dealerSum = sum(dealerDeck);
   
-  // console.log(playerDeck);
-
-  if (sum(playerDeck) === 21) {
-    prompt('You have 21');
-    break;
-  } else if (sum(playerDeck) === 'bust') {
-    prompt(`You busted with ${playerTotal}`);
-    break;
+  if (getFinalValue(playerSum) > 21) break; 
+  if (twentyOneOrBust(dealerSum, 'Dealer')) break; 
+    
+  while (dealerSum.every(sum => sum < 17)) {
+    dealerDeck.push(mainDeck.shift());
+    dealerSum = sum(dealerDeck);
   }
-
-
-  // prompt(sum(playerDeck)); // if reaches this point will show you total
-
-  // if (hitAgain() !== true) break;
-
-  break;
-
-
-
-
+  break;  
 }
 
-
-
-
-
-
-
-
-
-/*
-
-let playerTotal = 0;
-let dealerTotal = 0;
-
-
-FUNCTIONS
-function sum
-if deck contains ace: RETURN function sumWithAce
-if deck doesn't contain ace: RETURN function sumWithoutAce
-
-
-function forcedStay
-return function sum
-
-
-function sumWithAce:
-firstTotal = calculate total with 1 (REDUCE METHOD)
-secondTotal = calculate total with 11 (REDUCE METHOD)
-if (firstTotal === 21) || (secondTotal === 21) =====> RETURN 21
-if (firstTotal > 21) && (secondTotal > 21) =====> RETURN BUST
-if not:
-playerTotal = WHICHEVER IS GREATER
-display two possible totals ====> RETURN Your total is '10' or '20'
-
-
-function sumWithoutAce:
-calculate total (REDUCE METHOD)
-if total === 21 =====> RETURN 21
-if total > 21 ====> RETURN BUST
-if not: 
-playerTotal = total
-display total ====> RETURN Your total is '10'
-
-
-function hitAgain:
-prompt(hitAgain?)
-let answer = question.readline()
-
-while (answer.match(/[^yn]/gi))
-prompt(select only y or n)
-prompt(hitAgain)
-answer = question.readline
-
-if answer = y ====> person.push(deck.shift()) AND RETURN TRUE
-if answer = n ====> RETURN FALSE
-
-
-
-PLAYER TURN
-
-while loop 
-{
-if (sum(playerdeck) === 21) prompt(you have 21) AND playerTotal = 21 AND BREAK
-if (sum(playerdeck) === BUST) prompt(you busted with ${sum(playerdeck)}) AND playerTotal >= 22 AND BREAK
-
-prompt(sum(playerdeck)) // if reaches this point will show the possible totals
-
-
-if (hitAgain !== true) BREAK // exists loop // stay
-===> else it will PUSH ANOTHER CARD TO THE PLAYER FIRST AND CONTINUES LOOP
-}
-
-
-
-1. Initialize deck
-2. Deal cards to player and dealer
-3. Player turn: hit or stay
-   - repeat until bust or stay
-4. If player bust, dealer wins.
-5. Dealer turn: hit or stay
-   - repeat until total >= 17
-6. If dealer busts, player wins.
-7. Compare cards and declare winner.
-
-IN BETWEEN
-
-
-
-
-
-
-DEALERTURN 
-if (playerTotal > 21) ====> prompt(dealer wins) AND end game
-
-
-LOOP
-function dealerTurn
-if total is less than 17, hit
-dealerTotal = dealerTotal + hit value (CHECK FOR ACE)
-END LOOP
-
-if dealerTotal > 21 ===> prompt(player wins) AND end game
-
-
-compare dealerTotal to playerTotal
-prompt(player wins, dealer wins, or tie)
-
-
-
-
-
-
-
-
-
-
-
-*/
-
-
-
-
-
-// console.log(deck.length);
-// console.log(player.length);
-// console.log(dealer.length);
-// console.log(deck);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// function initialDeal(array) {
-//   player.push(array.shift());
-//   dealer.push(array.shift());
-//   player.push(array.shift());
-//   dealer.push(array.shift());
-// }
-
-// initialDeal(deck);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+determineWinner(getFinalValue(playerSum), getFinalValue(dealerSum));
