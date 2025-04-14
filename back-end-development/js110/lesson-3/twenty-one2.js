@@ -2,10 +2,12 @@ const readline = require('readline-sync');
 const SUITE = ['C', 'D', 'H', 'S'];
 const VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A'];
 const FACES_VALUES = 10;
-const ACE_VALUE_ONE = 1;
-const ACE_VALUE_11 = 11;
-const GOAL_VALUE = 21;
-const DEALER_MINIMUM = 17;
+const ACE_VALUE = 11;
+const GOAL_VALUE = 31;
+const DEALER_MINIMUM = 27;
+const GAMES_PER_MATCH = 3;
+
+let requiredWins = Math.ceil(GAMES_PER_MATCH / 2);
 let playerDeck = [];
 let dealerDeck = [];
 let playerWins = 0;
@@ -63,7 +65,7 @@ function sum(deck) {
   let values = onlyValues(deck);
   values.forEach(value => {
     if (value === 'A') {
-      sum += ACE_VALUE_11;
+      sum += ACE_VALUE;
     } else {
       sum += Number(value);
     }
@@ -101,28 +103,37 @@ function hitAgain(mainDeck) {
 
 function determineWinner(player, dealer) {
   prompt(`======== FINAL RESULTS ========`);
-  if ((player > GOAL_VALUE) || (dealer > player)) {
-    dealerWins++;
+  if (player > GOAL_VALUE) {
     prompt(`Dealer wins.`);
-  } else if ((dealer > GOAL_VALUE) || (player > dealer)) {
-    playerWins++;
+    dealerWins++;
+  } else if (dealer > GOAL_VALUE) {
     prompt(`Player wins.`);
+    playerWins++;
+  } else if (player > dealer) {
+    prompt(`Player wins.`);
+    playerWins++;
+  } else if (dealer > player) {
+    prompt(`Dealer wins.`);
+    dealerWins++;
   } else if (player === dealer) {
     prompt(`It's a tie.`);
-  }  
+  }
+
   prompt(`Player's cards: ${joinAnd(cardDisplay(playerDeck))}.`);
-  prompt(`Player's score: ${player < 22 ? player : `${player} (busted)`}.`);
+  prompt(`Player's score: ${player < (GOAL_VALUE + 1) ? player : `${player} (busted)`}.`);
   prompt(`Dealer's cards: ${joinAnd(cardDisplay(dealerDeck))}.`);
-  prompt(`Dealer's score: ${dealer < 22 ? dealer : `${dealer} (busted)`}.`);
+  prompt(`Dealer's score: ${dealer < (GOAL_VALUE + 1) ? dealer : `${dealer} (busted)`}.`);
 
 }
 
+function playAgain(player, dealer, gameOrMatch = 'game') {
+  let winner = bestOfFiveWinner(player, dealer);
 
-
-
-
-function playAgain() {
-  prompt(`Play again? (y or n)`);
+  if (winner && (gameOrMatch === 'game')) {
+    bestOfFiveNotification(winner);
+    return false;
+  }
+  prompt(`Play ${gameOrMatch} again? (y or n)`);
   let answer = readline.question().toLowerCase().trim()[0];
   while (answer.match(/[^yn]/gi)) {
     prompt("Not a valid input. Select 'Y' or 'y' for 'yes'. Select 'N' or 'n' for 'no'.");
@@ -130,25 +141,21 @@ function playAgain() {
   }
   console.clear();
   return answer === 'y' ? true : false;
-
 }
 
-
-function bestOfFive(player, dealer) {
-  if (playerWins === 5) {
-
-  } else if (dealerWins === 5) {
-    
+function bestOfFiveWinner(player, dealer) {
+  if (player === requiredWins) {
+    return 'Player';
+  } else if (dealer === requiredWins) {
+    return 'Dealer';
   }
-
-  
+  return false;
 }
 
-
-
-
-
-
+function bestOfFiveNotification(individual) {
+  prompt(`${individual} is the overall winner (${requiredWins} games).`);
+  prompt(`${individual} won ${individual === 'Player' ? playerWins : dealerWins } times out of ${playerWins + dealerWins} games`);
+}
 
 while (true) {
   playerWins = 0;
@@ -158,6 +165,9 @@ while (true) {
   while (true) {
     let mainDeck = initializeDeck();
     shuffle(mainDeck);
+
+    playerDeck = [];
+    dealerDeck = [];
 
     playerDeck.push(...dealTwoCards(mainDeck));
     dealerDeck.push(...dealTwoCards(mainDeck));
@@ -190,25 +200,12 @@ while (true) {
 
     determineWinner(playerSum, dealerSum);
 
-
-    if (!playAgain()) break;
+    if (!playAgain(playerWins, dealerWins)) break;
 
   }
 
-  if (!bestOfFive()) break;
-
-  prompt(`Play best out of five again?`);
-
-
-
+  if (!playAgain(playerWins, dealerWins, 'best of five')) break;
 
 }
 
-
-
-
-
-
-
-
-
+prompt('Thanks for playing Twenty-One!');
