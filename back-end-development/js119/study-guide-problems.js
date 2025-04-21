@@ -507,7 +507,7 @@ Code
 
 //   for (let i = 0; i < sortedArray[0].length; i++) {
 //     let currentString = sortedArray[0].slice(0, i + 1);
-//     if (array.every(word => word.includes(currentString))) {
+//     if (array.every(word => word.slice(0, i + 1).includes(currentString))) {
 //       resultString = currentString;
 //     }
 //   }
@@ -520,7 +520,7 @@ Code
 // console.log(commonPrefix(['throne', 'dungeon']) === ''); // true
 // console.log(commonPrefix(['throne', 'throne']) === 'throne'); // true
 
-
+// console.log(commonPrefix(['flower', 'flow', 'flifloght']) === 'flo'); // true
 
 
 
@@ -590,7 +590,7 @@ Code
 //   }
 
 //   for (let i = 1; i < array.length; i++) {
-//     let leftArray = array.slice(0,i);
+//     let leftArray = array.slice(0, i);
 //     let rightArray = array.slice(i + 1);
 //     let leftSum = leftArray.reduce((acc, elem) => acc + elem, 0);
 //     let rightSum = rightArray.reduce((acc, elem) => acc + elem, 0);
