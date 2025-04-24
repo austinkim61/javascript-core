@@ -1,36 +1,92 @@
+// const p = console.log;
+// const eq = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);
+
+
 // Problem 1
+/*
+- input: array
+- output: array
+- rules: if a number occurs multiple times, it should only be counted once
+
+D/A
+- iterate over every number in array
+  - possibly map method
+  - return an array of how many numbers are smaller than the iterated-over number
+    - set a counter and make sure no duplicates
 
 
+  - array of only uniques values
+    - let tempArr = []
+    - push array if !tempArr.includes(element)
+  - map original array
+    - filter method
+*/
+// function smallerNumbersThanCurrent(array) {
+//   let tempArr = [];
+//   array.forEach(num => {
+//     if (!tempArr.includes(num)) {
+//       tempArr.push(num);
+//     }
+//   });
 
+//   return array.map(num => {
+//     return tempArr.filter(element => element < num).length;
+//   });
+// }
 
+// const p = console.log;
+// const eq = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);
 
+// p(eq(smallerNumbersThanCurrent([8, 1, 2, 2, 3]), [3, 0, 1, 1, 2]));
+// p(eq(smallerNumbersThanCurrent([7, 7, 7, 7]), [0, 0, 0, 0]));
+// p(eq(smallerNumbersThanCurrent([6, 5, 4, 8]), [2, 1, 0, 3]));
+// p(eq(smallerNumbersThanCurrent([1]), [0]));
 
-
-
-const p = console.log;
-const eq = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);
-
-p(eq(smallerNumbersThanCurrent([8, 1, 2, 2, 3]), [3, 0, 1, 1, 2]));
-p(eq(smallerNumbersThanCurrent([7, 7, 7, 7]), [0, 0, 0, 0]));
-p(eq(smallerNumbersThanCurrent([6, 5, 4, 8]), [2, 1, 0, 3]));
-p(eq(smallerNumbersThanCurrent([1]), [0]));
-
-let myArray = [1, 4, 6, 8, 13, 2, 4, 5, 4];
-let result = [0, 2, 4, 5, 6, 1, 2, 3, 2];
-p(eq(smallerNumbersThanCurrent(myArray), result));
+// let myArray = [1, 4, 6, 8, 13, 2, 4, 5, 4];
+// let result = [0, 2, 4, 5, 6, 1, 2, 3, 2];
+// p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 
 
 
 // Problem 2
+/*
+- input: array of integers
+- output: the minimum sum of 5 consecutive numbers in the array
+- rules: if array contains fewer than 5 elements, return null
 
+D/A
+- if (array.length < 5) return null
 
+- rest of code:
+  - let minimum;
 
+  - for loop from 0 until there can no longer be 5 numbers to compare to
+    - if array length 10 then formula is:
+      - for (let i = 0; i <= array.length - 5; i++)
+        - array.slice(i, i + 5) => (0, 5)
+        - Math.sum(array)
+          - if current minimum is less than minimum, minimum = current minimum
+          - if (currentMinimum < minimum || minimum === undefined)
+*/
+// function minimumSum(array) {
+//   let minimum;
+//   if (array.length < 5) {
+//     return null;
+//   }
 
-
-
-
+//   for (let i = 0; i <= array.length - 5; i++) {
+//     let tempArr = array.slice(i, i + 5);
+//     // p(tempArr);
+//     let currentMinimum = tempArr.reduce((acc, current) => acc + current, 0);
+//     // (currentMinimum < minimum || minimum === undefined) ? minimum = currentMinimum : minimum;
+//     if (currentMinimum < minimum || minimum === undefined) {
+//       minimum = currentMinimum;
+//     }
+//   }
+//   return minimum;
+// }
 
 // const p = console.log;
 // p(minimumSum([1, 2, 3, 4]) === null);
@@ -44,13 +100,40 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 3
+/*
+- input: string
+- output: string
+- rules: every second character in every third word to be converted to uppercase
 
 
+D/A
+  - use split(' ') method
 
+  - for loop
+    - start at index 2 and increment at +3 levels
+    - length < array.length
 
+      - split method again
+        - map method (letter, index)
+          - if index % 2 !== 0
+            - letter.toUpperCase()
+*/
+// function toWeirdCase(string) {
+//   let array = string.split(' ');
+//   let nestedArray = array.map(word => word.split(''));
 
+//   for (let i = 2; i < array.length; i += 3) {
+//     nestedArray[i] = nestedArray[i].map((letter, index) => {
+//       if ((index % 2) !== 0) {
+//         return letter.toUpperCase();
+//       } else {
+//         return letter;
+//       }
+//     });
+//   }
 
-
+//   return nestedArray.map(element => element.join('')).join(' ');
+// }
 
 // let original = 'Lorem Ipsum is simply dummy text of the printing world';
 // let expected = 'Lorem Ipsum iS simply dummy tExT of the pRiNtInG world';
@@ -73,13 +156,47 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 4
+/*
+- input: array of integers
+- output: array of two numbers that are closest together in value
+- rules:
+  - the two numbers must be compared and be closest together in value
+  - if multiple pairs are equally close, return the pair that occurs first in the array
 
+D/A
+- let arr = [];
+- let difference;
+- do subtraction of numbers
 
+- forEach method on input array to iterate over every number (firstNum, firstIndex)
+  - forEach method on input array (secondNum, secondIndex)
+    - if firstIndex === secondIndex, skip
+    - let currentDifference = firstNum - secondNum;
+    - if currentDifference < difference || difference = undefined
+      - arr = [array[firstIndex], array[secondIndex]]
+      - difference = currentDifference
 
+return arr
+*/
+// function closestNumbers(array) {
+//   let arr = [];
+//   let difference;
 
+//   array.forEach((firstNum, firstIndex) => {
+//     array.forEach((secondNum, secondIndex) => {
+//       if (firstIndex !== secondIndex) {
+//         let currentDifference = Math.abs(firstNum - secondNum);
+//         if ((currentDifference < difference) || (difference === undefined)) {
+//           arr = [array[firstIndex], array[secondIndex]];
+//           difference = currentDifference;
+//         }
+//       }
+//     });
+//   });
 
+//   return arr;
 
-
+// }
 
 // const p = console.log;
 // const eq = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);
@@ -93,13 +210,40 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 5
+/*
+- input: string
+- output: character that occurs most often in the string (string)
+- rules:
+  - if multiple characters with the same greatest frequency occur, return the one that appears first
+  - case insensitive
 
+D/A
+- convert string to array
+- make all strings in the array lowercase
 
+- declare count
+- declare and initialize result to empty string ''
+- if newCount > count, newCount = count
+- use forEach method for iteration
+- use filter method and .length
+return result
 
+*/
+// function mostCommonChar(string) {
+//   let count;
+//   let result = '';
+//   let array = string.toLowerCase().split('');
 
+//   array.forEach(char => {
+//     let newCount = array.filter(currentChar => currentChar === char).length;
+//     if ((newCount > count) || (count === undefined)) {
+//       count = newCount;
+//       result = char;
+//     }
+//   });
 
-
-
+//   return result;
+// }
 
 // const p = console.log;
 // p(mostCommonChar('Hello World') === 'l');
@@ -118,13 +262,41 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 6
+/*
+- input: string
+- output: hash in which keys represent the lowercase letters in the string and the values represent how often the corresponding letter occurs in the string
+- rules:
+  - empty string returns empty object
+  - ignore non-lowercase
+  - ignore non-alphabetic
 
+D/A
+- let obj = {};
+- obj[key] = value
+  - if undefined, then add and set to one
 
+- let array = string.split('')
+- array.forEach
+  -if letter1 === letter1.toLowerCase()
+    - add to object
 
+- return obj
 
+*/
+// function countLetters(string) {
+//   let obj = {};
+//   let arr = string.split('');
 
+//   arr.forEach(char => {
+//     if (char === char.toLowerCase() && (char >= 'a' && char <= 'z')) {
 
+//       // obj[char] ? obj[char] += 1 : (obj[char] = 1);
+//       obj[char] = (obj[char] ?? 0)+ 1;
+//     }
+//   });
 
+//   return obj;
+// }
 
 // const p = console.log;
 // const objeq = function(obj1, obj2) {
@@ -165,13 +337,56 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 7
+/*
+- input: array of integers
+- output: the number of identical pairs
+- rules:
+  - if array is empty or contains exactly one value, return 0
+  - additional pairs of same numbers count towards the total
+
+D/A
+- do not modify original array
+- create sliced array 'slice'
+  - have to splice at the index for 'slice'
+- use indexOf and last indexOf
 
 
 
+- count = 0;
+- if array.length < 2 return count
 
+- create sliced array
 
+- forEach(num) method over original array
+  - let firstIndex = slice.indexOf(num)
+  - let lastIndex = slice.lastIndexOf(num)
+  - if (firstIndex === -1) continue
+  - if (firstIndex !== lastIndex) count++
+    - slice.splice(lastIndex, 1)
+    - slice.splice(firstIndex, 1)
 
+- return count;
+*/
+// function pairs(array) {
+//   let count = 0;
+//   let slice = array.slice();
 
+//   if (array.length < 2) {
+//     return count;
+//   }
+
+//   array.forEach(num => {
+//     let firstIndex = slice.indexOf(num);
+//     let lastIndex = slice.lastIndexOf(num);
+//     if ((firstIndex !== -1) && (firstIndex !== lastIndex)) {
+//       count++
+//       slice.splice(lastIndex, 1);
+//       slice.splice(firstIndex, 1);
+//     }
+//   });
+
+//   return count;
+// }
 
 // const p = console.log;
 // p(pairs([3, 1, 4, 5, 9, 2, 6, 5, 3, 5, 8, 9, 7]) === 3);
@@ -187,13 +402,56 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 8
+/*
+- input: non-empty string
+- output: length of longest vowel substring (aeiou)
+- rules: has to be a, e, i, o, or u
+
+D/A
+- turn string to an array that is all lower case using split('')
+- string of only vowels
+- create an array of substrings
+  - empty array at first
+- let count = 0
+
+- use push and slice method from 0 to end
+  - use push slice method from 1 to end
+
+- take array and make it into nested array using split('')
+- filter method where everything in the array:
+  - vowels.includes('char')
+- forEach on the filtered array
+  - if length of that filter array > count
+    - count = new Length
+
+- return count
+*/
+// function longestVowelSubstring(string) {
+//   let arr = string.toLowerCase().split('');
+//   let vowels = 'aeiou';
+//   let count = 0;
+//   let substrings = [];
+
+//   for (let startIndex = 0; startIndex < arr.length; startIndex++) {
+//     for (let endIndex = startIndex + 1; endIndex <= arr.length; endIndex++) {
+//       substrings.push(arr.slice(startIndex, endIndex));
+//     }
+//   }
+
+//   let filteredArray = substrings.filter(array => {
+//     return array.every(char => vowels.includes(char));
+//   });
 
 
+//   filteredArray.forEach(element => {
+//     if (element.length > count) {
+//       count = element.length;
+//     }
+//   });
 
+//   return count;
 
-
-
-
+// }
 
 // const p = console.log;
 // p(longestVowelSubstring('cwm') === 0);
@@ -209,13 +467,53 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 9
+/*
+- input: two string arguments
+- output: number of times the second string occurs in the first string
+- rules:
+  - overlapping strings don't count
+    - e.g. 'babab' contains 1 instance of 'bab'
+  - second argument is never an empty string
 
+D/A
+let arr = str1.split('')
+let secondStringLength = str2.length
+let count = 0;
+let i = 0;
 
+while ((i + secondStringLength) < arr.length)
+  - let slice = arr.slice(i, i + secondStringLength)
 
+  - if slice.join('') === str2
+    - count++
+    - arr.splice(i, i + secondStringLength)
+    - i = 0
+  - else
+    - i++
 
+  - return count
+*/
+// function countSubstrings(str1, str2) {
+//   let arr = str1.split('');
+//   let secondStringLength = str2.length;
+//   let count = 0;
+//   let i = 0;
 
+//   while ((i + secondStringLength) <= arr.length) {
+//     let slice = arr.slice(i, i + secondStringLength);
+//     // p(slice);
+//     if (slice.join('') === str2) {
+//       count++;
+//       arr.splice(i, i + secondStringLength);
+//       p(arr);
+//       i = 0;
+//     } else {
+//       i++;
+//     }
+//   }
 
-
+//   return count;
+// }
 
 // const p = console.log;
 // p(countSubstrings('babab', 'bab') === 1);
@@ -233,27 +531,73 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 10
+/*
+- input: string of digits
+- output: number of even-numbered substrings that can be formed
+- rules:
+  - 1432 will form these even numbered substrings:
+    - 14, 1432, 4, 432, 32, 2
+
+D/A
+let arr = string.split('')
+let substrings = []
+
+let result = []
+- at the end filter result to those where result.filter(num => Number(num) % 2 === 0).length
+
+
+pushing substrings
+
+outer for loop (let startIndex = 0; startIndex < array.length; startIndex++)
+  - inner for loop (let endIndex = startIndex + 1; endIndex <= array.length; endIndex ++)
+    - substrings.push(arr.slice(startIndex, endIndex))
+
+
+
+return substrings.filter(num => Number(num) % 2 === 0).length
+
+
+
+
+
+*/
+function evenSubstrings(string) {
+  let arr = string.split('');
+  let substrings = [];
+
+  for (let startIndex = 0; startIndex < arr.length; startIndex++) {
+    for (let endIndex = startIndex + 1; endIndex <= arr.length; endIndex++) {
+      substrings.push(arr.slice(startIndex, endIndex));
+    }
+  }
+
+  return substrings.map(element => Number(element
+    .join('')))
+    .filter(num => num % 2 === 0).length;
+}
 
 
 
 
 
 
-
-
-// const p = console.log;
-// p(evenSubstrings('1432') === 6);
-// p(evenSubstrings('3145926') === 16);
-// p(evenSubstrings('2718281') === 16);
-// p(evenSubstrings('13579') === 0);
-// p(evenSubstrings('143232') === 12);
+const p = console.log;
+p(evenSubstrings('1432') === 6);
+p(evenSubstrings('3145926') === 16);
+p(evenSubstrings('2718281') === 16);
+p(evenSubstrings('13579') === 0);
+p(evenSubstrings('143232') === 12);
 
 
 
 
 
 // Problem 11
+/*
 
+
+
+*/
 
 
 
@@ -275,7 +619,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 12
+/*
 
+
+
+*/
 
 
 
@@ -298,7 +646,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 13
+/*
 
+
+
+*/
 
 
 
@@ -317,7 +669,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 14
+/*
 
+
+
+*/
 
 
 
@@ -339,7 +695,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 15
+/*
 
+
+
+*/
 
 
 
@@ -358,7 +718,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 16
+/*
 
+
+
+*/
 
 
 
@@ -381,7 +745,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 17
+/*
 
+
+
+*/
 
 
 
@@ -403,7 +771,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 18
+/*
 
+
+
+*/
 
 
 
@@ -427,7 +799,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 19
+/*
 
+
+
+*/
 
 
 
@@ -447,7 +823,11 @@ p(eq(smallerNumbersThanCurrent(myArray), result));
 
 
 // Problem 20
+/*
 
+
+
+*/
 
 
 
