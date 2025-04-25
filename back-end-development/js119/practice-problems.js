@@ -105,7 +105,6 @@ D/A
 - output: string
 - rules: every second character in every third word to be converted to uppercase
 
-
 D/A
   - use split(' ') method
 
@@ -227,7 +226,6 @@ D/A
 - use forEach method for iteration
 - use filter method and .length
 return result
-
 */
 // function mostCommonChar(string) {
 //   let count;
@@ -281,7 +279,6 @@ D/A
     - add to object
 
 - return obj
-
 */
 // function countLetters(string) {
 //   let obj = {};
@@ -349,7 +346,6 @@ D/A
 - create sliced array 'slice'
   - have to splice at the index for 'slice'
 - use indexOf and last indexOf
-
 
 
 - count = 0;
@@ -545,48 +541,40 @@ let substrings = []
 let result = []
 - at the end filter result to those where result.filter(num => Number(num) % 2 === 0).length
 
-
 pushing substrings
 
 outer for loop (let startIndex = 0; startIndex < array.length; startIndex++)
   - inner for loop (let endIndex = startIndex + 1; endIndex <= array.length; endIndex ++)
     - substrings.push(arr.slice(startIndex, endIndex))
 
-
-
 return substrings.filter(num => Number(num) % 2 === 0).length
-
-
-
-
-
 */
-function evenSubstrings(string) {
-  let arr = string.split('');
-  let substrings = [];
+// function evenSubstrings(string) {
+//   let arr = string.split('');
+//   let substrings = [];
 
-  for (let startIndex = 0; startIndex < arr.length; startIndex++) {
-    for (let endIndex = startIndex + 1; endIndex <= arr.length; endIndex++) {
-      substrings.push(arr.slice(startIndex, endIndex));
-    }
-  }
+//   for (let startIndex = 0; startIndex < arr.length; startIndex++) {
+//     for (let endIndex = startIndex + 1; endIndex <= arr.length; endIndex++) {
+//       substrings.push(arr.slice(startIndex, endIndex));
+//     }
+//   }
 
-  return substrings.map(element => Number(element
-    .join('')))
-    .filter(num => num % 2 === 0).length;
-}
-
-
+//   return substrings.map(element => Number(element
+//     .join('')))
+//     .filter(num => num % 2 === 0).length;
+// }
 
 
 
 
-const p = console.log;
-p(evenSubstrings('1432') === 6);
-p(evenSubstrings('3145926') === 16);
-p(evenSubstrings('2718281') === 16);
-p(evenSubstrings('13579') === 0);
-p(evenSubstrings('143232') === 12);
+
+
+// const p = console.log;
+// p(evenSubstrings('1432') === 6);
+// p(evenSubstrings('3145926') === 16);
+// p(evenSubstrings('2718281') === 16);
+// p(evenSubstrings('13579') === 0);
+// p(evenSubstrings('143232') === 12);
 
 
 
@@ -594,16 +582,41 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 11
 /*
+- input: non-empty string
+- output: array consisting of a string and an integer
+- rules:
+  - s === t * k
+    - s is the string
+    - t is the returned array
+    - k is the integer component of the returned array
+  - t and k should be the shortest possible substirng and the largest possible repeat count that satisfies this equation
+  - string arguments always consister of lowercase alphabetic letters
 
+D/A
+- iterate over a string
 
+- for loop (let i = 1; i < string.length; i++)
+  - let multiplier = string.length / i
+  - if multiplier % i !== 0, then continue
 
+  - substring = string.slice(0, i)
+  - if substring.repeat(multiplier) === string
+    - return [substring, multiplier]
 */
+// function repeatedSubstring(string) {
+//   for (let i = 1; i <= string.length; i++) {
+//     let multiplier = string.length / i;
 
+//     if (string.length % multiplier !== 0) {
+//       continue;
+//     }
 
-
-
-
-
+//     let substring = string.slice(0, i);
+//     if (substring.repeat(multiplier) === string) {
+//       return [substring, multiplier];
+//     }
+//   }
+// }
 
 // const p = console.log;
 // const eq = (arr1, arr2) => JSON.stringify(arr1) === JSON.stringify(arr2);
@@ -620,16 +633,38 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 12
 /*
+- input: string
+- output: true if string is a pangram, false if not
+- rules:
+  - pangrams are sentences that contain every letter of the alphabet at least once
+  - case insensitive
 
+D/A
 
+let obj = {}
 
+iterate over string
+- for loop (i = 0; i < string.length; i++)
+  - if char >= 'a' && char <= 'z'
+    - obj[char] = true
+
+- let array = Object.keys(obj)
+- array.length === 26 ? true : false
 */
+// function isPangram(string) {
+//   let obj = {};
 
+//   for (let char of string) {
+//     if ((char.toLowerCase()) >= 'a' && (char.toLowerCase() <= 'z')) {
+//       obj[char.toLowerCase()] = true;
+//     }
+//   }
 
+//   let arr = Object.keys(obj);
 
+//   return arr.length === 26 ? true : false;
 
-
-
+// }
 
 // const p = console.log;
 // p(isPangram('The quick, brown fox jumps over the lazy dog!') === true);
@@ -647,16 +682,39 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 13
 /*
+- input: two strings
+- output: returns true if some portion of the characters in the first string can be rearranged to match the characters in the second, otherwise return false
+- rules:
+  - both strings contain only lowercase alphabetic characters
+  - neither string will be empty
 
+D/A
+- create array of first string using split('')
 
+- iterate over 2nd string
+  - if char is in first string (indexOf)
+    - remove from array (array.splice(indexOf, 1))
+    - continue
+  - else
+    - return false
 
+  - return true
 */
+// function unscramble(str1, str2) {
+//   let arr1 = str1.split('');
 
+//   for (let i = 0; i < str2.length; i++) {
+//     let indexOfChar = arr1.indexOf(str2[i]);
 
+//     if (indexOfChar === - 1) {
+//       return false;
+//     } else {
+//       arr1.splice(indexOfChar, 1);
+//     }
+//   }
 
-
-
-
+//   return true;
+// }
 
 // const p = console.log;
 // p(unscramble('ansucchlohlo', 'launchschool') === true);
@@ -670,16 +728,42 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 14
 /*
+- input: single integer argument
+- output: return sum of all multiples of 7 or 11 that are less than the argument
+- rules:
+  - if a number is a multipl of both 7 and 11 count it just once
+  - if argument is negative, return 0
 
+D/A
+ - let arr = []
 
-
+ - push all multiples of 7 that are below the input value into an array as long as that array does not include that item
+ - push all multiples of 11 that are below the input value into an array as long as that array does not include that item
+ - use reduce method on the array
 */
+// function sevenEleven(num) {
+//   const SEVEN = 7;
+//   const ELEVEN = 11;
 
+//   let newSeven = 7;
+//   let newEleven = 11;
 
+//   let resultArr = [];
 
+//   while (newSeven < num) {
+//     resultArr.push(newSeven);
+//     newSeven += SEVEN;
+//   }
 
+//   while (newEleven < num) {
+//     if (!resultArr.includes(newEleven)) {
+//       resultArr.push(newEleven);
+//     }
+//     newEleven += ELEVEN;
+//   }
 
-
+//   return resultArr.reduce((acc, elem) => acc + elem, 0);
+// }
 
 // const p = console.log;
 // p(sevenEleven(10) === 7);
@@ -696,16 +780,41 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 15
 /*
+- input: string argument of numeric digits
+- output: greatest product of four consecutive digits in the string
+- rules:
+  - argument will always have more than four digits
 
+D/A
+let arr = string.split('')
+let subArr = []
 
+  - make substrings of 4 characters each
+  - outer loop (i = 0; i <= arr.length - 4; i++)
+    - inner loop (j = i + 1 + 4; j <= arr.length; j++)
+      - subArr.push(arr.slice(i, j))
 
+  - map()
+    - Number(subArr.join(''))
+
+  - forEach.reduce
+
+  - sort b - a
+  - return at index [0]
 */
+// function greatestProduct(string) {
+//   let arr = string.split('');
+//   let subArr = [];
 
+//   for (let i = 0; i <= (arr.length - 4); i++) {
+//     subArr.push(arr.slice(i, i + 4));
+//   }
 
+//   return subArr.map(element => element
+//     .reduce((acc, elem) => acc * elem, 1))
+//     .sort((a, b) => a - b)[subArr.length - 1]
 
-
-
-
+// }
 
 // const p = console.log;
 // p(greatestProduct('23456') === 360);      // 3 * 4 * 5 * 6
@@ -719,16 +828,46 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 16
 /*
+- input: string
+- output: the count of distinct case-insensitive alphabetic characters and numeric digits that occur more than once in the input string
+- rules:
+  - input string only contains alphanumeric characters
+  - case insensitive
 
+D/A
+let uniqueChars = []
+let count = 0
 
+create array of unique characters
 
+string.toLowerCase().split('').forEach(char => if uniqueChars doesn't have, then push)
+
+- iterate over uniqueChars
+  - if first indexOf and lastIndexOf string is the same
+    - count ++
+
+return count
 */
+// function distinctMultiples(string) {
+//   let uniqueChars = [];
+//   let count = 0;
+//   let lowerCaseString = string.toLowerCase();
+//   lowerCaseString.toLowerCase().split('').forEach(char => {
+//     if (!uniqueChars.includes(char)) {
+//       uniqueChars.push(char);
+//     }
+//   });
 
+//   uniqueChars.forEach(char => {
+//     let first = lowerCaseString.indexOf(char);
+//     let last = lowerCaseString.lastIndexOf(char);
+//     if (first !== last) {
+//       count++;
+//     }
+//   });
 
-
-
-
-
+//   return count;
+// }
 
 // const p = console.log;
 // p(distinctMultiples('xyz') === 0);              // (none)
@@ -746,25 +885,81 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 17
 /*
+- input: array of integers
+- output: minimum integer value that can be appended to the array so the sum of
+    all elements equal the closest prime number that is greater than the current sum of numbers
+    - example: [1, 2, 3] sum to 6
+      - nearest prime number greater than 6 is 7
+      - return nearest prime number - sum of array
+- rules:
+  - array will always have at least 2 integers
+  - all values in the array will be positive
+  - there may be miltiple occurrences of the various numbers in the array
 
 
 
+D/A
+let sum = array.reduce
+
+prime number loop (hardest part)
+
+- if sum % 2 === 0
+  - start of i is sum + 1
+  - otherwise, start of i is sum + 2
+
+
+loop for (let i = startOfI; i > 0; i += 2)
+  - if (function(i) === true)
+    - return num
+
+  function(num) to check if prime
+
+for loop (let i = 1; i < num; i += 2)
+  - let count = 0
+  - if count is > 2
+    - return false
+  - if num % i === 0
+    - count++
+
+  - return true
+
+return nearest prime number - sum of array
 */
+// function nearestPrimeSum(array) {
+//   let sum = array.reduce((acc, elem) => acc + elem, 0);
 
+//   let startOfI = 0;
+//   sum % 2 === 0 ? (startOfI = sum + 1) : (startOfI = sum + 2);
 
+//   for (let i = startOfI; i > 0; i += 2) {
+//     if (checkPrime(i) === true) {
+//       return (i - sum);
+//     }
+//   }
 
+// }
 
+// function checkPrime(num) { // num = 9
+//   let count = 0;
 
+//   for (let i = 1; i < num; i++) {
+//     if ((num % i) === 0) {
+//       count++;
+//     }
+//     if (count > 1) {
+//       return false;
+//     }
+//   }
 
+//   return true;
+// }
 
 // const p = console.log;
-// p(nearestPrimeSum([1, 2, 3]) === 1);        // Nearest prime to 6 is 7
-// p(nearestPrimeSum([5, 2]) === 4);           // Nearest prime to 7 is 11
-// p(nearestPrimeSum([1, 1, 1]) === 2);        // Nearest prime to 3 is 5
-// p(nearestPrimeSum([2, 12, 8, 4, 6]) === 5); // Nearest prime to 32 is 37
-
-// // Nearest prime to 163 is 167
-// p(nearestPrimeSum([50, 39, 49, 6, 17, 2]) === 4);
+// p(nearestPrimeSum([1, 2, 3]) === 1);              // Nearest prime to 6 is 7
+// p(nearestPrimeSum([5, 2]) === 4);                 // Nearest prime to 7 is 11
+// p(nearestPrimeSum([1, 1, 1]) === 2);              // Nearest prime to 3 is 5
+// p(nearestPrimeSum([2, 12, 8, 4, 6]) === 5);       // Nearest prime to 32 is 37
+// p(nearestPrimeSum([50, 39, 49, 6, 17, 2]) === 4); // Nearest prime to 163 is 167
 
 
 
@@ -772,16 +967,48 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 18
 /*
+- input: array of integers
+- output: index N for which all numbers with an index less than N sum to the same value as the numbers with an index greater than N
+- rules:
+  - if no possible combination, return -1
+  - sum of numbers to left of index 0 is 0 and similarly for last index
 
+D/A
+let leftOfIndex = []
+let rightOfIndex = []]
+let leftSum = 0
+let rightSum = 0
 
+loop
+  - let leftOfIndex = array.slice(0, i)
+  - let rightOfIndex = array.slice(i, array.length)
+  - let leftSum = leftOfIndex.reduce
+  - let rightSum = rightOfIndex.reduce
+  - if leftSum === rightSum
+    - return index
 
+return -1
 */
+// function equalSumIndex(array) {
 
+//   let leftOfIndex = [];
+//   let rightOfIndex = [];
+//   let leftSum = 0;
+//   let rightSum = 0;
 
+//   for (let i = 0; i < array.length; i++) {
+//     leftOfIndex = array.slice(0, i);
+//     rightOfIndex = array.slice(i + 1, array.length);
 
+//     leftSum = leftOfIndex.reduce((acc, elem) => acc + elem, 0);
+//     rightSum = rightOfIndex.reduce((acc, elem) => acc + elem, 0);
 
-
-
+//     if (leftSum === rightSum) {
+//       return i;
+//     }
+//   }
+//   return -1;
+// }
 
 // const p = console.log;
 // p(equalSumIndex([1, 2, 4, 4, 2, 3, 2]) === 3);
@@ -800,16 +1027,22 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 19
 /*
+- input: array of integers
+- output: integer that appears an odd number of times
+- rules:
+  - there will always be exactly one such integer in the input array
 
-
-
+D/A
+use filter method and length % 2 !== 0
 */
-
-
-
-
-
-
+// function oddFellow(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     let length = array.filter(num => array[i] === num).length;
+//     if (length % 2 === 1) {
+//       return array[i];
+//     }
+//   }
+// }
 
 // const p = console.log;
 // p(oddFellow([4]) === 4);
@@ -824,16 +1057,25 @@ p(evenSubstrings('143232') === 12);
 
 // Problem 20
 /*
+- input: array of numbers
+- output: number in the array that differents from all the rest
+- rules:
+  - array will always contain at least 3 numbers
+  - there will always be exactly one number that is different
 
-
-
+D/A
+- use indexOf and lastIndexOf
+  - if indexOf and lastIndexOf is the same, return that number
 */
-
-
-
-
-
-
+// function whatIsDifferent(array) {
+//   for (let i = 0; i < array.length; i++) {
+//     let first = array.indexOf(array[i]);
+//     let last = array.lastIndexOf(array[i]);
+//     if (first === last) {
+//       return array[i];
+//     }
+//   }
+// }
 
 // const p = console.log;
 // p(whatIsDifferent([0, 1, 0]) === 1);
