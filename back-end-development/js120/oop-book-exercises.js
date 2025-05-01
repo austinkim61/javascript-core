@@ -96,20 +96,172 @@
 
 
 // The Object Model Exercises
+// Exercise 1
+/*
+Application that manages different types of animals such as dogs, cats, and birds
+Each animal can eat, sleep, make sounds, etc., but they do so in different ways
 
+Which concepts discussed in this chapter most closely describes the features of the scenario described above?
+
+=> Polymorphism: each animal is a different species but each has behaviors that are specific to that animal
+*/
+
+
+
+// Exercise 2
+/*
+Application that uses and manipulates objects that represent automobiles
+Each automobile has a make, model, year, and methods that provide the ability to start, drive, and park the vehicle
+All automobiles share the same set of methods, but the make, model, and year will vary between automobiles
+
+Which of the concepts discussed in this chapter most closely describes the features of the scenario described above?
+
+=> Encapsulation: each automobile has different state but they all share the same behaviors
+*/
+
+
+
+// Exercise 3
+/*
+Given the application desribed in the previous exercise, which items are part of an automobile's state? Which items provide its behavior?
+
+=> State: make, model, and year
+=> Behavior: start, drive, and park
+*/
+
+
+
+// Exercise 4
+/*
+Application that manages a collection of living things, including plants and animals
+Plants include trees and flowers, while animals include mammals and birds
+
+Which of the concepts discussed in this chapter most closely describes the feature of the scenario described above?
+
+=> Inheritance:
+  - plants and animals would inherit from a type that includes living things
+  - trees and flowers would inherit from a plants type
+  - mammals and birds would inherit from the animals
+
+*/
 
 
 
 
 
 // Object Factories Exercises
+// Exercise 1
+// function createFruit(name, color) {
+//   return {
+//     name,
+//     color,
 
+//     isRipe() {
+//       return `This ${this.name} is ripe.`;
+//     },
+
+//     describe() {
+//       return `This ${this.name} is ${this.color}.`
+//     },
+//   };
+// }
+
+// let apple = createFruit('Apple', 'Red');
+// let banana = createFruit('Banana', 'Yellow');
+// let blackberry = createFruit('Blackberry', 'Black');
+
+// console.log(apple.isRipe());
+// console.log(apple.describe());
+
+// console.log(banana.isRipe());
+// console.log(banana.describe());
+
+// console.log(blackberry.isRipe());
+// console.log(blackberry.describe());
+
+
+
+// Exercise 2
+// function smartphone(brand, model, releaseYear) {
+//   return {
+//     brand,
+//     model,
+//     releaseYear,
+
+//     checkBatteryLevel() {
+//       return `${this.brand} ${this.model} has 69% battery remaining.`
+//     },
+
+//     displayInfo() {
+//       return `${this.releaseYear} ${this.brand} ${this.model}`
+//     },
+//   };
+// }
+
+// let iphone12 = smartphone('Apple', 'iPhone 12', 2020);
+// let galaxyS21 = smartphone('Samsung', 'Galaxy S21', 2021);
+
+// console.log(iphone12.checkBatteryLevel());
+// console.log(iphone12.displayInfo());
+
+// console.log(galaxyS21.checkBatteryLevel());
+// console.log(galaxyS21.displayInfo());
+
+
+
+// Exercise 3
+// function createInstrument(name, type) {
+//   return {
+//     name,
+//     type,
+
+//     play() {
+//       console.log(`We are playing a tune on this ${this.name}`);
+//     },
+
+//     showType() {
+//       console.log(`This ${this.name} is a ${this.type} instrument`);
+//     },
+//   };
+// }
+
+// let violin = createInstrument('violin', 'string');
+// violin.play();
+// violin.showType();
+
+// let flute = createInstrument('flute', 'wind');
+// flute.play();
+// flute.showType();
+
+// let drum = createInstrument('drum', 'percussion');
+// drum.play();
+// drum.showType();
 
 
 
 
 
 // Classes Exercises
+// Exercise 1
+
+
+
+
+// Exercise 2
+
+
+
+
+// Exercise 3
+
+
+
+
+// Exercise 4
+
+
+
+
 
 
 
@@ -117,6 +269,30 @@
 
 
 // More About Classes Exercises
+// Exercise 1
+
+
+
+
+// Exercise 2
+
+
+
+
+// Exercise 3
+
+
+
+
+// Exercise 4
+
+
+
+
+// Exercise 5
+
+
+
 
 
 
@@ -124,6 +300,14 @@
 
 
 // Protptypal Inheritance Exercises
+// Exercise 1
+
+
+
+
+// Exercise 2
+
+
 
 
 
