@@ -243,26 +243,126 @@ Which of the concepts discussed in this chapter most closely describes the featu
 
 // Classes Exercises
 // Exercise 1
+// class Smartphone {
+//   constructor(brand, model, releaseYear) {
+//     this.brand = brand;
+//     this.model = model;
+//     this.releaseYear = releaseYear;
+//   }
 
+//   checkBatteryLevel() {
+//     return `${this.brand} ${this.model} has 69% battery remaining.`;
+//   }
+
+//   displayInfo() {
+//     return `${this.releaseYear} ${this.brand} ${this.model}`;
+//   }
+// }
+
+// const iphone12 = new Smartphone('Apple', 'iPhone 12', 2020);
+// const galaxyS21 = new Smartphone('Samsung', 'Galaxy S21', 2021);
+
+// console.log(iphone12.checkBatteryLevel());
+// console.log(iphone12.displayInfo());
+
+// console.log(galaxyS21.checkBatteryLevel());
+// console.log(galaxyS21.displayInfo());
+
+// console.log(iphone12);
+// console.log(galaxyS21);
 
 
 
 // Exercise 2
+// If you have a Dog class and an object assigned to a variable named boo, how can you tell whether the object is an instance of the Dog class?
 
+// => console.log(boo instanceof Dog); // true if 'boo' is a Dog, false if it is not
+// => console.log(boo); // Dog { name: 'Boo', color: 'chocolate', age: 3 }
 
 
 
 // Exercise 3
+// class Vehicle {
+//   constructor(color, weight, model) {
+//     this.color = color;
+//     this.weight = weight;
+//     this.model = model
+//   }
 
+//   accelerate() {
+//     return `${this.model} is accelerating.`;
+//   }
+
+//   decelerate() {
+//     return `${this.model} is decelerating.`;
+//   }
+// }
+
+// class Car extends Vehicle {
+//   constructor(color, weight, model, licenseNumber) {
+//     super(color, weight, model);
+//     this.model = model;
+//     this.licenseNumber = licenseNumber;
+//   }
+
+//   honk() {
+//     return `Honk honk.`;
+//   }
+// }
+
+// class Boat extends Vehicle {
+//   constructor(color, weight, model, homePort) {
+//     super(color, weight, model);
+//     this.model = model;
+//     this.homePort = homePort;
+//   }
+
+//   dropAnchor() {
+//     return 'Dropping anchor.';
+//   }
+// }
+
+// class Plane extends Vehicle {
+//   constructor(color, weight, model, airlineName) {
+//     super(color, weight, model);
+//     this.model = model;
+//     this.airlineName = airlineName;
+//   }
+
+//   takeOff() {
+//     return 'Taking off.';
+//   }
+
+//   land() {
+//     return 'Landing.';
+//   }
+// }
+
+// const honda = new Car('Black', 5000, 'Honda', 'ASS-6969');
+// const boatyMcBoatFace = new Boat('Darker Black', 50000, 'Speedboat', 'Antarctica');
+// const boeing = new Plane('Slightly Darker Black', 500000, '757', 'American Airlines');
+
+// console.log(honda);
+// console.log(boatyMcBoatFace);
+// console.log(boeing);
+// console.log(honda.honk());
+// console.log(boatyMcBoatFace.dropAnchor());
+// console.log(boeing.takeOff());
+// console.log(boeing.land());
+// console.log(honda.accelerate());
+// console.log(honda.decelerate());
+// console.log(boatyMcBoatFace.accelerate());
+// console.log(boatyMcBoatFace.decelerate());
+// console.log(boeing.accelerate());
+// console.log(boeing.decelerate());
 
 
 
 // Exercise 4
-
-
-
-
-
+// console.log(honda instanceof Vehicle);
+// console.log(boatyMcBoatFace instanceof Vehicle);
+// console.log(honda instanceof Car);
+// console.log(boatyMcBoatFace instanceof Car);
 
 
 
