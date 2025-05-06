@@ -321,53 +321,189 @@
 
 
 
-
-
-
-
-
-
-
-
-
 // Classes
+// function createCat(name, color, age) {
+//   return {
+//     name,
+//     color,
+//     age,
+//     speak() {
+//       console.log(
+//         `Meow. I am ${name}. ` +
+//         `I am a ${age}-year-old ${color} cat.`
+//       );
+//     }
+//   };
+// }
+
+// let cocoa = createCat("Cocoa", "black", 5);
+// let leo = createCat("Leo", "orange", 3);
+
+// cocoa.speak();
+// // Meow. I am Cocoa. I am a 5-year-old black cat.
+
+// leo.speak();
+// // Meow. I am Leo. I am a 3-year-old orange cat.
 
 
 
+// console.log(cocoa);
+// // { name: 'Cocoa', color: 'black', age: 5,
+// //   speak: [Function: speak] }
+
+// console.log(typeof cocoa);
+// // object
+
+// console.log(cocoa instanceof createCat);
+// // false
+
+// console.log(cocoa instanceof Cat);
+// // ReferenceError: Cat is not defined
 
 
 
+// class Cat {
+//   constructor(name, color, age) {
+//     this.name = name;
+//     this.color = color;
+//     this.age = age;
+//   }
+
+//   speak() {
+//     console.log(
+//       `Meow. I am ${this.name}. ` +
+//       `I am a ${this.age}-year-old ${this.color} cat.`
+//     );
+//   }
+// }
+
+// let cocoa = new Cat("Cocoa", "black", 5);
+// let leo = new Cat("Leo", "orange", 3);
+
+// cocoa.speak();
+// // Meow. I am Cocoa. I am a 5-year-old black cat.
+
+// leo.speak();
+// // Meow. I am Leo. I am a 3-year-old orange cat.
+
+// console.log(cocoa);
+// // Cat { name: 'Cocoa', color: 'black', age: 5 }
+
+// console.log(cocoa instanceof Cat);
+// // true
 
 
 
+// let cocoa = new Cat("Cocoa", "black", 5);
 
 
 
+// class Rectangle {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+
+//   area() {
+//     return this.height * this.width;
+//   }
+// }
+
+// const myRectangle = new Rectangle(10, 5);
+// console.log(myRectangle.area());        // 50
 
 
 
+// class Square {
+//   constructor(side) {
+//     this.side = side;
+//   }
+
+//   area() {
+//     return this.side * this.side;
+//   }
+// }
+
+// const mySquare = new Square(6);
+// console.log(mySquare.area());           // 36
 
 
 
+// class Rectangle {
+//   constructor(height, width) {
+//     this.height = height;
+//     this.width = width;
+//   }
+
+//   area() {
+//     return this.height * this.width;
+//   }
+// }
+
+// const myRectangle = new Rectangle(10, 5);
+// console.log(myRectangle.area());        // 50
+
+// class Square extends Rectangle {
+//   constructor(side) {
+//     super(side, side);
+//     this.side = side;
+//   }
+// }
+
+// const mySquare = new Square(6);
+// console.log(mySquare.area());           // 36
+// console.log(mySquare.side);             // 6
 
 
 
+// class Parent {
+//   whatMethod() {
+//     console.log('In the parent method');
+//   }
+// }
+
+// class Child extends Parent {
+//   whatMethod() {
+//     console.log('In the child method');
+//     super.whatMethod(); // <-- calling `whatMethod` in `Parent` class.
+//     console.log('Back in the child method');
+//   }
+// }
+
+// let child = new Child();
+// child.whatMethod();
+// // In the child method
+// // In the parent method
+// // Back in the child method
 
 
 
+// console.log(myRectangle); // Rectangle { height: 10, width: 5 }
+// console.log(mySquare);    // Square { height: 6, width: 6, side: 6 }
+
+// console.log(mySquare instanceof Square);          // true
+// console.log(mySquare instanceof Rectangle);       // true
+
+// console.log(myRectangle instanceof Square);       // false
+// console.log(myRectangle instanceof Rectangle);    // true
 
 
 
-
-
-
-
-
-
-
-
-
-
+// +---------+
+// | Class A |
+// +----+----+
+//      |
+// +-------------+-------------+
+// |                           |
+// +----+----+                 +----+----+
+// | Class B |                 | Class C |
+// +----+----+                 +----+----+
+// |                           |
+// +------+------+             +------+------+
+// |             |             |             |
+// +----+----+   +----+----+   +----+----+   +----+----+
+// | Class D |   | Class E |   | Class F |   | Class G |
+// +---------+   +---------+   +---------+   +---------+
 
 
 
