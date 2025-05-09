@@ -655,11 +655,11 @@ Which of the concepts discussed in this chapter most closely describes the featu
 
 // Smartphone.prototype.checkBatteryLevel = function() {
 //   return `${this.brand} ${this.model} has 69% battery remaining.`
-// }
+// };
 
 // Smartphone.prototype.displayInfo = function() {
 //   return `${this.releaseYear} ${this.brand} ${this.model}.`
-// }
+// };
 
 // let iphone12 = new Smartphone('Apple', 'iPhone 12', 2020);
 // let galaxyS21 = new Smartphone('Samsung', 'Galaxy S21', 2021);
@@ -673,16 +673,76 @@ Which of the concepts discussed in this chapter most closely describes the featu
 
 
 // Exercise 2
+// function Vehicle(color, weight, model) {
+//   this.color = color;
+//   this.weight = weight;
+//   this.model = model;
+// }
 
+// Vehicle.prototype.accelerate = function() {
+//   console.log(`${this.model} is accelerating.`);
+// };
 
+// Vehicle.prototype.decelerate = function() {
+//   console.log(`${this.model} is decelerating.`);
+// };
 
+// function Car(color, weight, model, licenseNumber) {
+//   Vehicle.call(this, color, weight, model);
+//   this.licenseNumber = licenseNumber;
+// }
 
+// Car.prototype = Object.create(Vehicle.prototype);
+// Car.prototype.constructor = Car;
 
+// Car.prototype.honk = function() {
+//   console.log('Honk honk.');
+// };
 
+// function Boat(color, weight, model, homePort) {
+//   Vehicle.call(this, color, weight, model);
+//   this.homePort = homePort;
+// }
 
+// Boat.prototype = Object.create(Vehicle.prototype);
+// Boat.prototype.constructor = Boat;
 
+// Boat.prototype.dropAnchor = function() {
+//   console.log('Dropping anchor.');
+// };
 
+// function Plane(color, weight, model, airlineName) {
+//   Vehicle.call(this, color, weight, model);
+//   this.airlineName = airlineName;
+// }
 
+// Plane.prototype = Object.create(Vehicle.prototype);
+// Plane.prototype.constructor = Plane;
 
+// Plane.prototype.takeOff = function() {
+//   console.log('Taking off.');
+// };
 
+// Plane.prototype.land = function() {
+//   console.log('Landing.');
+// };
 
+// let honda = new Car('Black', 5000, 'Honda', 'ASS-6969');
+// let boatyMcBoatFace = new Boat('Darker Black', 50000, 'Speedboat', 'Antarctica');
+// let boeing = new Plane('Slightly Darker Black', 500000, '757', 'American Airlines');
+
+// honda.accelerate();
+// honda.decelerate();
+// honda.honk();
+// console.log(honda.licenseNumber);
+
+// boatyMcBoatFace.accelerate();
+// boatyMcBoatFace.decelerate();
+// boatyMcBoatFace.dropAnchor();
+// console.log(boatyMcBoatFace.homePort);
+
+// boeing.accelerate();
+// boeing.decelerate();
+// boeing.takeOff();
+// boeing.land();
+// console.log(boeing.airlineName);
