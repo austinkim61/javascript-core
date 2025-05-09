@@ -571,35 +571,35 @@ Which of the concepts discussed in this chapter most closely describes the featu
 
 
 // Exercise 5
-class MathUtils {
+// class MathUtils {
 
-  static add(num1, num2) {
-    return num1 + num2;
-  }
+//   static add(num1, num2) {
+//     return num1 + num2;
+//   }
 
-  static subtract(num1, num2) {
-    return num1 - num2;
-  }
+//   static subtract(num1, num2) {
+//     return num1 - num2;
+//   }
 
-  static multiply(num1, num2) {
-    return num1 * num2;
-  }
+//   static multiply(num1, num2) {
+//     return num1 * num2;
+//   }
 
-  static divide(num1, num2) {
-    if (num2 !== 0) {
-      return num1 / num2;
-    } else {
-      throw new RangeError('Division by zero');
-    }
-  }
-}
+//   static divide(num1, num2) {
+//     if (num2 !== 0) {
+//       return num1 / num2;
+//     } else {
+//       throw new RangeError('Division by zero');
+//     }
+//   }
+// }
 
 
-console.log(MathUtils.add(5, 3));
-console.log(MathUtils.subtract(10, 4));
-console.log(MathUtils.multiply(6, 7));
-console.log(MathUtils.divide(20, 5));
-console.log(MathUtils.divide(10, 0));
+// console.log(MathUtils.add(5, 3));
+// console.log(MathUtils.subtract(10, 4));
+// console.log(MathUtils.multiply(6, 7));
+// console.log(MathUtils.divide(20, 5));
+// console.log(MathUtils.divide(10, 0));
 
 
 
@@ -607,11 +607,68 @@ console.log(MathUtils.divide(10, 0));
 
 // Protptypal Inheritance Exercises
 // Exercise 1
+// function ReleaseYear(releaseYear) {
+//   this.releaseYear = releaseYear;
+// }
+
+// function Brand(releaseYear, brand) {
+//   ReleaseYear.call(this, releaseYear);
+//   this.brand = brand;
+// }
+
+// Brand.prototype = Object.create(ReleaseYear.prototype);
+// Brand.prototype.constructor = Brand;
+
+// function Model(releaseYear, brand, model) {
+//   Brand.call(this, releaseYear, brand);
+//   this.model = model;
+// }
+
+// Model.prototype = Object.create(Brand.prototype);
+// Model.prototype.constructor = Model;
+
+// Model.prototype.checkBatteryLevel = function() {
+//   console.log(`${this.brand} ${this.model} has 69% battery remaining.`);
+// }
+
+// Model.prototype.displayInfo = function() {
+//   console.log(`${this.releaseYear} ${this.brand} ${this.model}`);
+// }
+
+// const iphone12 = new Model(2020, 'Apple', 'iPhone 12');
+// const galaxyS21 = new Model(2021, 'Samsung', 'Galaxy S21');
+
+// iphone12.checkBatteryLevel();
+// iphone12.displayInfo();
+
+// galaxyS21.checkBatteryLevel();
+// galaxyS21.displayInfo();
 
 
 
+// Alternate
+// function Smartphone(brand, model, releaseYear) {
+//   this.brand = brand;
+//   this.model = model;
+//   this.releaseYear = releaseYear;
+// }
 
+// Smartphone.prototype.checkBatteryLevel = function() {
+//   return `${this.brand} ${this.model} has 69% battery remaining.`
+// }
 
+// Smartphone.prototype.displayInfo = function() {
+//   return `${this.releaseYear} ${this.brand} ${this.model}.`
+// }
+
+// let iphone12 = new Smartphone('Apple', 'iPhone 12', 2020);
+// let galaxyS21 = new Smartphone('Samsung', 'Galaxy S21', 2021);
+
+// console.log(iphone12.checkBatteryLevel());
+// console.log(iphone12.displayInfo());
+
+// console.log(galaxyS21.checkBatteryLevel());
+// console.log(galaxyS21.displayInfo());
 
 
 
