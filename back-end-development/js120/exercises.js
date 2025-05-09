@@ -37,21 +37,65 @@
 
 
 
-class MyClass {
-  static staticMethod() {
-    console.log('This is a static method.');
+// class MyClass {
+//   static staticMethod() {
+//     console.log('This is a static method.');
+//   }
+
+//   instanceMethod() {
+//     console.log('This is an instance method.');
+//   }
+// }
+
+// // Calling the static method
+// MyClass.staticMethod();    // This is a static method.
+// MyClass.instanceMethod();
+
+// // const instance = new MyClass();
+
+// // instance.instanceMethod(); // This is an instance method.
+// // instance.staticMethod();   // Raises error
+
+
+
+
+
+class Animal {
+  constructor(type) {
+    this.type = type;
   }
 
-  instanceMethod() {
-    console.log('This is an instance method.');
+  eat() {
+    console.log("I am eating.");
   }
 }
 
-// Calling the static method
-MyClass.staticMethod();    // This is a static method.
-MyClass.instanceMethod();
+class Cat extends Animal {
+  constructor(name, color) {
+    super();
+    this.name = name;
+    this.color = color;
+  }
 
-// const instance = new MyClass();
+  whoAmI() {
+    console.log(`My name is ${this.name}.`,
+                `\nI am a ${this.color} cat.`);
+  }
+}
 
-// instance.instanceMethod(); // This is an instance method.
-// instance.staticMethod();   // Raises error
+let cheddar = new Cat('Cheddar', 'ginger');
+let cheddarProto = Object.getPrototypeOf(cheddar);
+let cheddarProto2 = Object.getPrototypeOf(cheddarProto);
+
+// console.log(Object.getOwnPropertyNames(cheddarProto));
+// // ['constructor', 'whoAmI'];
+
+// console.log(Object.getOwnPropertyNames(cheddarProto2));
+// // ['constructor', 'eat'];
+
+
+
+console.log(cheddarProto2 === Animal.prototype); // true
+// cheddar.whoAmI();  // My name is Cheddar.
+//                    // I am a ginger cat.
+// cheddar.eat();     // I am eating.
