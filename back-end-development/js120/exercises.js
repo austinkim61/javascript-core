@@ -60,42 +60,153 @@
 
 
 
-class Animal {
-  constructor(type) {
-    this.type = type;
-  }
+// class Animal {
+//   constructor(type) {
+//     this.type = type;
+//   }
 
-  eat() {
-    console.log("I am eating.");
-  }
-}
+//   eat() {
+//     console.log("I am eating.");
+//   }
+// }
 
-class Cat extends Animal {
-  constructor(name, color) {
-    super();
-    this.name = name;
-    this.color = color;
-  }
+// class Cat extends Animal {
+//   constructor(name, color) {
+//     super();
+//     this.name = name;
+//     this.color = color;
+//   }
 
-  whoAmI() {
-    console.log(`My name is ${this.name}.`,
-                `\nI am a ${this.color} cat.`);
-  }
-}
+//   whoAmI() {
+//     console.log(`My name is ${this.name}.`,
+//                 `\nI am a ${this.color} cat.`);
+//   }
+// }
 
-let cheddar = new Cat('Cheddar', 'ginger');
-let cheddarProto = Object.getPrototypeOf(cheddar);
-let cheddarProto2 = Object.getPrototypeOf(cheddarProto);
+// let cheddar = new Cat('Cheddar', 'ginger');
+// let cheddarProto = Object.getPrototypeOf(cheddar);
+// let cheddarProto2 = Object.getPrototypeOf(cheddarProto);
 
-// console.log(Object.getOwnPropertyNames(cheddarProto));
-// // ['constructor', 'whoAmI'];
+// // console.log(Object.getOwnPropertyNames(cheddarProto));
+// // // ['constructor', 'whoAmI'];
 
-// console.log(Object.getOwnPropertyNames(cheddarProto2));
-// // ['constructor', 'eat'];
+// // console.log(Object.getOwnPropertyNames(cheddarProto2));
+// // // ['constructor', 'eat'];
 
 
 
-console.log(cheddarProto2 === Animal.prototype); // true
-// cheddar.whoAmI();  // My name is Cheddar.
-//                    // I am a ginger cat.
-// cheddar.eat();     // I am eating.
+// console.log(cheddarProto2 === Animal.prototype); // true
+// // cheddar.whoAmI();  // My name is Cheddar.
+// //                    // I am a ginger cat.
+// // cheddar.eat();     // I am eating.
+
+
+
+
+
+
+
+// class Animal {}
+// class Cat extends Animal {}
+
+// let cat = new Cat();
+// let catProto = Object.getPrototypeOf(cat);
+// console.log(catProto);
+
+
+
+// class Foo {
+//   static identity() {
+//     console.log('This is Foo.identity()');
+//   }
+// }
+
+// class Bar {
+//   static whoAmI() {
+//     console.log('This is Bar.whoAmI()');
+//   }
+// }
+
+// let foo = new Foo();
+// let bar = new Bar();
+
+// let fooProto = Object.getPrototypeOf(foo);
+// let barProto = Object.getPrototypeOf(bar);
+
+
+// console.log(fooProto);
+// console.log(barProto);
+
+
+// // Foo and Bar initially have Function.prototype as their
+// // object prototypes.
+
+// // The names `FooProto` and `BarProto` are not consistent
+// // with JS conventions. We've done this intentionally for
+// // clarity.
+
+// let FooProto = Object.getPrototypeOf(Foo);
+// console.log(FooProto === Function.prototype); // true
+
+// let BarProto = Object.getPrototypeOf(Bar);
+// console.log(BarProto === Function.prototype); // true
+
+// // Let's change Bar's object prototype to Foo, which lets
+// // Bar inherit Foo's static methods. However, Bar does
+// // *not* inherit Foo's instance methods.
+// Object.setPrototypeOf(Bar, Foo);
+
+// // Bar can access both Bar.whoAmI and Foo.identity
+// Bar.whoAmI();       // This is Bar.whoAmI()
+// Bar.identity();     // This is Foo.identity()
+
+
+
+
+
+
+
+// class Foo {
+//   static identity() {
+//     console.log('This is Foo.identity()');
+//   }
+// }
+
+// class Bar {
+//   static whoAmI() {
+//     console.log('This is Bar.whoAmI()');
+//   }
+// }
+
+
+// let FooProto = Object.getPrototypeOf(Foo);
+// // console.log(FooProto === Function.prototype); // true
+
+// let BarProto = Object.getPrototypeOf(Bar);
+// // console.log(BarProto === Function.prototype); // true
+
+// let third = new Bar();
+
+
+
+
+// Object.setPrototypeOf(Bar, Foo);
+// Object.setPrototypeOf(third, Bar);
+
+// console.log(Foo.prototype);
+// console.log(Bar.prototype);
+// console.log(third.prototype);
+
+
+
+
+
+// class Animal {
+//   foo() {
+//     console.log('this is foo');
+//   }
+// }
+
+// Animal.prototype.foo = function() {
+//   console.log('this is foo');
+// };
