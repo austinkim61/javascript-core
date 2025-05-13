@@ -12,7 +12,7 @@ function displayBoard(board) {
   console.clear();
 
   console.log(`You are ${HUMAN_MARKER}. Computer is ${COMPUTER_MARKER}.`)
-  
+
   console.log('');
   console.log('     |     |');
   console.log(`  ${board['1']}  |  ${board['2']}  |  ${board['3']}`);
@@ -34,7 +34,7 @@ function initializeBoard() {
   for (let square = 1; square <= 9; square++) {
     board[String(square)] = INITIAL_MARKER;
   }
-  
+
   return board;
 }
 
@@ -44,13 +44,13 @@ function emptySquares(board) {
 
 function playerChoosesSquare(board) {
   let square;
-    
+
   while (true) {
     prompt(`Choose a square (${emptySquares(board).join(', ')}):`);
     square = readline.question().trim();
 
     if (emptySquares(board).includes(square)) break;
-    
+
     prompt("Sorry, that's not a valid choice.");
   }
 
