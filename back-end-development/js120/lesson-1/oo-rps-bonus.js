@@ -10,7 +10,20 @@ const WINNING_COMBOS = {
 
 const RPSGame = {
   human: createHuman(),
-  computer: createComputer(),
+  computer: null,
+
+  init() {
+    this.computer = createComputer(this);
+    this.play();
+  },
+
+
+
+
+
+
+
+
 
   displayWelcomeMessage() {
     console.log('Welcome to Rock, Paper, Scissors, Lizard, Spock!');
@@ -26,8 +39,14 @@ const RPSGame = {
   },
 
   computerChoose() {
+
     // get key value pairs and determine highest hands of user
     // add randomization element
+
+    const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+    let randomIndex = Math.floor(Math.random() * choices.length);
+    this.computer.move = choices[randomIndex];
+
 
 
 
@@ -126,18 +145,24 @@ function createHuman() {
   return Object.assign(playerObject, humanObject);
 }
 
-function createComputer() {
+function createComputer(game) {
   let playerObject = createPlayer();
 
   let computerObject = {
     choose() {
-      const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
-      let randomIndex = Math.floor(Math.random() * choices.length);
-      this.move = choices[randomIndex];
+      game.computerChoose();
     },
+
+
+    // choose() {
+    //   const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+    //   let randomIndex = Math.floor(Math.random() * choices.length);
+    //   this.move = choices[randomIndex];
+    // },
   };
 
   return Object.assign(playerObject, computerObject);
 }
 
-RPSGame.play();
+// RPSGame.play();
+RPSGame.init();
