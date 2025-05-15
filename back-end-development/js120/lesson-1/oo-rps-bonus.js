@@ -44,14 +44,62 @@ const RPSGame = {
     // add randomization element
 
     const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+
     let randomIndex = Math.floor(Math.random() * choices.length);
     this.computer.move = choices[randomIndex];
+
+    let humanWeight = {};
+
+
+    for (let key in this.human.choices) {
+      humanWeight[key] = this.human.choices[key] / this.computer.totalMoves;
+    }
+
+
+
+    //
+    //
+    //
+    //
+
+
+    // human choices
+    // rock .5 (50%) => 50% of the time choose paper or spock
+    // paper .1 (10%) => 10% of the time choose scissors or lizard
+    // scissors .1 (10%) => 10% of the time choose rock or spock
+    // lizard .15 (15%) => 15% of the time choose rock or scissors
+    // spock .15 (15%) => 15% of the time choose paper or lizard
 
 
 
 
 
   },
+
+
+
+  // implement later
+  // computer chooses rock, see how many losses he has on that
+    // example: if he has 70% losses choosing rock, don't pick rock until that number is down to 50%
+  // f
+
+
+
+
+  computerTotalNumberOfMoves() {
+    this.computer.totalMoves = Object.values(this.computer.choices).reduce((acc, num) => acc + num, 0);
+    console.log(this.computer.totalMoves);
+
+
+
+
+  },
+
+
+
+
+
+
 
   displayWinner() {
     let humanMove = this.human.move;
@@ -61,6 +109,7 @@ const RPSGame = {
 
     console.log(`You chose: ${this.human.move}`);
     console.log(`The computer chose: ${this.computer.move}`);
+
 
     if (this.determineRoundWinner(humanMove, computerMove)) {
       console.log('You win this round!');
@@ -110,6 +159,7 @@ const RPSGame = {
       this.computer.choose();
       this.displayWinner();
       this.determineOverallWinner();
+      this.computerTotalNumberOfMoves();
       if (!this.playAgain()) break;
     }
 
@@ -122,6 +172,7 @@ function createPlayer() {
     choices: {},
     move: null,
     score: 0,
+    totalMoves: 0,
   };
 }
 
@@ -149,6 +200,7 @@ function createComputer(game) {
   let playerObject = createPlayer();
 
   let computerObject = {
+    total: 0,
     choose() {
       game.computerChoose();
     },
