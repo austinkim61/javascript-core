@@ -299,53 +299,139 @@
 
 
 
-const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
+// const choices = ['rock', 'paper', 'scissors', 'lizard', 'spock'];
 
-const LOSING_COMBOS = {
-  rock: ['paper', 'spock'],
-  paper: ['scissors', 'lizard'],
-  scissors: ['rock', 'spock'],
-  lizard: ['rock', 'scissors'],
-  spock: ['paper', 'lizard'],
+// const LOSING_COMBOS = {
+//   rock: ['paper', 'spock'],
+//   paper: ['scissors', 'lizard'],
+//   scissors: ['rock', 'spock'],
+//   lizard: ['rock', 'scissors'],
+//   spock: ['paper', 'lizard'],
+// };
+
+// let humanChoices = {
+//   rock: 1,
+//   paper: 2,
+//   scissors: 2,
+//   lizard: 0,
+//   spock: 5,
+// };
+
+// let humanWeight = {};
+// let computerWeight = {};
+// let totalMoves = Object.values(humanChoices).reduce((acc, num) => acc + num, 0);
+
+
+// let randomIndex = Math.random();
+// console.log(randomIndex);
+
+// for (let key in humanChoices) {
+//   humanWeight[key] = humanChoices[key] / totalMoves;
+// }
+
+// choices.forEach(elem => {
+//   LOSING_COMBOS[elem].forEach(item => {
+//     computerWeight[item] = Math.round(((computerWeight[item] ?? 0) + ((humanWeight[elem] ?? 0) / 2)) * 100) / 100;
+//   });
+// });
+
+// let array = Object.entries(computerWeight);
+// let newArray = [];
+// let sum = 0;
+
+// array.forEach(elem => {
+//   newArray.push([elem[0], (Math.round((elem[1] + sum) * 100) / 100)]);
+//   sum += elem[1];
+// });
+// // console.log(newArray);
+
+// let element = (newArray.find(elem => elem[1] > randomIndex))[0];
+
+// console.log(element);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let obj = {
+//   a: 3.14,
+//   b: null,
+//   c: 'Sue',
+//   d: function() { console.log('Hello'); },
+//   e: { a: 3, b: 'xyz', c: [2, 5, 8] },
+// };
+
+// console.log(obj);
+
+
+
+
+
+
+
+
+
+let book = {
+  title: "Snow Crash",
+  author: "Neal Stephenson",
+  getDescription() {
+    return title + ' by ' + author;
+  },
 };
 
-let humanChoices = {
-  rock: 1,
-  paper: 2,
-  scissors: 2,
-  lizard: 0,
-  spock: 5,
-};
-
-let humanWeight = {};
-let computerWeight = {};
-let totalMoves = Object.values(humanChoices).reduce((acc, num) => acc + num, 0);
+// desired return value: 'Snow Crash by Neal Stephenson'
+console.log(book.getDescription()); // => ReferenceError: title is not defined
 
 
-let randomIndex = Math.random();
-console.log(randomIndex);
 
-for (let key in humanChoices) {
-  humanWeight[key] = humanChoices[key] / totalMoves;
-}
 
-choices.forEach(elem => {
-  LOSING_COMBOS[elem].forEach(item => {
-    computerWeight[item] = Math.round(((computerWeight[item] ?? 0) + ((humanWeight[elem] ?? 0) / 2)) * 100) / 100;
-  });
-});
 
-let array = Object.entries(computerWeight);
-let newArray = [];
-let sum = 0;
 
-array.forEach(elem => {
-  newArray.push([elem[0], (Math.round((elem[1] + sum) * 100) / 100)]);
-  sum += elem[1];
-});
-// console.log(newArray);
 
-let element = (newArray.find(elem => elem[1] > randomIndex))[0];
 
-console.log(element);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
