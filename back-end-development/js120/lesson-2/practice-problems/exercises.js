@@ -29,15 +29,15 @@
 
 
 
-function logNum() {
-  console.log(this.num);
-}
+// function logNum() {
+//   console.log(this.num);
+// }
 
-let obj = {
-  num: 42
-};
+// let obj = {
+//   num: 42
+// };
 
-logNum.call(obj); // logs 42
+// logNum.call(obj); // logs 42
 
 
 
