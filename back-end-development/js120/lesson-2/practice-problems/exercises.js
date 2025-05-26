@@ -53,14 +53,14 @@
 
 
 
-function greet(greeting) {
-  console.log(`${greeting}, ${this.name}`);
-}
+// function greet(greeting) {
+//   console.log(`${greeting}, ${this.name}`);
+// }
 
-const person = { name: 'Alice' };
-const boundGreet = greet.bind(person);
+// const person = { name: 'Alice' };
+// const boundGreet = greet.bind(person);
 
-boundGreet('Helloooooo'); // "Hello, Alice"
+// boundGreet('Helloooooo'); // "Hello, Alice"
 
 
 // function greet(greeting, punctuation) {
@@ -71,3 +71,127 @@ boundGreet('Helloooooo'); // "Hello, Alice"
 // const boundGreet = greet.bind(person, 'Hello', '!');
 
 // boundGreet(); // "Hello, Alice!"
+
+
+
+
+// let obj = {
+//   a: 'hello',
+//   b: 'world',
+//   foo: function() {
+//     function bar() {
+//       console.log(this.a + ' ' + this.b);
+//     }
+
+//     // bar();
+//     bar.call(this);
+//   },
+// };
+
+// obj.foo();
+
+
+
+
+// let obj = {
+//   a: 'hello',
+//   b: 'world',
+//   foo: function() {
+//     let bar = function() {
+//       console.log(this.a + ' ' + this.b);
+//     }.bind(this);
+
+//     // some code
+//     bar();
+
+//     // some more code
+//     bar();
+
+//     // still more code
+//   }
+// };
+
+// obj.foo();
+// // => hello world
+// // => hello world
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
