@@ -41,3 +41,33 @@
 
 
 
+
+// function greet(greeting, punctuation) {
+//   console.log(`${greeting}, ${this.name}${punctuation}`);
+// }
+
+// const person = { name: 'Alice' };
+// const boundGreet = greet.bind(person, 'Hello');
+
+// boundGreet('!'); // "Hello, Alice!"
+
+
+
+function greet(greeting) {
+  console.log(`${greeting}, ${this.name}`);
+}
+
+const person = { name: 'Alice' };
+const boundGreet = greet.bind(person);
+
+boundGreet('Helloooooo'); // "Hello, Alice"
+
+
+// function greet(greeting, punctuation) {
+//   console.log(`${greeting}, ${this.name}${punctuation}`);
+// }
+
+// const person = { name: 'Alice' };
+// const boundGreet = greet.bind(person, 'Hello', '!');
+
+// boundGreet(); // "Hello, Alice!"
