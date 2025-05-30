@@ -199,32 +199,35 @@ answer =>
 
 // Problem 5
 function createInvoice(services = {}) {
-
-  // let phoneCharge = services.phone ?? 3000;
-  // let internetCharge = services.internet ?? 5500;
-  // let amountTotal = services.amount ?? 0;
-
-  let phoneCharge = services.phone;
-  if (phoneCharge === undefined) {
-    phoneCharge = 3000;
-  }
-
-  let internetCharge = services.internet;
-  if (internetCharge === undefined) {
-    internetCharge = 5500;
-  }
+  let phoneCharge = services.phone ?? 3000;
+  let internetCharge = services.internet ?? 5500;
 
   return {
     phone: phoneCharge,
     internet: internetCharge,
+    payments: [],
 
     total: function() {
       return this.phone + this.internet;
     },
-    addPayment: function() {
-      // possibly .apply or .call with ...args
+
+    addPayment: function(payment) {
+      this.payments.push(payment);
     },
+
+    addPayments: function(payments) {
+      payments.forEach(this.addPayment, this);
+      // payments.forEach(payment => {
+      //   this.addPayment(payment);
+      // });
+    },
+
+    paymentTotal: function() {
+      return this.payments.reduce((sum, payment) => sum + payment.total(), 0);
+    },
+
     amountDue: function() {
+      return this.total() - this.paymentTotal();
     },
   };
 }
@@ -243,35 +246,20 @@ function createPayment(services = {}) {
   return payment;
 }
 
-function paymentTotal(payments) {
-  return payments.reduce((sum, payment) => sum + payment.total(), 0);
-}
 
-let payments = [];
-payments.push(createPayment());
-payments.push(createPayment({
-  internet: 6500,
-}));
+let invoice = createInvoice({
+  phone: 1200,
+  internet: 4000,
+});
 
-payments.push(createPayment({
-  phone: 2000,
-}));
-
-payments.push(createPayment({
+let payment1 = createPayment({ amount: 2000 });
+let payment2 = createPayment({
   phone: 1000,
-  internet: 4500,
-}));
+  internet: 1200
+});
 
-payments.push(createPayment({
-  amount: 10000,
-}));
+let payment3 = createPayment({ phone: 1000 });
 
-console.log(paymentTotal(payments));      // => 24000
-
-
-
-
-
-
-
-
+invoice.addPayment(payment1);
+invoice.addPayments([payment2, payment3]);
+console.log(invoice.amountDue());       // this should return 0
