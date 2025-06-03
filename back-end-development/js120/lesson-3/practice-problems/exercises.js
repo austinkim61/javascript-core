@@ -18,27 +18,49 @@
 
 
 
+
+
+// function Dog(name, breed, weight) {
+//   this.name = name;
+//   this.breed = breed;
+//   this.weight = weight;
+// }
+// let dog1 = new Dog('name1', 'breed1', 1)
+// let dog2 = new Dog('name2', 'breed2', 2)
+// let dog3 = new dog1.constructor('name3', 'breed3', 3)
+
+// console.log(dog1);
+// console.log(dog2);
+// console.log(dog3);
+
+
+
+
+
+
+
+
+
+let DogPrototype = {
+  bark() {
+    console.log(this.weight > 20 ? 'Woof!' : 'Yip!');
+  }
+};
+
 function Dog(name, breed, weight) {
+  Object.setPrototypeOf(this, DogPrototype);
   this.name = name;
   this.breed = breed;
   this.weight = weight;
 }
 
-Dog.prototype
+Dog.prototype = DogPrototype;
+
+let maxi = new Dog('Maxi', 'German Shepherd', 32);
 
 
-console.log(Dog.prototype);
-
-// Dog.prototype.bark = function() {
-//   console.log(this.weight > 20 ? 'Woof!' : 'Yip!');
-// };
-
-// let maxi = new Dog('Maxi', 'German Shepherd', 32);
-
-// Dog.prototype.constructor = function() {};
-
-// maxi.constructor === Dog; // false
-// maxi instanceof Dog;      // true
+// console.log(maxi.bark());
+console.log(Dog.prototype.bark());
 
 
 
@@ -47,46 +69,16 @@ console.log(Dog.prototype);
 
 
 
+function Dog(name, breed, weight) {
+  this.name = name;
+  this.breed = breed;
+  this.weight = weight;
 
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Dog.allDogs = [];
+Dog.species = 'Canis lupus';
+Dog.kingdom = 'animal';
 
 
 
