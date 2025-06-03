@@ -87,29 +87,19 @@
 
 
 
-let arrayFrom = obj => {
-  let len = obj.length;
-  let returnArr = [];
+// let arrayFrom = obj => {
+//   let len = obj.length;
+//   let returnArr = [];
 
-  for (let idx = 0; idx < len; idx += 1) {
-    returnArr.push(obj[idx]);
-  }
+//   for (let idx = 0; idx < len; idx += 1) {
+//     returnArr.push(obj[idx]);
+//   }
 
-  return returnArr;
-};
+//   return returnArr;
+// };
 
-console.log(arrayFrom({0: 'a', 1: 'b', 2: 'c', length: 3}));
-// => [ 'a', 'b', 'c' ]
-
-
-
-
-
-
-
-
-
-
+// console.log(arrayFrom({0: 'a', 1: 'b', 2: 'c', length: 3}));
+// // => [ 'a', 'b', 'c' ]
 
 
 
