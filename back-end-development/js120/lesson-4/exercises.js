@@ -18,27 +18,27 @@
 
 
 
-function Greeting() {}
+// function Greeting() {}
 
-Greeting.prototype.greet = function(message) {
-  console.log(message);
-};
+// Greeting.prototype.greet = function(message) {
+//   console.log(message);
+// };
 
-function Hello() {}
+// function Hello() {}
 
-Hello.prototype = Object.create(Greeting.prototype);
+// Hello.prototype = Object.create(Greeting.prototype);
 
-Hello.prototype.hi = function() {
-  this.greet('Hello!');
-};
+// Hello.prototype.hi = function() {
+//   this.greet('Hello!');
+// };
 
-function Goodbye() {}
+// function Goodbye() {}
 
-Goodbye.prototype = Object.create(Greeting.prototype);
+// Goodbye.prototype = Object.create(Greeting.prototype);
 
-Goodbye.prototype.bye = function() {
-  this.greet("Goodbye");
-};
+// Goodbye.prototype.bye = function() {
+//   this.greet("Goodbye");
+// };
 
 
 
@@ -59,7 +59,76 @@ Goodbye.prototype.bye = function() {
 // hello.greet('Goodbye'); // 'Goodbye'
 
 // Case 5
-Hello.hi(); // Hello.hi is not a function
+// Hello.hi(); // Hello.hi is not a function
+
+
+
+
+
+
+// function Rectangle(length, width) {
+//   this.length = length;
+//   this.width = width;
+// }
+
+// Rectangle.prototype.getArea = function() {
+//   return this.length * this.width;
+// };
+
+// Rectangle.prototype.toString = function() {
+//   return `[Rectangle ${this.length} x ${this.width}]`;
+// };
+
+// function Square(size) {
+//   Rectangle.call(this, size, size);
+// }
+
+// Square.prototype = Object.create(Rectangle.prototype);
+// Square.prototype.constructor = Square;
+
+// Square.prototype.toString = function() {
+//   return `[Square ${this.length} x ${this.width}]`;
+// };
+
+// let sqr = new Square(5);
+
+// console.log(sqr);
+// console.log(sqr.constructor);
+
+
+
+
+
+
+// class Rectangle {
+//   constructor(length, width) {
+//     this.length = length;
+//     this.width = width;
+//   }
+
+//   getArea() {
+//     return this.length * this.width;
+//   }
+
+//   toString() {
+//     return `[Rectangle ${this.width * this.length}]`;
+//   }
+// }
+
+// class Square extends Rectangle {
+//   constructor(size) {
+//     super(size, size);
+//   }
+
+//   toString() {
+//     return `[Square] ${this.width * this.length}`;
+//   }
+// }
+
+// let sqr = new Square(5);
+
+// console.log(sqr);
+// console.log(sqr.constructor);
 
 
 
@@ -67,28 +136,11 @@ Hello.hi(); // Hello.hi is not a function
 
 
 
+let me = {
+  name: 'boobs',
+};
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(me.constructor);
 
 
 
