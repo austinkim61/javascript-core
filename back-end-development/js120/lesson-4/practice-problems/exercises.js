@@ -65,7 +65,6 @@
 
 
 
-
 // function Rectangle(length, width) {
 //   this.length = length;
 //   this.width = width;
@@ -134,8 +133,6 @@
 
 
 
-
-
 // let me = {
 //   name: 'boobs',
 // };
@@ -146,54 +143,100 @@
 
 
 
+// 7. Code Reuse with Mixins
+// Problem 1
+// const Speed = {
+//   goFast() {
+//     console.log(`I'm a ${this.constructor.name} and going super fast!`);
+//   }
+// };
+
+// class Car {
+//   goSlow() {
+//     console.log(`I'm safe and driving slow.`);
+//   }
+// }
+
+// class Truck {
+//   goVerySlow() {
+//     console.log(`I'm a heavy truck and like going very slow.`);
+//   }
+// }
+
+// Object.assign(Car.prototype, Speed);
+// Object.assign(Truck.prototype, Speed);
+
+// let car1 = new Car();
+// let truck1 = new Truck();
+
+// car1.goFast();
+// truck1.goFast();
+
+// console.log('goFast' in car1);
+// console.log('goFast' in truck1);
 
 
 
+// Problem 2
+/*
+Object.assign is used to add Speed's properties to class Car's prototye.
+the code this.constructor.name is how it knows the name of the class.
+this would be the Car.prototype object so the code would be Car.prototype.constructor.name
+the name of the car's prototype's constructor is the name of the class itself, so it would be Car
+constructor has a name property that contains the name of the class as a string
+*/
 
 
 
+// Problem 3
+const Moveable = {
+  range() {
+    return this.fuelCap *  this.fuelEfficiency;
+  }
+}
 
+class WheeledVehicle {
+  constructor(tirePressure, kmTravelledPerLiter, fuelCapInLiter) {
+    this.tires = tirePressure;
+    this.fuelEfficiency = kmTravelledPerLiter;
+    this.fuelCap = fuelCapInLiter;
+  }
 
+  tirePressure(tireIdx) {
+    return this.tires[tireIdx];
+  }
 
+  inflateTire(tireIdx, pressure) {
+    this.tires[tireIdx] = pressure;
+  }
+}
 
+Object.assign(WheeledVehicle.prototype, Moveable);
 
+class Auto extends WheeledVehicle {
+  constructor() {
+    // the array represents tire pressure for four tires
+    super([30,30,32,32], 50, 25.0);
+  }
+}
 
+class Motorcycle extends WheeledVehicle {
+  constructor() {
+    // array represents tire pressure for two tires
+    super([20,20], 80, 8.0);
+  }
+}
 
+class Catamaran {
+  constructor(propellerCount, hullCount, kmTravelledPerLiter, fuelCapInLiter) {
+    this.propellerCount = propellerCount;
+    this.hullCount = hullCount;
+    this.fuelEfficiency = kmTravelledPerLiter;
+    this.fuelCap = fuelCapInLiter;
+  }
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Object.assign(Catamaran.prototype, Moveable);
 
 
 
