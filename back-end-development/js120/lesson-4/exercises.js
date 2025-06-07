@@ -136,17 +136,11 @@
 
 
 
-let me = {
-  name: 'boobs',
-};
+// let me = {
+//   name: 'boobs',
+// };
 
-console.log(me.constructor);
-
-
-
-
-
-
+// console.log(me.constructor);
 
 
 
