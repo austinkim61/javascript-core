@@ -21,6 +21,10 @@ class Square {
   isUnused() {
     return this.marker === Square.UNUSED_SQUARE;
   }
+
+  getMarker() {
+    return this.marker;
+  }
 }
 
 class Board {
@@ -55,6 +59,19 @@ class Board {
     let keys = Object.keys(this.squares);
     return keys.filter(key => this.squares[key].isUnused());
   }
+
+  isFull() {
+    let unusedSquares = this.unusedSquares();
+    return unusedSquares.length === 0;
+  }
+
+  countMarkersFor(player, keys) {
+    let markers = keys.filter(key => {
+      return this.squares[key].getMarker() === player.getMarker();
+    });
+
+    return markers.length;
+  }
 }
 
 class Row {
@@ -82,11 +99,21 @@ class Human extends Player {
 class Computer extends Player {
   constructor() {
     super(Square.COMPUTER_MARKER);
-
   }
 }
 
 class TTTGame {
+  static POSSIBLE_WINNING_ROWS = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["3", "6", "9"],
+    ["1", "5", "9"],
+    ["3", "5", "7"],
+  ];
+
   constructor() {
     this.board = new Board();
     this.human = new Human();
@@ -113,14 +140,10 @@ class TTTGame {
   }
 
   displayWelcomeMessage() {
-    // STUB
-    // show a welcome message
     console.log("Welcome to Tic Tac Toe!");
   }
 
   displayGoodbyeMessage() {
-    // STUB
-    // show a goodbye message
     console.log("Thanks for playing Tic Tac Toe! Goodbye!");
   }
 
@@ -158,9 +181,18 @@ class TTTGame {
   }
 
   gameOver() {
+    return this.board.isFull() || this.someoneWon();
+  }
+
+
+
+  someoneWon() {
     // STUB
     return false;
   }
+
+
+
 }
 
 let game = new TTTGame();
