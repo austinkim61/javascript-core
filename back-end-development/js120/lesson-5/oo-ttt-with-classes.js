@@ -1,5 +1,4 @@
 const readline = require('readline-sync');
-const p = console.log;
 
 class Square {
   static UNUSED_SQUARE = " ";
@@ -29,40 +28,40 @@ class Square {
 
 class Board {
   constructor() {
-    this.squares = {}
-    for (let counter = 1; counter <= 9; counter++) {
-      this.squares[counter] = new Square();
+    this.squares = {};
+    for (let counter = 1; counter <= 9; ++counter) {
+      this.squares[String(counter)] = new Square();
     }
   }
 
   display() {
-    p(``);
-    p(`     |     |`);
-    p(`  ${this.squares["1"]}  |  ${this.squares["2"]}  |  ${this.squares["3"]}`);
-    p(`     |     |`);
-    p(`-----+-----+-----`);
-    p(`     |     |`);
-    p(`  ${this.squares["4"]}  |  ${this.squares["5"]}  |  ${this.squares["6"]}`);
-    p(`     |     |`);
-    p(`-----+-----+-----`);
-    p(`     |     |`);
-    p(`  ${this.squares["7"]}  |  ${this.squares["8"]}  |  ${this.squares["9"]}`);
-    p(`     |     |`);
-    p(``);
+    console.log(``);
+    console.log(`     |     |`);
+    console.log(`  ${this.squares["1"]}  |  ${this.squares["2"]}  |  ${this.squares["3"]}`);
+    console.log(`     |     |`);
+    console.log(`-----+-----+-----`);
+    console.log(`     |     |`);
+    console.log(`  ${this.squares["4"]}  |  ${this.squares["5"]}  |  ${this.squares["6"]}`);
+    console.log(`     |     |`);
+    console.log(`-----+-----+-----`);
+    console.log(`     |     |`);
+    console.log(`  ${this.squares["7"]}  |  ${this.squares["8"]}  |  ${this.squares["9"]}`);
+    console.log(`     |     |`);
+    console.log(``);
   }
 
   markSquareAt(key, marker) {
     this.squares[key].setMarker(marker);
   }
 
-  unusedSquares() {
-    let keys = Object.keys(this.squares);
-    return keys.filter(key => this.squares[key].isUnused());
-  }
-
   isFull() {
     let unusedSquares = this.unusedSquares();
     return unusedSquares.length === 0;
+  }
+
+  unusedSquares() {
+    let keys = Object.keys(this.squares);
+    return keys.filter(key => this.squares[key].isUnused());
   }
 
   countMarkersFor(player, keys) {
@@ -72,11 +71,12 @@ class Board {
 
     return markers.length;
   }
-}
 
-class Row {
-  constructor() {
-    // need a way to identify a row of 3 squares
+  displayWithClear() {
+    console.clear();
+    console.log("");
+    console.log("");
+    this.display();
   }
 }
 
@@ -121,11 +121,10 @@ class TTTGame {
   }
 
   play() {
-    // orchestrate game play
     this.displayWelcomeMessage();
 
+    this.board.display();
     while (true) {
-      this.board.display();
 
       this.humanMoves();
       if (this.gameOver()) break;
@@ -133,14 +132,18 @@ class TTTGame {
       this.computerMoves();
       if (this.gameOver()) break;
 
+      this.board.displayWithClear();
     }
 
+    this.board.displayWithClear();
     this.displayResults();
     this.displayGoodbyeMessage();
   }
 
   displayWelcomeMessage() {
+    console.clear();
     console.log("Welcome to Tic Tac Toe!");
+    console.log("");
   }
 
   displayGoodbyeMessage() {
@@ -148,8 +151,13 @@ class TTTGame {
   }
 
   displayResults() {
-    // STUB
-    // show the results of this game (win, lose, tie)
+    if (this.isWinner(this.human)) {
+      console.log("You won! Congratulations!");
+    } else if (this.isWinner(this.computer)) {
+      console.log("Computer is the winner.");
+    } else {
+      console.log("It's a tie game.");
+    }
   }
 
   humanMoves() {
@@ -157,7 +165,7 @@ class TTTGame {
 
     while (true) {
       let validChoices = this.board.unusedSquares();
-      const prompt = `Choose a square (${validChoices.join(', ')}): `
+      const prompt = `Choose a square (${validChoices.join(', ')}): `;
       choice = readline.question(prompt);
 
       if (validChoices.includes(choice)) break;
@@ -184,249 +192,16 @@ class TTTGame {
     return this.board.isFull() || this.someoneWon();
   }
 
-
-
   someoneWon() {
-    // STUB
-    return false;
+    return this.isWinner(this.human) || this.isWinner(this.computer);
   }
 
-
-
+  isWinner(player) {
+    return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
+      return this.board.countMarkersFor(player, row) === 3;
+    });
+  }
 }
 
 let game = new TTTGame();
 game.play();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
