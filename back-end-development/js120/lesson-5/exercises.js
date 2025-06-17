@@ -66,20 +66,57 @@
 
 
 
-const readline = require('readline-sync');
+// const readline = require('readline-sync');
 
-let choice;
+// let choice;
 
-while (true) {
-  const prompt = 'Play again? (y/n): ';
-  choice = readline.question(prompt)[0].toLowerCase();
-  console.log(choice);
+// while (true) {
+//   const prompt = 'Play again? (y/n): ';
+//   choice = readline.question(prompt)[0].toLowerCase();
+//   console.log(choice);
 
-  if (choice === 'y' || 'n') break;
-  console.log("Sorry, that's not a valid choice.");
+//   if (choice === 'y' || 'n') break;
+//   console.log("Sorry, that's not a valid choice.");
+// }
+
+// console.log(choice === 'y' ? true : false);
+
+
+
+function twoInARow(playerMarker) {
+  return POSSIBLE_WINNING_ROWS.find(element => {
+    return element.filter(marker => {
+      // console.log(SQUARES2[marker]);
+      return SQUARES2[marker] === playerMarker;
+    }).length === 2;
+  });
 }
 
-console.log(choice === 'y' ? true : false);
+const POSSIBLE_WINNING_ROWS = [
+    ["1", "2", "3"],
+    ["4", "5", "6"],
+    ["7", "8", "9"],
+    ["1", "4", "7"],
+    ["2", "5", "8"],
+    ["3", "6", "9"],
+    ["1", "5", "9"],
+    ["3", "5", "7"],
+];
+
+const SQUARES2 = {
+  1: " ",
+  2: " ",
+  3: " ",
+  4: " ",
+  5: " ",
+  6: " ",
+  7: " ",
+  8: "X",
+  9: "X",
+};
+
+let row = twoInARow("X");
+console.log(row);
 
 
 

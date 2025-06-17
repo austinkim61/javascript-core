@@ -1,4 +1,6 @@
 const readline = require('readline-sync');
+const GAMES_TO_WIN = 5;
+const MARKS_TO_WIN = 3;
 
 class Square {
   static UNUSED_SQUARE = " ";
@@ -118,6 +120,19 @@ class TTTGame {
     ["3", "5", "7"],
   ];
 
+  static joinOr(arr, delimiter = ', ', word = 'or') {
+    let allButLast = arr.join(delimiter).slice(0, -1);
+    let last = arr.slice(-1);
+    switch (arr.length) {
+      case 1:
+        return arr.join('');
+      case 2:
+        return `${arr[0]} ${word} ${last}`;
+      default:
+        return `${allButLast}${word} ${last}`;
+    }
+  }
+
   constructor() {
     this.board = new Board();
     this.human = new Human();
@@ -214,6 +229,9 @@ class TTTGame {
     let validChoices = this.board.unusedSquares();
     let choice;
 
+    // if player about to win, do defensive move
+    // determine twoInARow
+
     do {
       choice = Math.floor((9 * Math.random()) + 1).toString();
     } while (!validChoices.includes(choice));
@@ -229,24 +247,115 @@ class TTTGame {
     return this.isWinner(this.human) || this.isWinner(this.computer);
   }
 
+
   isWinner(player) {
     return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
       return this.board.countMarkersFor(player, row) === 3;
     });
   }
 
-  static joinOr(arr, delimiter = ', ', word = 'or') {
-    let allButLast = arr.join(delimiter).slice(0, -1);
-    let last = arr.slice(-1);
-    switch (arr.length) {
-      case 1:
-        return arr.join('');
-      case 2:
-        return `${arr[0]} ${word} ${last}`;
-      default:
-        return `${allButLast}${word} ${last}`;
+
+  examineLine() {
+    for (let line = 0; line < POSSIBLE_WINNING_ROWS.length; line++) {
+      let [sq1, sq2, sq3] = POSSIBLE_WINNING_ROWS[line];
+      let currentLine = [this.board[sq1], this.board[sq2], this.board[sq3]];
+
+      if (twoOpponentMarkers(currentLine) && oneUnusedMarker(currentLine)) {
+        return currentLine;
+      }
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+  // determineMarks(player) {
+
+  //   return this.board.countMarkersFor(player, row) === marks;
+
+
+  //   // return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
+  //   //   return this.board.countMarkersFor(player, row) === 3;
+  //   // });
+  // }
+
+
+
+  // determineMarks(row, marks) {
+  //   return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
+  //     return this.board.countMarkersFor(player, row) === marks;
+  //   });
+  // }
+
+
+
+
+
+
+
+
+
+
+
+  // twoOpponentMarkers(line) {
+  //   return TTTGame.POSSIBLE_WINNING_ROWS.find(element => {
+  //     return element.filter(marker => {
+  //       // console.log(SQUARES2[marker]);
+  //       return SQUARES2[marker] === playerMarker;
+  //     }).length === 2;
+  //   });
+  // }
+
+
+
+
+  // determineComputerMove() {
+  //   if (this.twoInARow(HUMAN_MARKER).length === 2) break;
+
+  // }
+
+
+  // offensiveMove() {
+
+  // }
+
+
+  // oneUnusedMarker(line) {
+
+  // }
+
+
+  // twoInARow(playerMarker) {
+  //   return TTTGame.POSSIBLE_WINNING_ROWS.find(element => {
+  //     return element.filter(marker => {
+  //       // console.log(SQUARES2[marker]);
+  //       return SQUARES2[marker] === playerMarker;
+  //     }).length === 2;
+  //   });
+  // }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 let game = new TTTGame();
