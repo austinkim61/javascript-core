@@ -78,8 +78,21 @@ class Board {
     return markers.length;
   }
 
+  // countMarkers(player, keys) {
+  //   let markers = keys.filter(key => {
+  //     return this.squares[key].getMarker() === player.getMarker();
+  //   });
+
+  //   return markers;
+  // }
+
+
+
+
+
+
   displayWithClear() {
-    console.clear();
+    // console.clear();
     console.log("");
     console.log("");
     this.display();
@@ -183,7 +196,7 @@ class TTTGame {
       console.log('');
     }
 
-    console.clear();
+    // console.clear();
     return choice === 'y';
   }
 
@@ -225,19 +238,19 @@ class TTTGame {
     this.board.markSquareAt(choice, this.human.getMarker());
   }
 
-  computerMoves() {
-    let validChoices = this.board.unusedSquares();
-    let choice;
+  // computerMoves() {
+  //   let validChoices = this.board.unusedSquares();
+  //   let choice;
 
-    // if player about to win, do defensive move
-    // determine twoInARow
+  //   // if player about to win, do defensive move
+  //   // determine twoInARow
 
-    do {
-      choice = Math.floor((9 * Math.random()) + 1).toString();
-    } while (!validChoices.includes(choice));
+  //   do {
+  //     choice = Math.floor((9 * Math.random()) + 1).toString();
+  //   } while (!validChoices.includes(choice));
 
-    this.board.markSquareAt(choice, this.computer.getMarker());
-  }
+  //   this.board.markSquareAt(choice, this.computer.getMarker());
+  // }
 
   gameOver() {
     return this.board.isFull() || this.someoneWon();
@@ -247,7 +260,6 @@ class TTTGame {
     return this.isWinner(this.human) || this.isWinner(this.computer);
   }
 
-
   isWinner(player) {
     return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
       return this.board.countMarkersFor(player, row) === 3;
@@ -255,105 +267,46 @@ class TTTGame {
   }
 
 
-  examineLine() {
-    for (let line = 0; line < POSSIBLE_WINNING_ROWS.length; line++) {
-      let [sq1, sq2, sq3] = POSSIBLE_WINNING_ROWS[line];
-      let currentLine = [this.board[sq1], this.board[sq2], this.board[sq3]];
 
-      if (twoOpponentMarkers(currentLine) && oneUnusedMarker(currentLine)) {
-        return currentLine;
+
+
+
+
+
+  computerMoves() {
+    let validChoices = this.board.unusedSquares();
+    let choice;
+    let array;
+
+
+    do {
+      choice = Math.floor((9 * Math.random()) + 1).toString();
+    } while (!validChoices.includes(choice));
+
+
+    for (let line = 0; line < TTTGame.POSSIBLE_WINNING_ROWS.length; line++) {
+
+      if ((this.board.countMarkersFor(this.computer, TTTGame.POSSIBLE_WINNING_ROWS[line]) === 2) // offensive
+        && (this.board.countMarkersFor(this.human, TTTGame.POSSIBLE_WINNING_ROWS[line]) === 0)) {
+
+        array = TTTGame.POSSIBLE_WINNING_ROWS[line];
+        choice = validChoices.find(x => array.includes(x));
+        return this.board.markSquareAt(choice, this.computer.getMarker());
       }
     }
+
+    for (let line = 0; line < TTTGame.POSSIBLE_WINNING_ROWS.length; line++) {
+      if ((this.board.countMarkersFor(this.human, TTTGame.POSSIBLE_WINNING_ROWS[line]) === 2) // defensive
+        && (this.board.countMarkersFor(this.computer, TTTGame.POSSIBLE_WINNING_ROWS[line]) === 0)) {
+
+        array = TTTGame.POSSIBLE_WINNING_ROWS[line];
+        choice = validChoices.find(x => array.includes(x));
+        return this.board.markSquareAt(choice, this.computer.getMarker());
+      }
+    }
+
+    this.board.markSquareAt(choice, this.computer.getMarker());
   }
-
-
-
-
-
-
-
-
-
-
-
-  // determineMarks(player) {
-
-  //   return this.board.countMarkersFor(player, row) === marks;
-
-
-  //   // return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
-  //   //   return this.board.countMarkersFor(player, row) === 3;
-  //   // });
-  // }
-
-
-
-  // determineMarks(row, marks) {
-  //   return TTTGame.POSSIBLE_WINNING_ROWS.some(row => {
-  //     return this.board.countMarkersFor(player, row) === marks;
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-  // twoOpponentMarkers(line) {
-  //   return TTTGame.POSSIBLE_WINNING_ROWS.find(element => {
-  //     return element.filter(marker => {
-  //       // console.log(SQUARES2[marker]);
-  //       return SQUARES2[marker] === playerMarker;
-  //     }).length === 2;
-  //   });
-  // }
-
-
-
-
-  // determineComputerMove() {
-  //   if (this.twoInARow(HUMAN_MARKER).length === 2) break;
-
-  // }
-
-
-  // offensiveMove() {
-
-  // }
-
-
-  // oneUnusedMarker(line) {
-
-  // }
-
-
-  // twoInARow(playerMarker) {
-  //   return TTTGame.POSSIBLE_WINNING_ROWS.find(element => {
-  //     return element.filter(marker => {
-  //       // console.log(SQUARES2[marker]);
-  //       return SQUARES2[marker] === playerMarker;
-  //     }).length === 2;
-  //   });
-  // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }
@@ -361,6 +314,3 @@ class TTTGame {
 let game = new TTTGame();
 game.play();
 
-
-// game.playOnce();
-// game.playAgain();
