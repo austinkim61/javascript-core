@@ -78,17 +78,6 @@ class Board {
     return markers.length;
   }
 
-  // countMarkers(player, keys) {
-  //   let markers = keys.filter(key => {
-  //     return this.squares[key].getMarker() === player.getMarker();
-  //   });
-
-  //   return markers;
-  // }
-
-
-
-
 
 
   displayWithClear() {
@@ -225,7 +214,6 @@ class TTTGame {
 
     while (true) {
       let validChoices = this.board.unusedSquares();
-      // console.log(validChoices);
       const prompt = `Choose a square (${TTTGame.joinOr(validChoices)}): `;
       choice = readline.question(prompt);
 
@@ -273,16 +261,24 @@ class TTTGame {
 
 
 
-  computerMoves() {
+  computerMoves() { // refactor to have other methods and this order:
+    // win
+    // defensive
+    // 5
+    // random
+
     let validChoices = this.board.unusedSquares();
     let choice;
     let array;
 
-
-    do {
-      choice = Math.floor((9 * Math.random()) + 1).toString();
-    } while (!validChoices.includes(choice));
-
+    if (validChoices.includes("5")) {
+      console.log('5');
+      choice = "5";
+    } else {
+      do {
+        choice = Math.floor((9 * Math.random()) + 1).toString();
+      } while (!validChoices.includes(choice));
+    }
 
     for (let line = 0; line < TTTGame.POSSIBLE_WINNING_ROWS.length; line++) {
 
@@ -305,13 +301,12 @@ class TTTGame {
       }
     }
 
-
-
     this.board.markSquareAt(choice, this.computer.getMarker());
   }
-
-
 }
+
+
+
 
 let game = new TTTGame();
 game.play();
