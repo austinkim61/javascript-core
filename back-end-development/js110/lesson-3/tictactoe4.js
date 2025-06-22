@@ -17,7 +17,7 @@ function displayBoard(board) {
   // console.clear();
 
   console.log(`You are ${HUMAN_MARKER}. Computer is ${COMPUTER_MARKER}.`)
-  
+
   console.log('');
   console.log('     |     |');
   console.log(`  ${board['1']}  |  ${board['2']}  |  ${board['3']}`);
@@ -39,7 +39,7 @@ function initializeBoard() {
   for (let square = 1; square <= 9; square++) {
     board[String(square)] = INITIAL_MARKER;
   }
-  
+
   return board;
 }
 
@@ -55,7 +55,7 @@ function joinOr(arr, delimiter = ', ', word = 'or') {
   let allButLast = arr.join(delimiter).slice(0, -1);
   let last = arr.slice(-1);
 
-  return arr.length === 2 ? `${arr[0]} ${word} ${last}` : `${allButLast}${word} ${last}`; 
+  return arr.length === 2 ? `${arr[0]} ${word} ${last}` : `${allButLast}${word} ${last}`;
 }
 
 function firstPlayer() {
@@ -63,7 +63,7 @@ function firstPlayer() {
   while (true) {
     prompt(`Who should play first?: player, computer, or choose (random)`);
     let answer = readline.question().toLowerCase().slice(0, 3);
-    
+
     switch (answer) {
       case 'pla':
         first = 'player';
@@ -78,8 +78,8 @@ function firstPlayer() {
         console.log(`Choosing random first player: ${first}`);
         break;
       default:
-        prompt("Sorry, that's not a valid choice.");      
-    }  
+        prompt("Sorry, that's not a valid choice.");
+    }
     if (first !== undefined) break;
   }
   return first;
@@ -95,13 +95,13 @@ function chooseSquare(board, currentPlayer) {
 
 function playerChoosesSquare(board) {
   let square;
-    
+
   while (true) {
     prompt(`Choose a square: ${joinOr(emptySquares(board))}:`);
     square = readline.question().trim();
 
     if (emptySquares(board).includes(square)) break;
-    
+
     prompt("Sorry, that's not a valid choice.");
   }
 
@@ -124,7 +124,7 @@ function priorityLine(board, marker) {
   for (let line = 0; line < WINNING_LINES.length; line++) {
     let [sq1, sq2, sq3] = WINNING_LINES[line];
     let currentLine = [board[sq1], board[sq2], board[sq3]];
-    
+
     if (twoMarkers(currentLine, marker) && oneInitialMarker(currentLine)) {
       return WINNING_LINES[line];
     }
@@ -193,7 +193,7 @@ function keepScore(player, computer, tie) {
 
 function detectOverallWinner(player, computer) {
   if (player === NUMBER_OF_GAMES_TO_WIN) {
-    return prompt(`Player is the overall winner!`);    
+    return prompt(`Player is the overall winner!`);
   } else if (computer === NUMBER_OF_GAMES_TO_WIN) {
     return prompt(`Computer is the overall winner!`);
   }
@@ -223,7 +223,7 @@ while (true) {
     board = initializeBoard();
 
     let currentPlayer = startPlayer;
-    
+
     while (true) {
       displayBoard(board);
       chooseSquare(board, currentPlayer);
@@ -232,17 +232,17 @@ while (true) {
 
       if (someoneWon(board) || boardFull(board)) break;
     }
-  
-    displayBoard(board);    
-  
+
+    displayBoard(board);
+
     if (someoneWon(board)) {
       detectWinner(board) === 'Player' ? playerWins++ : computerWins++;
       prompt(`${detectWinner(board)} won!`);
     } else {
-      prompt("It's a tie!");  
+      prompt("It's a tie!");
     }
 
-    keepScore(playerWins, computerWins, ties);    
+    keepScore(playerWins, computerWins, ties);
     detectOverallWinner(playerWins, computerWins);
 
     if (playerWins === NUMBER_OF_GAMES_TO_WIN || computerWins === NUMBER_OF_GAMES_TO_WIN) break;

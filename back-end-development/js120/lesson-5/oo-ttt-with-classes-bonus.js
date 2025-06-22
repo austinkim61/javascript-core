@@ -305,6 +305,8 @@ class TTTGame {
       }
     }
 
+
+
     this.board.markSquareAt(choice, this.computer.getMarker());
   }
 
