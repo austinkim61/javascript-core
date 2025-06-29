@@ -1,6 +1,4 @@
 const readline = require('readline-sync');
-const GAMES_TO_WIN = 5;
-const MARKS_TO_WIN = 3;
 
 class Square {
   static UNUSED_SQUARE = " ";
@@ -82,10 +80,9 @@ class Board {
     return markers.length;
   }
 
-
-
   displayWithClear() {
-    // console.clear();
+    console.clear();
+    console.log("");
     console.log("");
     console.log("");
     this.display();
@@ -95,11 +92,34 @@ class Board {
 class Player {
   constructor(marker) {
     this.marker = marker;
+    this.wins = 0;
+    this.turn = false;
   }
 
   getMarker() {
     return this.marker;
   }
+
+  getWins() {
+    return this.wins;
+  }
+
+  incrementWins() {
+    this.wins++;
+  }
+
+  getTurn() {
+    return this.turn;
+  }
+
+  isTurn() {
+    this.turn = true;
+  }
+
+  isNotTurn() {
+    this.turn = false;
+  }
+
 }
 
 class Human extends Player {
@@ -115,6 +135,7 @@ class Computer extends Player {
 }
 
 class TTTGame {
+  static MATCH_GOAL = 3;
   static POSSIBLE_WINNING_ROWS = [
     ["1", "2", "3"],
     ["4", "5", "6"],
@@ -148,26 +169,114 @@ class TTTGame {
 
   play() {
     this.displayWelcomeMessage();
+    this.playMatch();
+    this.displayGoodbyeMessage();
+
+
+
+
+    // while (true) {
+    //   this.playOneGame();
+
+    //   // if (this.someoneWonThreeGames()) break;
+    //   if (!this.playAgain()) break;
+
+    //   console.log("Let's play again!");
+    //   console.log('');
+    // }
+
+    // // this.matchWinner();
+
+  }
+
+  playMatch() {
+    console.log(`First player to win ${TTTGame.MATCH_GOAL} games wins the match.`);
+
+    // determineWhoGoesFirst();
 
     while (true) {
       this.playOneGame();
-      if (!this.playAgain()) break;
+      this.updateMatchScore();
+      this.displayMatchScore();
 
-      console.log("Let's play again!");
-      console.log('');
+      if (this.matchOver()) break;
+      if (!this.playAgain()) break;
     }
 
-    this.displayGoodbyeMessage();
+    this.displayMatchResults();
   }
+
+  matchOver() {
+    return this.isMatchWinner(this.human) || this.isMatchWinner(this.computer);
+  }
+
+  isMatchWinner(player) {
+    return player.getWins() >= TTTGame.MATCH_GOAL;
+  }
+
+  updateMatchScore() {
+    if (this.isWinner(this.human)) {
+      this.human.incrementWins();
+    } else if (this.isWinner(this.computer)) {
+      this.computer.incrementWins();
+    }
+  }
+
+  displayMatchScore() {
+    let human = this.human.getWins();
+    let computer = this.computer.getWins();
+    console.log(`Current match score: [you: ${human}] [computer: ${computer}]`);
+  }
+
+  displayMatchResults() {
+    if (this.human.getWins() > this.computer.getWins()) {
+      console.log("You won the match! Congratulations!");
+    } else if (this.human.getWins < this.computer.getWins()) {
+      console.log("Computer won the match.");
+    }
+  }
+
+
+
+
+
+
+
+
+  determineWhoMoves() {
+    if (this.human.getTurn()) { // if this.human.isTurn() === true
+      this.human.isNotTurn(); // switch method to replace
+      this.computer.isTurn();
+      return this.humanMoves();
+    } else {
+      this.computer.isNotTurn();
+      this.human.isTurn();
+      return this.computerMoves();
+    }
+  }
+
+
+
+
+
 
   playOneGame() {
     this.board.reset();
     this.board.display();
 
+    // let firstPlayer;
+    // let secondPlayer;
+
+    // determineWhoGoesFirst(firstPlayer, secondPlayer);
+
     while (true) {
+
+      // this.determineWhoMoves();
       this.humanMoves();
       if (this.gameOver()) break;
 
+
+      // this.determineWhoMoves();
       this.computerMoves();
       if (this.gameOver()) break;
 
@@ -189,7 +298,10 @@ class TTTGame {
       console.log('');
     }
 
-    // console.clear();
+    console.clear();
+    console.log("");
+    console.log("");
+    console.log("");
     return choice === 'y';
   }
 
@@ -205,13 +317,72 @@ class TTTGame {
 
   displayResults() {
     if (this.isWinner(this.human)) {
+      // this.human.wins++;
       console.log("You won! Congratulations!");
     } else if (this.isWinner(this.computer)) {
+      // this.computer.wins++;
       console.log("Computer is the winner.");
     } else {
       console.log("It's a tie game.");
     }
+    console.log(`Human wins: ${this.human.wins}`);
+    console.log(`Computer wins: ${this.computer.wins}`);
   }
+
+
+  // matchWinner() {
+  //   if (this.isMatchWinner(this.human)) {
+  //     console.log("You won three games! Congratulations!");
+  //   } else if (this.isMatchWinner(this.computer)) {
+  //     console.log("Computer won three games.");
+  //   }
+  // }
+
+  // someoneWonThreeGames() {
+  //   if (this.human.wins === 3) {
+  //     return true;
+  //   } else if (this.computer.wins === 3) {
+  //     return true;
+  //   }
+  //   return false;
+  // }
+
+  // isMatchWinner(player) {
+  //   return player.wins === 3;
+  // }
+
+
+
+  determineWhoGoesFirst() {
+    let num = Math.floor(2 * Math.random());
+    if (num === 1) {
+      this.human.playerTurn();
+      this.computer.notPlayerTurn();
+    } else {
+      this.human.notPlayerTurn();
+      this.computer.playerTurn();
+    }
+  }
+
+  switchTurns() {
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   humanMoves() {
     let choice;
@@ -231,15 +402,13 @@ class TTTGame {
   }
 
   computerMoves() {
-    let choice = this.offensiveComputerMove() ||
-                 this.defensiveComputerMove() ||
-                 this.pickCenterSquare() ||
-                 this.pickRandomSquare();
-
-    // let choice = this.findCriticalSquare(this.computer) ||
-    //              this.findCriticalSquare(this.human) ||
+    // let choice = this.offensiveComputerMove() ||
+    //              this.defensiveComputerMove() ||
     //              this.pickCenterSquare() ||
     //              this.pickRandomSquare();
+
+    let choice = this.pickCenterSquare() ||
+                 this.pickRandomSquare();
 
     this.board.markSquareAt(choice, this.computer.getMarker());
   }
